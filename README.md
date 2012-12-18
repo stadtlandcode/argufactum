@@ -1,5 +1,7 @@
 This Java-Webapp is a prototype for collecting arguments and facts for controversial discussed topics. It is currently deployed on http://argufactum.de
 
+License: AGPLv3
+
 Technology stack:
 - Spring, Spring MVC, Spring Security, Spring Social
 - Hibernate ORM & Ehcache
