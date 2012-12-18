@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Utils Test Suite</title>
+
+	<link rel="stylesheet" href="qunit.css">
+	<script type="text/javascript" src="qunit.js"></script>
+	
+	<script type="text/javascript" src="../jquery.js"></script>
+	<script type="text/javascript" src="../jquery.tmpl.js"></script>
+	<script type="text/javascript" src="../jquery.hotkeys.js"></script>
+	<script type="text/javascript" src="../jquery.atmosphere.js"></script>
+	<script type="text/javascript" src="../bootstrap.js"></script>
+	<script type="text/javascript" src="../argue.js"></script>
+	<script type="text/javascript" src="../argue.ajax.js"></script>
+	
+	<script type="text/javascript" src="mock.js"></script>
+	<script type="text/javascript" src="utils.js"></script>
+</head>
+<body>
+	<h1 id="qunit-header">Utils Test Suite</h1>
+	<h2 id="qunit-banner"></h2>
+	<div id="qunit-testrunner-toolbar"></div>
+	<h2 id="qunit-userAgent"></h2>
+	<ol id="qunit-tests"></ol>
+
+	<div id="qunit-fixture">
+		<form id="doubleClickForm" action="#" method="GET">
+			<button type="submit">Testbutton</button>
+		</form>
+		
+		<div id="stars-desc" class="stars star-rating-read">
+			<div class="star-rating"><a></a></div>
+			<div class="star-rating"><a></a></div>
+			<div class="star-rating"><a></a></div>
+			<div class="star-rating"><a></a></div>
+			<div class="star-rating"><a></a></div>
+			<div class="rating-cancel"><a></a></div>
+		</div>
+
+		<div id="stars-asc" class="stars star-rating-read">
+			<div class="rating-cancel"><a></a></div>
+			<div class="star-rating"><a></a></div>
+			<div class="star-rating"><a></a></div>
+			<div class="star-rating"><a></a></div>
+			<div class="star-rating"><a></a></div>
+			<div class="star-rating"><a></a></div>
+		</div>
+		
+		<form id="ajax-form">
+			<input type="text" name="text" value="yes!" />
+			<button type="submit"></button>
+		</form>
+
+		<form id="ajax-form2"></form>
+		
+		<div id="ajax"></div>
+		<div id="ajax-errors"></div>
+		
+		<div id="content1" class="content" style="display:none;" data-page-title="test">
+			<h1 class="global-ajax-indicator-container">Title</h1>
+		</div>
+		<div id="content2" class="content">
+			<h1 class="global-ajax-indicator-container">Title</h1>
+		</div>
+		
+		<div id="filter-by-data">
+			<span data-filter-id="1"></span>
+			<span data-filter-id="2"></span>
+			<span data-filter-id="1"></span>
+		</div>
+	</div>
+</body>
+</html>

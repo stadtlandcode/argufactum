@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<topics>
+	<proContraTopic>
+		<term>Schutzimpfung gegen FSME (Frühsommer-Meningoenzephalitis)</term>
+		<user>edel</user>
+		<theses>PRO_CONTRA</theses>
+		<category>Gesundheit</category>
+		<definition>Schutzimpfung gegen FSME (Frühsommer-Meningoenzephalitits) in Deutschland, ausgelöst durch das FSME-Virus, übertragen durch Zeckenstich
+		</definition>
+		<arguments>
+			<argument>
+				<topicThesis>PRO</topicThesis>
+				<thesis>Schutz vor Infektion und Erkrankungen wie Hirnhautentzündung, Fieber</thesis>
+				<facts>
+					<fact>
+						<evidence>Der Schutz ist deshalb so wichtig, weil es neben Kopf- und Gliederschmerzen, Erbrechen und Fieber in Höhe von 40 °C auch zu Bewusstseinsstörungen bis zum Kome und Lähmungen kommen kann.</evidence>
+						<type>CONFIRMATIVE</type>
+						<references>
+							<reference>http://de.wikipedia.org/wiki/Zeckenimpfung#Impfung</reference>
+						</references>
+					</fact>
+					<fact>
+						<evidence>Der Schutz ist hochwirksam. Eine Schätzung bei einer Untersuchung in Österreich ergab eine Wirksamkeit von 96-99 %.</evidence>
+						<type>CONFIRMATIVE</type>
+						<references>
+							<reference>http://de.wikipedia.org/wiki/Zeckenimpfung#Impfung</reference>
+						</references>
+					</fact>
+				</facts>
+				</argument>
+			<argument>
+				<topicThesis>PRO</topicThesis>
+				<thesis>Es besteht eine Empfehlung der STIKO zur Impfung frür alle potenziell gefährdeten Personen</thesis>
+				<facts>
+					<fact>
+						<evidence>Die STIKO (ständige Impfkommission) empfiehlt Personen mit bestimmten Kriterien in den Endemiegebieten eine Impfung</evidence>
+						<type>CONFIRMATIVE</type>
+						<references>
+							<reference><![CDATA[http://www.rki.de/SharedDocs/FAQ/Impfen/FSME/FAQ01.html?nn=2375548]]></reference>
+							<reference><![CDATA[http://de.wikipedia.org/wiki/Zeckenimpfung#Impfung]]></reference>
+						</references>
+						</fact>
+					<fact>
+						<evidence>In Baden-Württemberg wird eine Impfung durch die zuständige Landesbehörde generell empfohlen</evidence>
+						<type>CONFIRMATIVE</type>
+						<references>
+							<reference>http://de.wikipedia.org/wiki/Zeckenimpfung#Impfung</reference>
+						</references>
+					</fact>
+				</facts>
+				</argument>
+			<argument>
+				<topicThesis>PRO</topicThesis>
+				<thesis>Impfungen zielen nicht nur auf den Nutzen des Einzelnen, sondern auch auf den Schutz der ganzen Bevölkerung</thesis>
+				<facts>
+					<fact>
+						<evidence>Infektionskrankheien werden mit Beginn des Routineeinsatzes deutlich zurückgedrängt.</evidence>
+						<type>CONFIRMATIVE</type>
+						<references>
+							<reference><![CDATA[http://www.rki.de/SharedDocs/FAQ/Impfen/FSME/FAQ01.html?nn=2375548]]></reference>
+						</references>
+						</fact>
+					<fact>
+						<evidence>In Baden-Württemberg wird eine Impfung durch die zuständige Landesbehörde generell empfohlen</evidence>
+						<type>CONFIRMATIVE</type>
+						<references>
+							<reference>http://de.wikipedia.org/wiki/Zeckenimpfung#Impfung</reference>
+						</references>
+					</fact>
+				</facts>
+				</argument>
+			<argument>
+				<topicThesis>CONTRA</topicThesis>
+				<thesis>Eine Schutzimpfung gegen FSME bringt nichts bei Borreliose, diese Krankheit tritt wesentlich häufiger als die FSME auf.</thesis>
+				<facts>
+					<fact>
+						<evidence>10-35 % der Zecken können mit Borrelien befallen sein und treten überall in Deutschland auf im Gegensatz zur FSME, die nur regional auftritt</evidence>
+						<type>CONFIRMATIVE</type>
+						<references>
+							<reference>http://www.rki.de/cln_162/nn_467538/DE/Content/Infekt/EpidBull/Merkblaetter/Ratgeber__FSME.html</reference>
+							<reference>http://de.wikipedia.org/wiki/Zeckenimpfung#Impfung</reference>
+						</references>
+					</fact>
+				</facts>
+			</argument>
+			<argument>
+				<topicThesis>CONTRA</topicThesis>
+				<thesis>Die Impfstoffe gegen FSME sind teilweise sehr unverträglich. Es gibt hohe Zahlen von Verdachtsfällen auf Impfkomplikationen.</thesis>
+				<facts>
+					<fact>
+						<evidence>Bis zu einem Drittel der Geimpften treten lokale Hautreaktionen auf. Fieber kommt ebenfalls vor, bei Erwachsenen zwar seltener, jedoch bei Kindern häufiger. </evidence>
+						<type>CONFIRMATIVE</type>
+						<references>
+							<reference>http://de.wikipedia.org/wiki/Zeckenimpfung#Impfung</reference>
+						</references>
+					</fact>
+					<fact>
+						<evidence>10-20 % der Geimpften haben Nebenwirkungen wie Kopfschmerzen, Müdigkeit, Übelkeit, Sehstörungen, Schüttelfrost, Nesselsucht, Nerventzündungen, entzündliche Reaktionen des Gehirns sowie Muskel- und Gelenkschmerzen.</evidence>
+						<type>CONFIRMATIVE</type>
+						<references>
+							<reference>http://de.wikipedia.org/wiki/Zeckenimpfung#Impfung</reference>
+						</references>
+					</fact>
+				</facts>
+			</argument>
+			<argument>
+				<topicThesis>CONTRA</topicThesis>
+				<thesis>Mehrere Arztbesuche verbunden mit Spritzen notwendig</thesis>
+				<facts>
+					<fact>
+						<evidence>Die Grundimmunisierung erfordert drei Impfungen, also drei Mal eine Spritze in einen Muskel </evidence>
+						<type>CONFIRMATIVE</type>
+						<references>
+							<reference>http://de.wikipedia.org/wiki/Zeckenimpfung#Impfung</reference>
+						</references>
+					</fact>
+					<fact>
+						<evidence>Die Impfung muss ca. alle fünf Jahre aufgefrischt werden</evidence>
+						<type>CONFIRMATIVE</type>
+						<references>
+							<reference>http://de.wikipedia.org/wiki/Zeckenimpfung#Impfung</reference>
+						</references>
+					</fact>
+				</facts>
+			</argument>
+		</arguments>
+	</proContraTopic>
+</topics>

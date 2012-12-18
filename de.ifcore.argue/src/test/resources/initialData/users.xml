@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<users>
+	<user>
+		<username>felix</username>
+		<password>argufactum</password>
+		<email>felix@argufactum.de</email>
+		<admin>true</admin>
+	</user>
+	<user>
+		<username>edel</username>
+		<password>argufactum</password>
+		<email>edel@argufactum.de</email>
+		<admin>false</admin>
+	</user>
+	<user>
+		<username>horst</username>
+		<password>argufactum</password>
+		<email>horst@argufactum.de</email>
+		<admin>false</admin>
+	</user>
+	<user>
+		<username>manfred</username>
+		<password>argufactum</password>
+		<email>manfred@argufactum.de</email>
+		<admin>false</admin>
+	</user>
+</users>

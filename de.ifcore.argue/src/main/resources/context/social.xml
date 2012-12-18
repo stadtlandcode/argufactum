@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+
+	<bean id="connectionFactoryLocator" class="org.springframework.social.connect.support.ConnectionFactoryRegistry">
+		<property name="connectionFactories">
+			<list>
+				<bean class="org.springframework.social.facebook.connect.FacebookConnectionFactory">
+					<constructor-arg value="${facebookClientId}" />
+					<constructor-arg value="${facebookClientSecret}" />
+				</bean>
+				<bean class="org.springframework.social.twitter.connect.TwitterConnectionFactory">
+					<constructor-arg value="${twitterConsumerKey}" />
+					<constructor-arg value="${twitterConsumerSecret}" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="usersConnectionRepository" class="de.ifcore.argue.social.HibernateUsersConnectionRepository" />
+
+	<bean id="providerSignInController" class="org.springframework.social.connect.web.ProviderSignInController">
+		<constructor-arg ref="connectionFactoryLocator" />
+		<constructor-arg ref="usersConnectionRepository" />
+		<constructor-arg>
+			<bean class="de.ifcore.argue.social.SpringSecuritySignInAdapter" />
+		</constructor-arg>
+		<property name="signInUrl" value="/login" />
+		<property name="signUpUrl" value="/registration/socialSignUp" />
+		<property name="postSignInUrl" value="/" />
+	</bean>
+</beans>

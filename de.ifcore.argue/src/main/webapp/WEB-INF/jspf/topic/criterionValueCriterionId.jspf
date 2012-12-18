@@ -1,0 +1,11 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" buffer="128kb"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:choose>
+	<c:when test="${criterion != null}">
+		<input type="hidden" name="criterionId" value="${criterion.id}" />
+	</c:when>
+	<c:otherwise>
+		<input type="hidden" name="criterionId" value="" />
+	</c:otherwise>
+</c:choose>

@@ -1,0 +1,331 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" buffer="128kb"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+
+<h2>Über Argufactum</h2>
+
+<div class="row">
+	<div class="span6">
+		<span id="what"></span>
+		<h3>Was ist eigentlich Argufactum?</h3>
+		<p>Argufactum (zusammengesetzt aus den lateinischen Wörtern für Argumente und Fakten (Tatsachen)) ist eine kostenlose Webanwendung zur
+			Erstellung und Bereitstellung von Entscheidungshilfen zu kontroversen Themen jeglicher Art. Jeder Benutzer kann eigene Themen hinzufügen und
+			die dazugehörige Entscheidungshilfe alleine oder mit mehreren Benutzer gemeinsam ausarbeiten. Die Themen können anschließend veröffentlicht
+			werden oder auch komplett privat bleiben.</p>
+		<p>Die Form der Entscheidungshilfe stellt derzeit eine Liste an Argumenten gestützt von Fakten und Quellen unterteilt in eine Pro &amp;
+			Contra Liste dar. Zu einem späteren Zeitpunkt ist geplant, die Entscheidungshilfe zum Beispiel auch in Form einer Vergleichstabelle gestalten
+			zu können.</p>
+		<p>Prinzipiell kann es beliebig viele öffentliche Entscheidungshilfen zu einem kontroversen Thema geben. Durch die Bewertung der
+			Entscheidungshilfen soll eine Selektion der am besten ausgearbeiteten Entscheidungshilfen stattfinden.</p>
+
+		<span id="roadmap"></span>
+		<h3>Welche Funktionen sind noch geplant?</h3>
+		<p>Sofern Argufactum auf eine gute Resonanz stößt sind derzeit folgende weitere, umfangreiche Funktionen geplant:</p>
+		<ul>
+			<li>Neue Diskussionsart "Vergleichstabelle", mit der mehrere Alternativen anhand von Kriterien gegenübergestellt werden können. Die
+				Kriterien sollen individuell gewichtet werden können und so zu einem rechnerischen Ergebnis der besten Option führen.</li>
+			<li>Eine Zeitleiste für Argumente, um Entscheidungen in der Vergangenheit besser nachvollziehen zu können. Welche Argumente gab es
+				damals, welche Argumente kamen in der Zwischenzeit hinzu, welche fielen weg?</li>
+			<li>Bewertung der Argumente mit Punkten statt aktuell mit Sternen, um ein rechnerisches Ergebnis ermitteln zu können. (Danke an Adrian
+				und seine <a href="http://www.grundid.de" target="_blank">GrundID GmbH</a> für die Anregung)
+			</li>
+			<li>Erstellung von Gruppen, um zum Beispiel Vereinen, Unternehmen und Parteien die Erstellung von Themen zu vereinfachen.</li>
+		</ul>
+		<p>Daneben stehen natürlich noch eine Vielzahl kleinerer Funktionen auf unserer Liste, z.B. ein Chat innerhalb eines Themas, Erweiterung
+			der Suchfunktion, Ausbau des Benutzerkontos, Hinzufügen mehrerer OpenId-Logins innerhalb einem Benutzerkonto, Beobachten eines Themas, Export von Themen,
+			Tastaturnavigation und vieles mehr.</p>
+	</div>
+	<div class="span6">
+		<span id="why"></span>
+		<h3>Warum gibt es Argufactum?</h3>
+		<p>Allgemein wurde Argufactum mit dem Ziel entwickelt, schneller als bisher fundierte Entscheidungen treffen zu können. Insbesondere
+			führten folgende Gründe zur Entwicklung von Argufactum (immer mit dem Hintergedanken, eine eigene Entscheidung treffen zu wollen):</p>
+		<ul class="text-list">
+			<li>In den Nachrichten findet man zu kontroversen Themen meist nur lange Artikel über aktuelle Entwicklungen, aber keinen
+				Gesamtüberblick um sich schnell einen eigenen fundierten Standpunkt zu diesem Thema bilden zu können. Enzyklopädien können dabei helfen,
+				liefern aber meist keinen kurzen Überblick über alle Pro- und Contra Argumente. Argufactum versucht diese Lücke zu schließen, indem
+				innerhalb eines Themas alle Pro und Contra Argumente beschränkt auf 255 Zeichen direkt und priorisiert gegenübergestellt werden. Auf Wunsch
+				kann sich der Benutzer zudem zu jedem Argument Fakten zusammen mit einer Quellenangabe ansehen, so dass der Nutzer die Argumente selbst
+				kritisch prüfen kann und einen Startpunkt für eine tiefere Einarbeitung in das Thema findet.</li>
+			<li>Private oder gemeinsame Entscheidungen, zum Beispiel innerhalb eines Vereins oder eines Unternehmens, hängen meist von einer
+				Vielzahl an Faktoren ab. Daher ist es ratsam, zum einen die Argumente gemeinsam mit anderen zu finden um mehrere Sichtweisen zu kombinieren
+				und zum anderen die Argumente niederzuschreiben, um den Überblick nicht zu verlieren. Argufactum möchte dabei unterstützen und bietet daher
+				eine schnelle Möglichkeit zum Festhalten von Argumenten mit mehreren Benutzern gleichzeitig. Jeder Benutzer kann dabei live alle Änderungen
+				der anderen Nutzer zu sehen.</li>
+			<li>Es fehlt insbesondere im privaten Bereich eine Datenbank an Entscheidungshilfen, um gar nicht erst von Grund auf alle Argumente und
+				Kriterien selbst ausarbeiten zu müssen, sondern einfach auf gut ausgearbeitete Entscheidungshilfen anderer Benutzer zurückgreifen zu können.
+				Dieser Punkt soll in Argufactum zukünftig insbesondere mit der Form von Vergleichstabellen angegangen werden.</li>
+		</ul>
+		
+		<span id="technical-requirements"></span>
+		<h3>Technische Voraussetzungen</h3>
+		<p>Bei Argufactum handelt es sich um eine Webanwendung, daher benötigen Sie nur einen Zugang zum Internet und einen aktuellen Browser.
+			Wenn Sie eigene Themen erstellen möchten oder Änderungen vornehmen möchten muss zudem die Ausführung von JavaScript erlaubt sein und ein
+			Cookie gespeichert werden können.</p>
+		<p>Bitte beachten Sie, dass wir den Internet Explorer 6 nicht unterstützen.</p>
+	</div>
+</div>
+
+<h2>Grundlegende Bedienung</h2>
+<div class="row">
+	<div class="span6">
+		<span id="first-steps"></span>
+		<h3>Erste Schritte in Argufactum</h3>
+		<p>Schauen Sie sich zunächst einmal um. Sie müssen sich zum Lesen nicht anmelden oder registrieren, sondern können einfach auf allen
+			Seiten herumstöbern. Sie müssen weder ein Programm herunterladen noch irgendwelche Daten von sich Preis geben, noch entstehen Ihnen
+			irgendwelche Kosten.</p>
+		<p>
+			Wenn Sie das Erstellen von eigenen Themen erst einmal spielerisch ausprobieren möchten, legen Sie einfach ein Thema nur für Sie selbst an und
+			geben es an niemanden frei. So kann außer Ihnen kein anderer Nutzer das Thema sehen. Sie können das Thema später jederzeit öffentlich machen
+			oder an einzelne Personen freigeben oder auch wieder komplett löschen. Einzig eine kostenlose Registrierung bei Argufactum ist Voraussetzung.
+			Ihre Daten werden hierbei natürlich vertraulich behandelt (siehe dazu auch unsere <a href='<spring:url value="/privacy" />'>Datenschutzbestimmungen</a>).
+		</p>
+		<p>Um alle Möglichkeiten von Argufactum auszuschöpfen zu können, empfehlen wir zunächst, die Hilfetexte zu lesen. Dort können Sie die
+			verschiedenen Funktionen und Möglichkeiten kennenlernen.</p>
+
+		<span id="menu"></span>
+		<h3>Menüleiste</h3>
+		<p>Die obere dunkelblau Menüleiste erscheint auf allen Seiten von Argufactum. Sie enthält (von links nach rechts) folgende Funktionen und
+			Symbole:</p>
+		<table class="table table-condensed table-bordered">
+			<tbody>
+				<tr>
+					<th>Logo</th>
+					<td>Mit Klick auf dieses Logo gelangen Sie von jeder Seite aus wieder zur Startseite.</td>
+				</tr>
+				<tr>
+					<th>Suchfeld</th>
+					<td>Hier können Sie nach Themen suchen, die Sie interessieren. Geben Sie einen Begriff oder den Teil eines Begriffes ein, zu dem Sie
+						alle öffentlichen Themen sehen möchten und drücken Sie anschließend die Enter-Taste, um die Ergebnisse angezeigt zu bekommen. Es wird die
+						Bezeichnung und Definition aller Themen durchsucht.</td>
+				</tr>
+				<tr>
+					<th>Lob &amp; Kritik</th>
+					<td>Als registrierter Nutzer können Sie uns über diese Funktion Ihre Meinung, Ihre Wünsche, Vorschläge und Ideen zu Argufactum
+						mitteilen. Wir freuen uns über jede Anregung!</td>
+				</tr>
+				<tr>
+					<th>Startseite</th>
+					<td>Über diese Funktion gelangen Sie von überall aus wieder zurück zur Startseite. Sie können stattdessen aber auch auf das Logo links
+						oben klicken.</td>
+				</tr>
+				<tr>
+					<th style="white-space: nowrap;">Neues Thema</th>
+					<td>Registrierte Nutzer können über diese Funktion ein neues Thema anlegen.</td>
+				</tr>
+				<tr>
+					<th>Anmelden</th>
+					<td>Über diese Funktion können Sie sich mit Ihrem Nutzernamen und Passwort oder OpenID anmelden oder sich registrieren.</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="span6">
+		<span id="user-account"></span>
+		<h3>Anmeldung und Registrierung</h3>
+		<p>Wenn Sie selbst ein Thema erstellen wollen oder an einem Thema mitarbeiten möchten, ist eine einmalige Registrierung notwendig. Klicken
+			Sie einfach in der Menüleiste auf den Link "Anmelden" und anschließend auf ein Symbol von Google, Yahoo, Twitter oder Facebook, um sich über
+			Ihr bestehendes Konto bei einem dieser Anbieter anzumelden. Daraufhin werden Sie erst von dem gewählten Anbieter gefragt, ob Sie Argufactum
+			gestatten möchten, auf Ihre Daten zuzugreifen und anschließend zur Wahl eines Benutzernamens aufgefordert.</p>
+		<p>Wenn Sie noch kein Konto bei diesen Anbietern besitzen, finden Sie unterhalb des Anmeldeformulars ein herkömmliches Formular zum
+			Registrieren eines Benutzerkontos mit Benutzername und Passwort. Achten Sie bitte auf ein sicheres Passwort, welches aus mindestens sechs
+			Zeichen besteht. Wir empfehlen, die Verwendung von Groß- und Kleinbuchstaben, Ziffern und Zeichen in Kombination. Eine gute Methode für ein
+			sicheres Passwort ist, sich die Anfangsbuchstaben eines leicht zu merkenden Satzes zu merken. Beispiel: "An Ostern gibt es bei Tante Emma
+			immer 5 verschiedene Kuchen!". Das ergäbe dann folgendes Passwort: "AOgebTEi5vK!".</p>
+
+		<span id="startpage"></span>
+		<h3>Startseite</h3>
+		<p>Auf der Startseite finden Sie folgende Bereiche:</p>
+		<table class="table table-condensed table-bordered">
+			<tbody>
+				<tr>
+					<th>Ausgewählte Themen</th>
+					<td>Im Abschnitt "Ausgewählte Themen" werden Themen aufgeführt, die als besonders wertvoll erachtet werden und hervorragend
+						ausgearbeitet sind. Die dort angezeigten Themen werden derzeit vom Team von Argufactum ausgewählt.</td>
+				</tr>
+				<tr>
+					<th>Neue Themen</th>
+					<td>Im Abschnitt "neuen Themen" finden Sie die Besten von anderen Benutzern neu hinzugefügte Themen der letzten Zeit. Dieser Abschnitt
+						wird derzeit alle 30 Minuten aktualisiert.</td>
+				</tr>
+				<tr>
+					<th>Beliebte Themen</th>
+					<td>Hier werden die besten 5 Themen je Kategorie gemessen nach der Bewertung und Zahl an Aufrufen angezeigt.</td>
+				</tr>
+			</tbody>
+		</table>
+		<p>Die ausgewählten und neuen Themen haben jeweils eine Anzeige für die Anzahl der Argumente und Fakten. Direkt darüber befindet sich die
+			Bewertungsskala. Ein grüner Balken steht für positive Bewertungen, ein roter für negative. Wenn Sie auf den blauen Text daneben klicken,
+			öffnet sich das Thema mit den Argumenten.</p>
+		<p>Zur Startseite gelangen Sie von jeder anderen Seite aus über die obere, dunkelblaue Menüleiste durch einen Klick auf das Argufactum
+			Logo links oder auf den Menüpunkt "Startseite" rechts.</p>
+	</div>
+</div>
+
+<h2>Themen</h2>
+<div class="row">
+	<div class="span6">
+		<span id="topic"></span>
+		<h3>Was ist ein Thema?</h3>
+		<p>Ein Thema bei Argufactum ist stets ein Thema, zu dem mindestens zwei Entscheidungsmöglichkeiten gibt.</p>
+		<p>Beispielthemen:</p>
+		<ul>
+			<li>Atomkraft</li>
+			<li>Soll ich studieren?</li>
+			<li>Welches Auto soll ich kaufen?</li>
+		</ul>
+
+		<span id="create-topic"></span>
+		<h3>Wie lege ich ein Thema an?</h3>
+		<p>Klicken Sie in der Menüleiste auf den Eintrag "Neues Thema". Geben Sie im daraufhin erscheinenden Formular die Bezeichnung Ihres Themas
+			mit kurzen und prägnanten Schlagworten ein oder stellen Sie eine Frage, die die angezeigten Antwortmöglichkeiten "Ja / Nein", "Pro / Contra"
+			oder "Vor- / Nachteile" zulassen, sodass später kontrovers diskutiert werden kann und es zu einem Thema sowohl Befürworter als auch Gegner
+			geben kann. Auf der Startseite finden Sie zahlreiche Beispiele.</p>
+		<p>Bitte beachten Sie, dass zum Erstellen eines Themas eine Anmeldung erforderlich ist.</p>
+
+		<span id="term"></span>
+		<h3>Wie formuliere ich ein Thema am besten?</h3>
+		<p>Formulieren Sie das Thema möglichst kurz, prägnant und verständlich. Insgesamt sind höchstens 255 Zeichen dafür vorgesehen. Das Thema
+			sollte so formuliert sein, dass es sowohl Argumente dafür als auch Argumente dagegen bzw. sowohl Vor- als auch Nachteile geben kann. Das
+			Thema selbst sollte sachlich und neutral formuliert sein und keinen Hinweis auf das Ergebnis enthalten, also nicht zu einer positiven oder
+			negativen Seite tendieren.</p>
+
+		<span id="definition"></span>
+		<h3>Wozu gibt es die Definition bei einem Thema?</h3>
+		<p>Die Definition dient in erster Linie dazu, das Thema genauer zu beschreiben, um Verwechslungen oder Missverständnisse zu vermeiden. So
+			könnte man z. B. das Thema "G8" ohne Zusatzinformation sowohl als Gipfeltreffen als auch die Schulzeitverkürzung an Gymnasien verstehen. Als
+			weiteres Beispiel sollte man beim Thema Tempolimit genauer definieren, ob und wenn ja, welches Land und welche Verkehrswege davon betroffen
+			sind und um welche Geschwindigkeit es sich handelt.</p>
+
+		<span id="category"></span>
+		<h3>Wozu gibt es Kategorien?</h3>
+		<p>Sie können Ihr Thema einer Kategorie zuordnen, um das Auffinden des Themas für sich und andere zu erleichtern. Insbesondere bei
+			öffentlichen Themen bitten wir Sie um die Auswahl einer Kategorie.</p>
+		<p>Beim Hinzufügen eines Themas werden Sie nur dann nach der Auswahl einer Kategorie gefragt, wenn Sie das Thema veröffentlichen. Dies
+			soll das Hinzufügen von privaten Themen erleichtern.</p>
+	</div>
+	<div class="span6">
+		<span id="avoid"></span>
+		<h3>Was sollte ich bei der Eingabe vermeiden?</h3>
+		<p>Auf die Eingabe von Adjektiven sollte - soweit möglich - ganz verzichtet werden, insbesondere aber auf persönlich wertende Worte oder
+			solche, die auf dem persönlichen Geschmack oder der Empfindung eines Einzelnen beruhen. Beispiele für zu vermeidende Worte: schön, hässlich,
+			gut, schlecht, großartig, unsinnig usw. “Soll die großartige Autobahnmaut in Deutschland eingeführt werden?”</p>
+
+		<span id="copy-topic"></span>
+		<h3>Thema kopieren</h3>
+		<p>Wenn ein Thema öffentlich ist oder Sie Zugriffsrechte auf ein privates Thema haben, können sie ein Thema, das von einem anderen Nutzer
+			angelegt wurde, kopieren. In der Kopie können Sie alle Inhalte unabhängig vom Originalthema verändern und nach Ihren eigenen Vorstellungen
+			anpassen. Dies kann insbesondere dann nützlich sein, wenn Sie die allgemeine Entscheidungshilfe eines bestehenden Themas personalisieren
+			möchten.</p>
+
+		<span id="edit-topic"></span>
+		<h3>Thema bearbeiten</h3>
+		<p>Nachträgliche Korrekturen an der Themenbezeichnung, Definition und Kategorie sind jederzeit über den Button "Bearbeiten" in der
+			Kopfzeile eines Themas möglich. Bitte achten Sie jedoch darauf, die Bedeutung des Themas nicht grundsätzlich zu ändern, wenn bereits Inhalte
+			zu dem Thema hinzugefügt wurden.</p>
+
+		<span id="visibility"></span>
+		<h3>Sichtbarkeit eines Themas</h3>
+		<p>Bei Argufactum können Sie ein Thema entweder für sich ganz allein erstellen, für einen speziellen Personenkreis oder auch für die
+			Öffentlichkeit, also jedermann.</p>
+		<table class="table table-condensed table-bordered">
+			<tbody>
+				<tr>
+					<th>Privat</th>
+					<td>Sie können das Thema für sich ganz alleine, also privat, erstellen. Das heißt, Sie ganz alleine möchten nur für sich persönlich
+						einen Überblick über ein Thema verschaffen. Solange Sie das Thema an niemanden freigeben und nicht die Option "öffentlich" aktivieren,
+						kann außer Ihnen kein anderer Nutzer darauf zugreifen. So können Sie auch ganz geheime Dinge diskret für sich klären, wie zum Beispiel:
+						"Soll ich meinen Job kündigen und zu Firma XY wechseln?"</td>
+				</tr>
+				<tr>
+					<th>Privater Personenkreis</th>
+					<td>Sie möchten das Thema nicht veröffentlichen, aber mit einer oder mehreren Personen erstellen und bearbeiten, beispielsweise mit
+						der Familie, dem Partner oder mit Freunden, mit dem Verein, mit einer Bürgerinitiative usw. Dazu genügt es, dass Thema einfach an die
+						entsprechenden Benutzer im Freigabe-Dialog freizugeben und die Option "öffentlich" deaktiviert zu lassen. Damit hat außer den Benutzern,
+						an die Sie das Thema freigegeben haben, keiner Zugriff auf das Thema.</td>
+				</tr>
+				<tr>
+					<th>Öffentlich</th>
+					<td>Das Thema soll öffentlich diskutiert werden und in der Suche und öffentlichen Listen von Argufactum erscheinen. Aktivieren Sie
+						dazu einfach die Option "öffentlich" im Freigabe-Dialog.</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<h2>Pro &amp; Contra</h2>
+<div class="row">
+	<div class="span6">
+		<span id="argument"></span>
+		<h3>Was ist ein Argument?</h3>
+		<p>Ein Argument stellt zunächst immer einmal eine These dar, also ein Behauptung oder Annahme zu einem Thema und spricht entweder für oder
+			gegen eine Sache. Jedes Argumente sollte mit Fakten und Quellen untermauert werden.</p>
+
+		<span id="create-argument"></span>
+		<h3>Wie lege ich ein Argument an?</h3>
+		<p>Zur Eingabe von Argumenten bei einem Thema müssen Sie zum Einen angemeldet und zum Anderen Schreibrechte zu einem Thema haben. Wenn
+			diese Voraussetzungen gegeben sind erscheint eine Eingabebox unter dem letzten Argument im Thema.</p>
+
+		<span id="edit-argument"></span>
+		<h3>Argumente bearbeiten, ändern, löschen</h3>
+		<p>Fahren Sie mit der Maus über ein Argument, sodass es mit einem grauen Kasten hinterlegt wird. In diesem grauen Hintergrund erscheinen
+			gleichzeitig am rechten Rand verschiedene Symbole, die Ihnen das Bearbeiten und Löschen eines Arguments und das Einsehen der Historie zu
+			einem Argument ermöglichen.</p>
+
+		<span id="restore-argument"></span>
+		<h3>Argumente wiederherstellen</h3>
+		<p>Die Funktion zum Wiederherstellen eines Arguments finden Sie im ausklappbaren Menü direkt neben der Überschrift "Pro" bzw. "Contra".</p>
+
+		<span id="fact"></span>
+		<h3>Was sind Fakten?</h3>
+		<p>Fakten sind Tatsachen, die ein Argument untermauern, unterstützen und damit glaubhaft machen. Zu jedem Fakt können Sie eine oder
+			mehrere Quellen hinterlegen, damit nachvollziehbar ist, woher die Fakten stammen. Natürlich gibt es auch Fakten, an denen es auch ohne Quelle
+			nichts zu rütteln gibt, also Dinge, die allgemeingültig sind.</p>
+
+		<span id="debilitation"></span>
+		<h3>Was ist eine Entkräftung?</h3>
+		<p>Eine Entkräftung ist genau genommen auch ein Fakt, sie spricht jedoch gegen das Argument, wo sie eingegeben wird.</p>
+
+		<span id="create-fact"></span>
+		<h3>Wie gebe ich Fakten und Entkräftungen ein?</h3>
+		<p>Klicken Sie auf ein Argument, um es zu öffnen. Sie sehen daraufhin zwei Spalten mit den Überschriften "Fakten" und "Entkräftungen".
+			Geben Sie dort den Fakt oder die Entkräftung ein. Wenn Sie mit der Formulierung zufrieden sind, schließen Sie die Eingabe mit dem grünen
+			Button ab. Sie können die Formulierung des Fakts übrigens jederzeit ändern.</p>
+
+	</div>
+	<div class="span6">
+		<span id="create-references"></span>
+		<h3>Wo und wie hinterlege ich Quellen?</h3>
+		<p>Quellen werden zu Fakten und Entkräftungen hinterlegt. Unterhalb eines Fakts finden Sie in blauer Schrift einen Link "Quelle
+			hinzufügen". Klicken Sie darauf, so dass sich eine Eingabebox öffnet. Hier können Sie nun eine URL (Internetadresse) oder eine anderweitige
+			Referenz als Quelle eingeben. Geben Sie bei einem Buch als Quelle unbedingt den Namen des Buchs und die konkrete Stelle im Buch an, damit die
+			Quelle nachprüfbar ist.</p>
+
+		<span id="how-to-rate"></span>
+		<h3>Wie kann ich Argumente, Fakten und Entkräftungen bewerten?</h3>
+		<p>Zur Bewertung vergeben Sie Sterne, die zunächst grau angezeigt werden und bei Markierung durch Klick gelb gefüllt werden. Je mehr
+			Sterne markiert sind, desto besser die Wertung. Insgesamt können Sie jeweils drei Sterne vergeben.</p>
+
+		<span id="reorder"></span>
+		<h3>Was und wie kann ich sortieren?</h3>
+		<p>Sie können innerhalb eines Themas die Argumente nach Ihrer Bewertung sortieren. Wenn Sie ein Thema aufgerufen haben, sehen Sie über der
+			Liste an Contra-Argumenten den Button "Sortieren" mit einem nach unten zeigenden Pfeil. Wenn Sie auf diesen Pfeil klicken, können Sie die
+			Argumente entweder nach der Bewertung aller Nutzer oder nach Ihrer ganz persönlichen Wertung sortieren. Wenn Ihnen bei einem Thema
+			beispielsweise die Kosten einer Sache nicht so wichtig sind, der Umweltaspekt jedoch sehr, so können Sie das für sich persönlich werten und
+			danach sortieren.</p>
+
+		<span id="history"></span>
+		<h3>Was ist die Historie?</h3>
+		<p>Die Historie könnte man auch als Zeittafel oder Versionsgeschichte bezeichnen. Sie zeigt nach einer oder mehreren Änderungen an, wie
+			der vorherige Stand war.</p>
+
+		<span id="open-history"></span>
+		<h3>Wo finde ich die Historie?</h3>
+		<p>Eine Historie kann für die Themenbezeichnung, jedes Argument, jeden Fakt und jede Entkräftung eingesehen werden. Das Symbol dafür ist
+			eine Uhr. Beim Thema finden Sie die Funktion im ausklappbaren Menü neben dem Button "Bearbeiten". Bei Argumenten, Fakten und Entkräftungen
+			finden Sie die Funktion in der rechten Funktionsleiste, wenn Sie mit der Maus über den jeweiligen Eintrag fahren.</p>
+		<p>Wenn Sie die Historie öffnen, erscheint ein weiteres kleines Fenster, indem Sie die Änderung, den Nutzer, der die Änderung vorgenommen
+			hat, und den Zeitpunkt der Änderung sehen können. Die Änderungen erscheinen in zeitlicher Reihenfolge. Über den Button "Wiederherstellen"
+			können Sie eine vorherige Version wiederherstellen.</p>
+	</div>
+</div>

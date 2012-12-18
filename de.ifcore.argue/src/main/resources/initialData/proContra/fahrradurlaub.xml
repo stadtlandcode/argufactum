@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<topics>
+	<proContraTopic>
+		<term>Fahrradurlaub</term>
+		<user>edel</user>
+		<theses>PRO_CONTRA</theses>
+		<category>Freizeit</category>
+		<arguments>
+			<argument>
+				<topicThesis>PRO</topicThesis>
+				<thesis>Bewegung an der frischen Luft</thesis>
+				<facts>
+					<fact>
+						<evidence>...
+						</evidence>
+						<type>CONFIRMATIVE</type>
+						<references>
+							<reference>...</reference>
+						</references>
+					</fact>
+				</facts>
+			</argument>
+			<argument>
+				<topicThesis>PRO</topicThesis>
+				<thesis>Wir tun was für die Gesundheit und verlieren nebenbei
+					vielleicht noch ein paar überflüssige Kilos
+				</thesis>
+			</argument>
+			<argument>
+				<topicThesis>PRO</topicThesis>
+				<thesis>Wir lernen unser schönes Deutschland besser kennen,
+					besonders
+					die eigene Heimat, das Kraichgau
+				</thesis>
+			</argument>
+			<argument>
+				<topicThesis>CONTRA</topicThesis>
+				<thesis>Fährräder müssen zum Urlaubsort transportiert werden
+				</thesis>
+				<facts>
+					<fact>
+						<evidence>Am Auto muss eine Vorrichtung zum Transport für zwei
+							Fahrräder gekauft werden, das ist teuer
+						</evidence>
+						<type>CONFIRMATIVE</type>
+					</fact>
+				</facts>
+			</argument>
+			<argument>
+				<topicThesis>CONTRA</topicThesis>
+				<thesis>Fahrradträger fürs Auto muss gekauft und montiert werden,
+					das
+					kostet Geld und Zeit
+				</thesis>
+				<facts>
+					<fact>
+						<evidence>Ein Dachgepäckträger, auf den mindestens zwei Fahrräder
+							passen, kostet bis zu einigen hundert Euro
+						</evidence>
+						<type>CONFIRMATIVE</type>
+						<references>
+							<reference>http://www.adac.de/infotestrat/tests/autozubehoer-technik/fahrradtraeger/default.aspx
+							</reference>
+						</references>
+					</fact>
+					<fact>
+						<evidence>Wir könnten auch direkt vor der Haustür losfahren, das
+							Kraichgau hat wunderschöne Radtouren
+						</evidence>
+						<type>DEBILITATIVE</type>
+						<references>
+							<reference>http://www.kraichgau-stromberg.com/kst/de/html/Tourentipps.php
+							</reference>
+						</references>
+					</fact>
+				</facts>
+			</argument>
+		</arguments>
+	</proContraTopic>
+</topics>

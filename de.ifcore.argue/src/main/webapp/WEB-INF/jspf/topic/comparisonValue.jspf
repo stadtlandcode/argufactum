@@ -1,0 +1,5 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" buffer="128kb"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="argue" uri="http://www.if-core.de/tags/argue"%>
+<argue:comparisonValue criterion="${criterion}" optionId="${option.id}" />

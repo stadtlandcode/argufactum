@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<topics>
+	<proContraTopic>
+		<term>Atomstrom und Kernenergie in Deutschland</term>
+		<user>felix</user>
+		<theses>PRO_CONTRA</theses>
+		<category>Politik</category>
+		<definition>Atomenergie, auch: Kernenergie, Atomkraft, Nuklearengergie in Deutschland<br/>
+		Großtechnische Erzeugung von Sekundärenergie wie elektrischer Strom durch Kernreaktion
+		</definition>
+		<arguments>
+			<argument>
+				<topicThesis>PRO</topicThesis>
+				<thesis>Atomstrom ist im Vergleich zu anderen Energiegewinnungsarten klimafreundlicher</thesis>
+				<facts>
+					<fact>
+						<evidence>Atomenergie ist CO2-freundlicher als andere Energiegewinnungsarten. Es entsteht bei der Stromerzeugung weniger CO2-Emissionen als bei der Gewinnung aus fossilen Brennstoffen.</evidence>
+						<type>CONFIRMATIVE</type>
+						<references>
+							<reference>http://www.atomstrom.biz/</reference>
+						</references>
+					</fact>
+					<fact>
+						<evidence>Laut Aussagen von Befürwortern ersparen deutsche Kraftwerke den Ausstoß von etwa 150 Mio. Tonnen Kohlendioxid pro Jahr.</evidence>
+						<type>CONFIRMATIVE</type>
+						<references>
+							<reference>http://www.stern.de/wirtschaft/news/unternehmen/atomkraft-wie-es-um-die-deutsche-kernenergie-steht-552590.html</reference>
+						</references>
+					</fact>
+				</facts>
+			</argument>
+			<argument>
+				<topicThesis>PRO</topicThesis>
+				<thesis>Der Endkundenpreis von Atomstrom ist im Vergleich zu anderen Energiegewinnungsarten günstiger</thesis>
+				<facts>
+					<fact>
+						<evidence>Atomstrom hält die Strompreise stabil, da in Deutschland erst 15 Prozent der Energie aus erneuerbaren Energieen gewonnen werden, was zur Stabilhaltung des Preises nicht ausreicht.</evidence>
+						<type>CONFIRMATIVE</type>
+						<references>
+							<reference>http://www.atomstrom.biz/</reference>
+						</references>
+					</fact>
+				</facts>
+			</argument>
+			<argument>
+				<topicThesis>CONTRA</topicThesis>
+				<thesis>Hohes Unfallrisiko durch Reaktorunfälle oder gar Super-GAUs: Katastrophen wie Fukushima oder Tschernobyl dürfen nie wieder passieren</thesis>
+				<facts>
+					<fact>
+						<evidence>Seit 1940 sind zahlreiche Atomunfälle passiert, die bekanntesten: Tschernobyl 1986, Fukushima 2011.
+						Die schwerwiegenden Folgen dauern bis heute an.</evidence>
+						<type>CONFIRMATIVE</type>
+						<references>
+						<reference><![CDATA[http://de.wikipedia.org/wiki/Liste_von_Unfällen_in_kerntechnischen_Anlagen]]></reference>
+					</references>
+					</fact>
+					<fact>
+						<evidence>Die Reaktorkatastrophe von Tschernobyl forderte bisher tausende Todesopfer, 350.000 Evakuierungen, 218.000 km² sind mit mehr als 37.000 Bequerel verseucht, insgesamt wurden in Europa etwa 3.900.000 km² kontaminiert.</evidence>
+						<type>CONFIRMATIVE</type>
+					<references>
+					<reference><![CDATA[http://de.wikipedia.org/wiki/Katastrophe_von_Tschernobyl#Folgen]]></reference>
+					</references>
+					</fact>
+				</facts>
+			</argument>
+			<argument>
+				<topicThesis>CONTRA</topicThesis>
+				<thesis>Außerordentlich hohe ökonomische und gesellschaftliche Kosten der Nutzung von Atomenergie</thesis>>
+				<facts>
+					<fact>
+						<evidence>Für 2012 sind im EU-Haushalt 1,3 Milliarden Euro Forschungsgelder für Kernenergie vorgesehen, für alle anderen Energieformen zusammen entfallen 355 Mio. Euro. Windenergie wird lediglich mit 24. Mio EUR gefördert.
+						</evidence>
+						<type>CONFIRMATIVE</type>
+						<references>
+						<reference>http://www.eurosolar.de/de/index.php?option=com_content&amp;task=view&amp;id=514&amp;Itemid=26</reference>
+					<reference>http://de.wikipedia.org/wiki/Atomstrom</reference>
+					</references>
+					</fact>
+				</facts>
+				<facts>
+					<fact>
+						<evidence>Andere Energiegewinnungsformen werden zunehmend günstiger. Die Kosten für die Stromgewinnung durch Photovoltaik sinken z. B. immer weiter.
+						</evidence>
+						<type>CONFIRMATIVE</type>
+						<references>
+						<reference>http://www.eurosolar.de/de/index.php?option=com_content&amp;task=view&amp;id=514&amp;Itemid=26</reference>
+					</references>
+					</fact>
+				</facts>
+			</argument>
+			<argument>
+				<topicThesis>CONTRA</topicThesis>
+				<thesis>Bei der Erzeugung von Kernenergie entsteht hoch radioaktiver Atommüll (Brennelemente). Die Entsorgung stellt riesige Probleme dar</thesis>
+				<facts>
+					<fact>
+						<evidence>Der anfallende Atommüll ist selbst nach der Zwischenlagerung hoch radioaktiv und darf nicht in die Umwelt gelangen. Bis zur Endlagerung vergehen Jahrzehnte</evidence>
+						<type>CONFIRMATIVE</type>
+						<references>
+						<reference>http://de.wikipedia.org/wiki/Atomstrom</reference>
+					</references></fact>
+					<fact>
+						<evidence>Selbst nach Jahrtausenden bis hundertausend Jahren (!) strahlt der endgelagerte Atomabfall immer noch. </evidence>
+						<type>CONFIRMATIVE</type>
+						<references>
+						<reference>http://de.wikipedia.org/wiki/Atomstrom</reference>
+					</references></fact>
+				</facts>
+			</argument>
+			<argument>
+				<topicThesis>CONTRA</topicThesis>
+				<thesis>Gefahr von Missbrauch der Atomenergie für militärische Zwecke (Atombombe)</thesis>
+				<facts>
+					<fact>
+						<evidence>Schon 1945 wurde die erste Atombombe erfolgreich gezündet. Ohne die Forschung auf diesem Sektor wäre das nicht passiert.</evidence>
+						<type>CONFIRMATIVE</type>
+						<references>
+						<reference>http://de.wikipedia.org/wiki/Atomstrom</reference>
+					</references></fact>
+				</facts>
+			</argument>
+			<argument>
+				<topicThesis>CONTRA</topicThesis>
+				<thesis>Die Verlängerung der Atomkraft bremst den Ausbau der erneuerbaren Energie aus</thesis>
+				<facts>
+					<fact>
+						<evidence>Zitat: "Brückentechnologie bricht in Wahrheit die Brücke in das Solarzeitalter ab"</evidence>
+						<type>CONFIRMATIVE</type>
+						<references>
+							<reference>Zitat von Jürgen Trittin gegenüber der Financial Times Deutschland</reference>
+							<reference>http://www.atomstrom-info.de/atomstrom/zitate-atomstrom/</reference>
+						</references>
+					</fact>
+				</facts>
+			</argument>
+		</arguments>
+	</proContraTopic>
+</topics>

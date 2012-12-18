@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<topics>
+	<proContraTopic>
+		<term>Tempolimit in Deutschland</term> 
+		<user>edel</user>
+		<theses>PRO_CONTRA</theses>
+		<category>Politik</category>
+		<definition>Generelles Tempolimit von 120 km/h auf deutschen Autobahnen
+		</definition>
+		<arguments>
+			
+			<argument>
+				<topicThesis>PRO</topicThesis>
+				<thesis>Weniger Schadstoffemissionen, vor allem CO2</thesis>
+				<relevance>HIGH</relevance>
+				<facts>
+					<fact>
+						<evidence>Weniger Spritverbrauch, das bedeutet Klimaschutz und Geldeinsparung. Ab einem Tempo von 100 km/h steigt der Spritverbrauch überproportional </evidence>
+						<type>CONFIRMATIVE</type>
+						<references>
+							<reference>http://www.greenpeace-freiburg.de/wissenswertes/110-tempolimit-120</reference>
+						</references>
+					</fact>
+					<fact>
+						<evidence>Ein Tempolimit von 120 km/h würde den CO2-Ausstoß von PKW auf Autobahnen direkt um mindestens 9 % verringern</evidence>
+						<type>CONFIRMATIVE</type>
+						<references>
+							<reference>http://www.greenpeace-freiburg.de/wissenswertes/110-tempolimit-120</reference>
+						</references>
+					</fact>
+					<fact>
+						<evidence>Zum Umweltschutz könnte eine CO2-basierte Kfz-Steuer wesentlich effizienter beitragen als ein Tempolimit auf Autobahnen, weil der Anreiz für Sprit sparende Autos geschaffen wird</evidence>
+						<type>DEBILITATIVE</type>
+						<references>
+							<reference>http://www.adac.de/_mmm/pdf/sp_03_autobahn_tempolimit_0810_38551.pdf</reference>
+						</references>
+					</fact>
+					<fact>
+						<evidence>Bei einem Tempolimit von 120 km/h beträgt die Kraftstoffeinsparung (PKW-Verkehr) nur 1 bis 2 %. Außerdem verursacht von der gesamten CO2-Emission in Deutschland der Pkw-Verkehr nur 12 %.</evidence>
+						<type>DEBILITATIVE</type>
+						<references>
+							<reference>http://www.adac.de/_mmm/pdf/sp_03_autobahn_tempolimit_0810_38551.pdf</reference>
+						</references>
+					</fact>
+                    <fact>
+						<evidence>Laut Gerd Stegmaier, Focus-Online-Redakteur, bedeutet ein Tempolimit auf den verbleibenden zwei Prozent nicht limitierter Straßen in Deutschland die Senkung des CO2-Ausstoßes um weniger als 1 %.</evidence>
+						<type>DEBILITATIVE</type>
+						<references>
+							<reference>http://www.focus.de/auto/ratgeber/unterwegs/kommentar_aid_51202.html</reference>
+						</references>
+					</fact>
+				</facts>
+			</argument>
+					
+			<argument>
+				<topicThesis>PRO</topicThesis>
+				<thesis>Höhere Verkehrssicherheit</thesis>
+				<facts>
+					<fact>
+						<evidence>Geringere Verkehrsunfälle und Verkehrstote durch geringere Geschwindigkeit. Von insgesamt 3.648 Verkehrstoten in 2010 starben 430 auf Autobahnen</evidence>
+						<type>CONFIRMATIVE</type>
+						<references>
+							<reference>http://www.bast.de/cln_032/nn_42248/DE/Publikationen/Broschueren/Dokumente/infokarten-national-deutsch,templateId=raw,property=publicationFile.pdf/infokarten-national-deutsch.pdf</reference>
+						</references>
+					</fact>
+					<fact>
+						<evidence>Auf Autobahn-Teststrecken in Deutschland, auf denen Tempo 130 gilt, seien 30 Prozent weniger Unfälle mit 20 Prozent weniger Toten festgestellt worden als auf Strecken ohne Tempolimit</evidence>
+						<type>CONFIRMATIVE</type>
+						<references>
+							<reference>http://www.focus.de/auto/news/koalitionsvertrag-mit-der-spd-nrw-gruene-fordern-tempolimit-120-auf-autobahnen_aid_728904.html</reference>
+						</references>
+					</fact>
+					<fact>
+						<evidence>In Österreich, wo ein generelles Tempolimit von 130 km/h gilt, ist die Getötetenrate auf Autobahnen etwa 1,5-mal höher als in Deutschland</evidence>
+						<type>DEBILITATIVE</type>
+						<references>
+							<reference>http://www.adac.de/_mmm/pdf/rv_tempolimit_flyer_0807_30472.pdf</reference>
+						</references>
+					</fact>
+				</facts>
+			</argument>
+			<argument>
+				<topicThesis>PRO</topicThesis>
+				<thesis>Geringere Lärmbelastung von Anwohnern</thesis>
+				<facts>
+					<fact>
+						<evidence>Tempo 120 bewirkt an Werktagen auf Autobahnen eine Reduktion um 0,5 Dezibel in 25 Meter Entfernung. Der Schallpegel reduziere sich so, als ob man eine Styroporwand eingezogen hätte.</evidence>
+						<type>CONFIRMATIVE</type>
+						<references>
+							<reference>http://www.focus.de/auto/news/koalitionsvertrag-mit-der-spd-nrw-gruene-fordern-tempolimit-120-auf-autobahnen_aid_728904.html</reference>
+							<reference>http://www.umweltdaten.de/publikationen/fpdf-l/2606.pdf</reference>
+						</references>
+					</fact>
+				</facts>
+			</argument>
+			<argument>
+				<topicThesis>PRO</topicThesis>
+				<thesis>Neufahrzeuge müssen nicht mehr so gebaut werden, dass sie 200 km/h erbringen könnnen, das bedeutet weniger Gewicht, weniger Spritverbrauch und mehr Platz für Sicherheit</thesis>
+				<facts>
+					<fact>
+						<evidence>Das weltweite Wettrüsten um immer schnellere Autos würde beendet und so mittelfristig den Weg für weniger Gewicht und mehr Effizienz von Neufahrzeugen frei machen</evidence>
+						<type>CONFIRMATIVE</type>
+						<references>
+							<reference>http://www.vcd.org/tempolimit.html</reference>
+						</references>
+					</fact>
+					<fact>
+						<evidence>Je leichter das Auto, desto niedriger ist der Kraftstoffverbrauch. Weltweit werden Kfz so gebaut, dass sie 200 km/h erreichen können. Weltweit gibt es nur in Deutschland die Möglichkeit, so schnell zu fahren.</evidence>
+						<type>CONFIRMATIVE</type>
+						<references>
+							<reference>http://www.duh.de/3418.html</reference>
+						</references>
+					</fact>
+				</facts>
+			</argument>
+			<argument>
+				<topicThesis>PRO</topicThesis>
+				<thesis>Deutschland ist das einzige Industrieland der Welt, in dem unbeschränkte Raserei möglich ist</thesis>
+				<facts>
+					<fact>
+						<evidence>Insgesamt 19 EU-Länder haben ein Autobahn-Tempolimit von 120 km/h oder noch weniger und 13 Länder, vor allem deutsche Nachbarländer, ein Tempolimit von 130 km/h.</evidence>
+						<type>CONFIRMATIVE</type>
+						<references>
+							<reference>http://www.greenpeace-freiburg.de/wissenswertes/110-tempolimit-120</reference>
+						</references>
+					</fact>
+				</facts>
+			</argument>
+			<argument>
+				<topicThesis>PRO</topicThesis>
+				<thesis>Senkung der Kosten für Neubau, Ausbau und Instandhaltung von Autobahnen</thesis>
+				<facts>
+					<fact>
+						<evidence>Der Flächenverbrauch für die Trassierung der Autobahnen könnte reduziert werden</evidence>
+						<type>CONFIRMATIVE</type>
+						<references>
+							<reference>http://www.duh.de/3418.html</reference>
+						</references>
+						
+					</fact>
+				</facts>
+			</argument>
+			<argument>
+				<topicThesis>PRO</topicThesis>
+				<thesis>Weniger Staus, weniger Drängeleien</thesis>
+				<facts>
+					<fact>
+						<evidence>Der Verkehrsfluss wird durch ein Tempolimit verbessert, es entstehen weniger "Staus aus dem Nichts"</evidence>
+						<type>CONFIRMATIVE</type>
+						<references>
+							<reference>http://www.greenpeace-freiburg.de/wissenswertes/110-tempolimit-120</reference>
+						</references>
+					</fact>
+				</facts>
+			</argument>
+			<argument>
+				<topicThesis>CONTRA</topicThesis>
+				<thesis>Unmittelbare Einschränkung wird als unwirksame "Verzichtsstrategie" und Schikane der Autofahrer empfunden</thesis>
+				<facts>
+					<fact>
+						<evidence>Laut Horst Friedrich (FDP) ist ein Tempolimit nichts als Schikane für Autofahrer durch Reglementierung</evidence>
+						<type>CONFIRMATIVE</type>
+						<references>
+							<reference>http://16wp.fdp-fraktion.de/files/541/1215-Friedrich-Tempolimit.pdf</reference>
+						</references>
+					</fact>
+				</facts>
+			</argument>
+			<argument>
+				<topicThesis>CONTRA</topicThesis>
+				<thesis>Deutschlands Straßen zählen auch ohne Tempolimit zu den sichersten der Welt</thesis>
+				<facts>
+					<fact>
+						<evidence>27 % der Autobahnen sind dauerhaft geschwindigkeitsbegrenzt, 3 % zu bestimmten Uhrzeiten oder bei Nässe z. B.. Weiter gibt es 4 % im Geltungsbereich einer Verkehrsbeinflussungsanlage</evidence>
+						<type>CONFIRMATIVE</type>
+						<references>
+							<reference>www.bast.de</reference>
+						</references>
+					</fact>
+					<fact>
+						<evidence>Hohe Sicherheit der deutschen Straßen liegt vor allem an der Kreuzungsfreiheit und dem guten Ausbaustand. Durch ein Tempolimit könnte die Sicherheit noch mehr erhöht werden.</evidence>
+						<type>DEBILITATIVE</type>
+					</fact>
+				</facts>
+			</argument>
+			<argument>
+				<topicThesis>CONTRA</topicThesis>
+				<thesis>Rufschädigend für Deutschland</thesis>
+				<facts>
+					<fact>
+						<evidence>Deutschland ist bekannt dafür, dass man auf Autobahnen die Freiheit der unbegrenzten Geschwindigkeit erfahren kann</evidence>
+						<type>CONFIRMATIVE</type>
+					</fact>
+				</facts>
+			</argument>
+		</arguments>
+	</proContraTopic>
+</topics>

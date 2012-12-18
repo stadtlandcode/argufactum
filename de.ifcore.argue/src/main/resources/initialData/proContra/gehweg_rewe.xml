@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<topics>
+	<proContraTopic>
+		<term>Kirchardt: Neuer Gehweg zum Supermarkt REWE an der B 39</term>
+		<user>edel</user>
+		<theses>PRO_CONTRA</theses>
+		<category>Politik</category>
+		<definition>Neubau eines Gehwegs vom Ortsschild Kirchardt bis zum Supermarkt REWE, 370 m lang und zwei Meter breit,
+			entlang der Bundesstraße B 39
+		</definition>
+		<arguments>
+
+			<argument>
+				<topicThesis>PRO</topicThesis>
+				<thesis>Nicht motorisierte Einwohner sind benachteiligt durch Umweg
+					über die Industriestraße, vor allem mit schweren Einkaufstaschen</thesis>
+				<relevance>HIGH</relevance>
+				<facts>
+					<fact>
+						<evidence>Wer kein Auto hat, muss zu Fuß einkaufen gehen und dabei
+							einen Umweg von ca. 300 m über die Industriestraße in Kauf
+							nehmen. Mit schweren Taschen zählt da jeder Meter.</evidence>
+						<type>CONFIRMATIVE</type>
+						<references>
+							<reference><![CDATA[http://www.stimme.de/kraichgau/nachrichten/sonstige-Gefaehrliche-Abkuerzung-zum-Supermarkt;art1943,2412394]]></reference>
+						</references>
+					</fact>
+					<fact>
+						<evidence>Es ist besonders für die älteren Mitbürger sehr anstrengend, weitere Wege zu gehen. Außerdem ist die Steigung auf dem Weg über die Industriestraße teilweise sehr steil.
+							</evidence>
+						<type>CONFIRMATIVE</type>
+						<references>
+							<reference><![CDATA[http://www.stimme.de/kraichgau/nachrichten/sonstige-Gefaehrliche-Abkuerzung-zum-Supermarkt;art1943,2412394]]></reference>
+						</references>
+					</fact>
+				</facts>
+			</argument>
+			<argument>
+				<topicThesis>PRO</topicThesis>
+				<thesis>Das Gehen entlang oder sogar auf der B 39 birgt sehr große Gefahren
+					</thesis>
+				<relevance>HIGH</relevance>
+				<facts>
+					<fact>
+						<evidence>Die Fußgänger gehen direkt auf dem Grünstreifen oder sogar auf der Fahrbahn selbst, meist sogar auf der falschen Seite.</evidence>
+						<type>CONFIRMATIVE</type>
+						<references>
+							<reference><![CDATA[http://www.stimme.de/kraichgau/nachrichten/sonstige-Gefaehrliche-Abkuerzung-zum-Supermarkt;art1943,2412394]]></reference>
+						</references>
+					</fact>
+					<fact>
+						<evidence>Autofahrer müssen immer wieder stark oder vollbremsen oder sogar auf die Gegenseite, um Fußgänger auf der Fahrbahn nicht umzufahren, die direkt hinter der Rechtskurve plötzlich auftauchen.</evidence>
+						<type>CONFIRMATIVE</type>
+						<references>
+							<reference><![CDATA[http://www.stimme.de/kraichgau/nachrichten/sonstige-Gefaehrliche-Abkuerzung-zum-Supermarkt;art1943,2412394]]></reference>
+						</references>
+					</fact>
+				</facts>
+			</argument>
+
+			<argument>
+				<topicThesis>CONTRA</topicThesis>
+				<thesis>Sehr hohe Kosten für den Neubau</thesis>
+				<relevance>HIGH</relevance>
+				<facts>
+					<fact>
+						<evidence>Laut Herrn Bürgermeister Kübler würde der Neubau des
+							Gehwegs in einer Breite von 2 m und einer Länge von 370 m knapp unter 200.000 Euro kosten. Dafür ist kein Etat eingeplant.
+						</evidence>
+						<type>CONFIRMATIVE</type>
+						<references>
+							<reference><![CDATA[http://www.stimme.de/kraichgau/nachrichten/sonstige-Gefaehrliche-Abkuerzung-zum-Supermarkt;art1943,2412394]]></reference>
+							<reference><![CDATA[http://www.rnz.de/HPHeadtitles_Kraichgau/LINKSEC00_20120329074057_101850931_Fussweg_nur_fuer_die_Bequemlichkeit_.html]]></reference>
+						</references>
+					</fact>
+				</facts>
+			</argument>
+			
+			<argument>
+				<topicThesis>CONTRA</topicThesis>
+				<thesis>Fußgänger können den Supermarkt sicher über die Industriestraße erreichen.</thesis>
+				<relevance>HIGH</relevance>
+				<facts>
+					<fact>
+						<evidence>Die eigene Sicherheit sollte es den Fußgängern wert sein, einen Umweg von ca. 300 m in Kauf zu nehmen. 
+						</evidence>
+						<type>CONFIRMATIVE</type>
+						<references>
+							<reference><![CDATA[http://www.stimme.de/kraichgau/nachrichten/sonstige-Gefaehrliche-Abkuerzung-zum-Supermarkt;art1943,2412394]]></reference>
+						</references>
+					</fact>
+					<fact>
+						<evidence>Wer die gefährliche Abkürzung nimmt, weiß um das Risiko und ist für die eigene Sicherheit auch selbst verantwortlich. 
+						</evidence>
+						<type>CONFIRMATIVE</type>
+						<references>
+							<reference><![CDATA[http://www.stimme.de/kraichgau/nachrichten/sonstige-Gefaehrliche-Abkuerzung-zum-Supermarkt;art1943,2412394]]></reference>
+						</references>
+					</fact>
+				</facts>
+			</argument>
+
+		</arguments>
+	</proContraTopic>
+</topics>

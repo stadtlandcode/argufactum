@@ -1,0 +1,25 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" buffer="128kb"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="valueFormAction"><spring:url value="/comparisonValue/ajax" /></c:set>
+<c:forEach items="${options}" var="option">
+	<td>	
+		<form action="${valueFormAction}" method="POST">
+			<input type="hidden" name="optionId" value="${option.id}" />
+			<%@ include file="/WEB-INF/jspf/topic/criterionValueCriterionId.jspf"%>
+			<%@ include file="/WEB-INF/jspf/topic/comparisonValue.jspf"%>
+		</form>
+	</td>
+</c:forEach>
+
+<c:if test="${numberOfOptions < 2}">
+	<c:forEach begin="${numberOfOptions}" end="1">
+		<td>
+			<form action="${valueFormAction}" method="POST">
+				<input type="hidden" name="optionId" value="" />
+				<%@ include file="/WEB-INF/jspf/topic/criterionValueCriterionId.jspf"%>
+				<%@ include file="/WEB-INF/jspf/topic/comparisonValue.jspf"%>
+			</form>
+		</td>
+	</c:forEach>
+</c:if>

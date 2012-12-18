@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<topics>
+	<proContraTopic>
+		<term>Eurobonds</term>
+		<user>edel</user>
+		<theses>PRO_CONTRA</theses>
+		<category>Politik</category>
+		<definition>EU-Anleihe, Euro-Staatsanleihe, Gemeinschafts- bzw.
+			Unionsanleihe
+			Staatsanleihe in der Europäischen Union oder der Eurozone
+		</definition>
+		<arguments>
+			<argument>
+				<topicThesis>PRO</topicThesis>
+				<thesis>Rettungsschirme wären nicht mehr nötig</thesis>
+				<facts>
+					<fact>
+						<evidence>Schwache Länder würden Geld zu niedrigen Zinsen bekommen
+							und so wieder Zugang zu den Kapitalmärkten. Damit wären sie nicht
+							mehr auf andere Rettungsmittel angewiesen.</evidence>
+						<type>CONFIRMATIVE</type>
+						<references>
+							<reference>http://www.zeit.de/2011/34/Finanzkrise-Eurobonds
+							</reference>
+						</references>
+					</fact>
+					<fact>
+						<evidence>...</evidence>
+						<type>CONFIRMATIVE</type>
+					</fact>
+				</facts>
+			</argument>
+			<argument>
+				<topicThesis>PRO</topicThesis>
+				<thesis>Staatspleiten werden abgewendet und somit die negativen
+					Folgen für die Gemeinschaftswährung Euro</thesis>
+			</argument>
+			<argument>
+				<topicThesis>PRO</topicThesis>
+				<thesis>Euro-Anleihen bekommen im Vergleich zu herkömmlichen Staatsanleihen und wegen der gesamtschuldnerischen Haftung einen höheren Status, was sich vorteilhaft auswirken würde</thesis>
+				<facts>
+					<fact>
+						<evidence>Durch das Sinken des gemeinschaftlichen Ausfallrisikos würden sich niedrigere Zinsen ergeben.</evidence>
+						<type>CONFIRMATIVE</type>
+						<references>
+							<reference>http://de.wikipedia.org/wiki/EU-Anleihe
+							</reference>
+						</references>
+					</fact>
+					<fact>
+						<evidence>Das Volumen des Anleihemarkts von 5600 Milliarden Euro wäre nur zu halten, wenn sich alle Mitgliedstaaten der Eurozon an die Verschuldungsgrenze von 60 % halten würden. Bisher hat das nicht funktioniert.</evidence>
+						<type>DEBILITATIVE</type>
+						<references>
+							<reference>http://de.wikipedia.org/wiki/EU-Anleihe
+							</reference>
+						</references>
+					</fact>
+				</facts>
+			</argument>
+			<argument>
+				<topicThesis>CONTRA</topicThesis>
+				<thesis>Gemeinsame Euro-Staatsanleihen treiben das Zinsniveau für
+					Deutschland nach oben</thesis>
+				<facts>
+					<fact>
+						<evidence>...</evidence>
+						<type>CONFIRMATIVE</type>
+						<references>
+							<reference>http://www.zeit.de/wirtschaft/2011-08/euro-bonds-gegner-kritik
+							</reference>
+						</references>
+					</fact>
+				</facts>
+			</argument>
+			<argument>
+				<topicThesis>CONTRA</topicThesis>
+				<thesis>Gemeinsame Euro-Staatsanleihen verführen die Schuldner wegen
+					der relativ niedrigen Verzinszung zu noch mehr Schulden</thesis>
+				<facts>
+					<fact>
+						<evidence>...</evidence>
+						<type>CONFIRMATIVE</type>
+						<references>
+							<reference>http://www.zeit.de/wirtschaft/2011-08/euro-bonds-gegner-kritik
+							</reference>
+						</references>
+					</fact>
+				</facts>
+			</argument>
+			<argument>
+				<topicThesis>CONTRA</topicThesis>
+				<thesis>Zur Durchführung müssten Kontrollen, Auflagen und Sanktionen
+					geschaffen werden. Das bedeutet Eingriffe in die Souveränität des
+					betroffenen Landes.</thesis>
+				<facts>
+					<fact>
+						<evidence>...</evidence>
+						<type>CONFIRMATIVE</type>
+						<references>
+							<reference>http://de.wikipedia.org/wiki/EU-Anleihe</reference>
+						</references>
+					</fact>
+				</facts>
+			</argument>
+			<argument>
+				<topicThesis>CONTRA</topicThesis>
+				<thesis>Erhebliches Schuldenübernahmerisiko der Schulden von
+					Krisenstaaten durch die anderen EU-Staaten</thesis>
+				<facts>
+					<fact>
+						<evidence>...</evidence>
+						<type>CONFIRMATIVE</type>
+						<references>
+							<reference>http://de.wikipedia.org/wiki/EU-Anleihe</reference>
+						</references>
+					</fact>
+				</facts>
+			</argument>
+			<argument>
+				<topicThesis>CONTRA</topicThesis>
+				<thesis>Wer sich selbst durch verfälschte Statistiken in finanzielle
+					Schieflage gebracht hat, muss auch selbst die Konsequenzen
+					dafür tragen</thesis>
+				<facts>
+					<fact>
+						<evidence>Schon seit dem Vertrag von Maastricht wurden den
+							Mitgliedstaaten konkrete Defizit- und Verschuldungsgrenzen
+							auferlegt. Griechenland z. B. hat dagegen verstoßen und seine Statistiken gefälscht. Das muss auch irgendwie bestraft werden.</evidence>
+						<type>CONFIRMATIVE</type>
+						<references>
+							<reference>Nichtbeistandsklausel AEU-Vertrag Artikel 125</reference>
+							<reference>http://de.wikipedia.org/wiki/EU-Anleihe</reference>
+						</references>
+					</fact>
+				</facts>
+			</argument>
+		</arguments>
+	</proContraTopic>
+</topics>

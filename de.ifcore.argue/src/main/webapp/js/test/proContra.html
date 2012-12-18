@@ -1,0 +1,146 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>ProContra Test Suite</title>
+
+	<link rel="stylesheet" href="qunit.css">
+	<script type="text/javascript" src="qunit.js"></script>
+	
+	<script type="text/javascript" src="../jquery.js"></script>
+	<script type="text/javascript" src="../jquery.tmpl.js"></script>
+	<script type="text/javascript" src="../jquery.timeago.js"></script>
+	<script type="text/javascript" src="../jquery.textareaHotkeys.js"></script>
+	<script type="text/javascript" src="../jquery.atmosphere.js"></script>
+	<script type="text/javascript" src="../bootstrap.js"></script>
+	<script type="text/javascript" src="../argue.js"></script>
+	<script type="text/javascript" src="../argue.ajax.js"></script>
+	<script type="text/javascript" src="../argue.topic.js"></script>
+	<script type="text/javascript" src="../argue.proContra.js"></script>
+	
+	<script type="text/javascript" src="mock.js"></script>
+	<script type="text/javascript" src="proContra.js"></script>
+
+	<style type="text/css">
+		.topic-content, .modal-tmpl {
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<h1 id="qunit-header">ProContra Test Suite</h1>
+	<h2 id="qunit-banner"></h2>
+	<div id="qunit-testrunner-toolbar"></div>
+	<h2 id="qunit-userAgent"></h2>
+	<ol id="qunit-tests"></ol>
+
+	<div id="qunit-fixture">
+		<ul id="reorder-fixture">
+			<li data-correct-position="1" data-relevance="HIGH" data-timestamp="1034406666785"></li>
+			<li data-correct-position="5" data-relevance="LOW" data-timestamp="1734406666785"></li>
+			<li data-correct-position="2" data-relevance="HIGH" data-timestamp="1334406666788"></li>
+			<li data-correct-position="4" data-relevance="LOW" data-timestamp="1334406666786"></li>
+			<li data-correct-position="3" data-relevance="AVERAGE" data-timestamp="1334406666787"></li>
+		</ul>
+		
+		<ul>
+			<li class="argument box" data-argument-id="490" id="argument-with-stats">
+				<div class="stats-box-secondary-split">
+					<div class="stats-box-secondary">3 F</div>
+					<div class="stats-box-secondary">4 E</div>
+				</div>
+				<a class="box-text" href="/argument/490">abc</a>
+			</li>
+		</ul>
+		
+		<div class="topic-content" id="topic-content" data-topic-id="114">
+			<div class="box-list-container" data-message-code-appendix="PRO_CONTRA">
+				<div class="PRO">
+					<h2>Pro</h2>
+					<ul>
+						<li class="argument box" data-argument-id="71"></li>
+						<li class="argument box" data-argument-id="72"></li>
+					</ul>
+				</div>
+				<div class="CONTRA">
+					<h2>Contra</h2>
+					<ul>
+						<li class="argument box" data-argument-id="79"></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+		<div class="argument-content" id="argument-content-99" data-argument-id="99">
+			<div class="page-header">
+				<h2><span>Pro:</span><span id="child-page-title">anc</span></h2>
+			</div>
+			<h2 class="PRO"><span>PRO</span></h2>
+			<h2 class="CONTRA"><span>CONTRA</span></h2>
+			
+			<div class="CONFIRMATIVE">
+				<ul class="fact-list">
+					<li class="fact box" data-fact-id="71"></li>
+					<li class="fact box" data-fact-id="62"></li>
+				</ul>
+			</div>
+			<div class="DEBILITATIVE">
+				<ul class="fact-list">
+					<li class="fact box" data-fact-id="69"></li>
+				</ul>
+			</div>
+		</div>
+		
+		<div class="argument-content" id="argument-content-199" data-argument-id="199">
+			<div class="CONFIRMATIVE">
+				<ul class="fact-list"></ul>
+			</div>
+		</div>
+		
+		<ul id="argument-list">
+			<li class="argument box" id="argument-box" data-user-relevance="AVERAGE" data-text-id="84">
+				<div class="box-content">
+					<a class="box-text">abc</a>
+					<span class="author-note">tester</span>
+				</div>
+				<div class="box-tools"></div>
+				<form class="edit-form fixture-edit-form" style="display:none;"><button></button></form>
+			</li>
+			<li class="argument box" id="argument-box-edit">
+				<div class="box-content" style="display:none;">
+					<a class="box-text">abc</a>
+					<span class="author-note">tester</span>
+				</div>
+				<div class="box-tools" style="display:none;"></div>
+				<form class="edit-form fixture-edit-form">
+					<textarea></textarea>
+					<button></button>
+				</form>
+			</li>
+			<li class="argument box" id="argument-box-stars" data-user-relevance="AVERAGE" data-relevance="HIGH">
+				<div class="stats-box-relevance" title="high relevance"></div>
+				<form class="stars" action="#" method="post">
+					<input name="relevance" value="AVERAGE" />
+				</form>
+			</li>
+		</ul>
+		
+		<span id="js-argumentConfirmDelete">confirm?</span>
+		
+		<div id="edit-proContraTheses">
+			<form>
+				<input type="hidden" name="topicId" />
+				<select name="messageCode">
+					<option value="YES_NO">Ja u Nein</option>
+					<option value="PRO_CONTRA">Pro u Contra</option>
+				</select>
+			</form>
+		</div>
+		
+		<div id="restore">
+			<div class="modal-header"><h3>ABC!</h3></div>
+			<div class="modal-body"><table id="restore-mock-table"></table></div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="argue" uri="http://www.if-core.de/tags/argue"%>
+<div class="navbar navbar-fixed-top">
+	<div class="navbar-inner">
+		<div class="container">
+			<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</a>
+		
+			<a href="<spring:url value="/" />" class="brand" title='<spring:message code="applicationName" />'></a>
+		
+			<div class="nav-collapse">
+				<form action='<spring:url value="/search" />' method="GET" class="navbar-search pull-left">
+					<input type="text" name="searchTerm" class="search-query" placeholder='<spring:message code="header.search" />' tabindex="10000">
+				</form>
+				
+				<ul class="nav pull-right">
+					<li<c:if test="${activeNavElement == 'HOME'}"> class="active"</c:if>>
+						<a href='<spring:url value="/" />'><i class="icon-home icon-white"></i> <spring:message code="header.home" /></a>
+					</li>
+					
+					<li<c:if test="${activeNavElement == 'NEW_TOPIC'}"> class="active"</c:if>>
+						<a href='<spring:url value="/topic" />'><i class="icon-plus icon-white"></i> <spring:message code="header.createTopic" /></a>
+					</li>
+					
+					<sec:authorize ifNotGranted="ROLE_USER">
+						<li<c:if test="${activeNavElement == 'LOGIN'}"> class="active"</c:if>>
+							<a href='<spring:url value="/login" />'><i class="icon-user icon-white"></i> <spring:message code="header.login" /></a>
+						</li>
+					</sec:authorize>
+					<sec:authorize ifAllGranted="ROLE_USER">
+						<li<c:if test="${activeNavElement == 'MY_TOPICS'}"> class="active"</c:if>>
+							<a href='<spring:url value="/myTopics" />'><i class="icon-folder_open icon-white"></i> <spring:message code="header.myTopics" /></a>
+						</li>
+					
+						<li class="dropdown <c:if test="${activeNavElement == 'LOGIN'}"> active</c:if>">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+								<i class="icon-user icon-white"></i>
+								<span id="user" data-user-id='<sec:authentication property="principal.userId" />'><sec:authentication property="principal.username" /></span>
+								<b class="caret"></b>
+							</a>
+							<ul class="dropdown-menu">
+								<li>
+									<a href='<spring:url value="/logout" />'>
+										<i class="icon-off"></i>
+										<spring:message code="header.logout" />
+									</a>
+								</li>
+							</ul>
+						</li>
+					</sec:authorize>
+				</ul>
+				
+				<ul class="nav feedback pull-right">
+					<li<c:if test="${activeNavElement == 'FEEDBACK'}"> class="active"</c:if>>
+						<a href='<spring:url value="/feedback" />'><i class="icon-comment icon-white"></i> <spring:message code="header.feedback" /></a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<noscript>
+	<div class="alert alert-error">
+		<spring:message code="noscript.warning" />
+	</div>
+</noscript>

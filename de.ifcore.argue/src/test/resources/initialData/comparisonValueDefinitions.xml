@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitionSets>
+	<definitionSet>
+		<name>0-5 Sterne</name>
+		<dataType>RATING</dataType>
+		<sortKey>90</sortKey>
+		<inputMethod>STARS</inputMethod>
+		<global>true</global>
+		<definitions>
+			<definition>
+				<string>0</string>
+				<percent>0</percent>
+			</definition>
+			<definition>
+				<string>1</string>
+				<percent>20</percent>
+			</definition>
+			<definition>
+				<string>2</string>
+				<percent>40</percent>
+			</definition>
+			<definition>
+				<string>3</string>
+				<percent>60</percent>
+			</definition>
+			<definition>
+				<string>4</string>
+				<percent>80</percent>
+			</definition>
+			<definition>
+				<string>5</string>
+				<percent>100</percent>
+			</definition>
+		</definitions>
+	</definitionSet>
+	<definitionSet>
+		<name>Freitext</name>
+		<dataType>TEXT</dataType>
+		<sortKey>90</sortKey>
+		<inputMethod>TEXT</inputMethod>
+		<global>true</global>
+		<definitions>
+		</definitions>
+	</definitionSet>
+	<definitionSet>
+		<name>Standard</name>
+		<dataType>NUMBER</dataType>
+		<sortKey>90</sortKey>
+		<inputMethod>TEXT</inputMethod>
+		<global>true</global>
+		<numberDefinition>
+			<min>0</min>
+			<max>max</max>
+			<sortOrder>DESC</sortOrder>
+		</numberDefinition>
+	</definitionSet>
+</definitionSets>
