@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta charset="utf-8" />
+<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/css/bootstrap-combined.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
+<link href="css/main.css" rel="stylesheet" />
+<title>Argufactum - Übersicht der Ideen</title>
+</head>
+<body>
+	<div class="container">
+
+		<div class="masthead">
+			<h3 class="muted">Argufactum</h3>
+			<div class="navbar">
+				<div class="navbar-inner">
+					<div class="container">
+						<ul class="nav">
+							<li><a href="#projekt">Das Projekt</a></li>
+							<li><a href="#vergleichstabelle">Vergleichstabelle</a></li>
+							<li><a href="#fragenkatalog">Fragenkatalog</a></li>
+							<li><a href="#argumente">Argumente und Faktensammlung</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="jumbotron" id="projekt">
+			<h1>Argufactum</h1>
+			<p class="lead">(Politische) Entscheidungen vereinfachen und transparenter gestalten</p>
+			<p>
+				<a class="btn btn-primary" href="http://stadtlandcode.de/blog/">Blog</a>
+				<a class="btn" href="https://github.com/stadtlandcode/argufactum">GitHub project</a>
+			</p>
+		</div>
+
+		<hr>
+
+		<div class="row-fluid">
+			<div class="span4">
+				<h2>Das Problem</h2>
+				<ul>
+					<li>Bei vielen öffentlich kontrovers diskutierten Themen findet man hauptsächlich einseitige Argumentlisten der Befürworter und
+						Gegner. Es ist mit hohem Aufwand verbunden, diese gegenüberzustellen und zu prüfen, um sich eine ausgewogene Meinung bilden zu können.</li>
+					<li>Umso komplizierter die Entscheidungsfindung ist, umso mehr nimmt die Beteiligung an Diskussionen ab und umso eher beginnen
+						unsachliche Diskussionen.</li>
+				</ul>
+			</div>
+			<div class="span4">
+				<h2>Das Ziel</h2>
+				<p>Das Ziel von Argufactum ist, bei kontrovers diskutierten Themen und dem Vergleichen / Abwägen mehrerer Alternativen</p>
+				<ul>
+					<li>einen kompakten, möglichst neutralen und aktuellen Überblick zu schaffen und damit das bilden einer fundierten Meinung zu
+						vereinfachen und den Einstieg in Diskussionen zu erleichtern</li>
+					<li>sachlichere Diskussionen zu fördern, indem die Argumente der Gegenseite klarer dargestellt werden</li>
+					<li>in der Zukunft zu helfen, bereits getroffene Entscheidungen / geäußerte Meinungen besser nachvollziehen zu können</li>
+					<li>eine Community rund um das Thema Entscheidungshilfen für Bürger aufzubauen</li>
+				</ul>
+			</div>
+			<div class="span4">
+				<h2>Die Lösung?</h2>
+				<p>Mit Argufactum sollen derzeit vorrangig mehrere Ideen ausprobiert werden, die zu einer leichteren Entscheidungsfindung für Bürger
+					führen könnten. Die vielversprechendsten Ideen werden auf dieser Seite vorgestellt und umfassen derzeit selbst-erstellbare
+					Vergleichstabellen, Fragenkataloge und Sammlungen von Argumenten und Fakten zu einem Thema.</p>
+				<p>Durch Feedback soll sich herauskristallisieren, welche Ideen einen echten Mehrwert bringen. Zusätzlich werden laufend
+					Gemeinderatssitzungen, Bürgerinformationsabende und Bürgerinitiativen aufgesucht, um vor Ort Ideen und Feedback einzuholen.</p>
+			</div>
+		</div>
+
+		<hr>
+
+		<h2 id="vergleichstabelle">Vergleichstabelle</h2>
+
+		<p>Die Vergleichstabelle dient zum kompakten Vergleich mehrerer Alternativen anhand einheitlicher Kriterien und maschinenlesbarer Daten.
+			Durch eine persönliche Gewichtung der Kriterien kann die rechnerisch beste Alternative ermittelt werden. Die hinterlegten Daten können mit
+			Quellen belegt werden.</p>
+
+		<br />
+		<h4>Beispiel: Vergleich von Open-Source Lizenzen</h4>
+
+		<table class="table table-bordered table-striped table-comparison">
+			<thead>
+				<tr>
+					<th></th>
+					<th class="alternative">MIT</th>
+					<th class="alternative">Apache License 2</th>
+					<th class="alternative">GPL</th>
+					<th class="alternative">AGPL</th>
+					<th class="alternative">LGPL</th>
+					<th class="alternative">BSD (original)</th>
+					<th class="alternative">BSD (modified)</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th>
+						Copyleft<br />
+						<small>darf mit einem Programm einer anderen Lizenz verlinkt werden</small><br />
+						<select name="criteria-choose" class="criteria-choose" data-toggle="tooltip" title="Was bevorzugen Sie?">
+							<option value="Nein">Nein</option>
+							<option value="Egal" selected="selected">Egal</option>
+							<option value="Ja">Ja</option>
+						</select>
+					</th>
+					<td>Ja</td>
+					<td>Ja</td>
+					<td>Nein</td>
+					<td>Nein</td>
+					<td>Ja</td>
+					<td>Ja</td>
+					<td>Ja</td>
+				</tr>
+				<tr>
+					<th>
+						Modifikationen dürfen eine andere Lizenz verwenden<br />
+						<select name="criteria-choose" class="criteria-choose" data-toggle="tooltip" title="Was bevorzugen Sie?">
+							<option>Nein</option>
+							<option selected="selected">Egal</option>
+							<option>Ja</option>
+						</select>
+					</th>
+					<td>Ja</td>
+					<td>Ja</td>
+					<td>Nein</td>
+					<td>Nein</td>
+					<td>Nein</td>
+					<td>Ja</td>
+					<td>Ja</td>
+				</tr>
+				<tr>
+					<th>
+						Autoren müssen genannt werden<br />
+						<select name="criteria-choose" class="criteria-choose" data-toggle="tooltip" title="Was bevorzugen Sie?">
+							<option>Nein</option>
+							<option selected="selected">Egal</option>
+							<option>Ja</option>
+						</select>
+					</th>
+					<td>Nein</td>
+					<td>Nein</td>
+					<td>Ja</td>
+					<td>Ja</td>
+					<td>Ja</td>
+					<td>Nein</td>
+					<td>Nein</td>
+				</tr>
+				<tr>
+					<th>
+						Kompatibel mit GPL<br />
+						<select name="criteria-choose" class="criteria-choose" data-toggle="tooltip" title="Was bevorzugen Sie?">
+							<option>Nein</option>
+							<option selected="selected">Egal</option>
+							<option>Ja</option>
+						</select>
+					</th>
+					<td>Ja</td>
+					<td>Ja</td>
+					<td>Ja</td>
+					<td>Ja</td>
+					<td>Ja</td>
+					<td>Nein</td>
+					<td>Ja</td>
+				</tr>
+				<tr>
+					<th>
+						FSF-konform<br />
+						<small>Free Software Foundation</small><br />
+						<select name="criteria-choose" class="criteria-choose" data-toggle="tooltip" title="Was bevorzugen Sie?">
+							<option>Nein</option>
+							<option selected="selected">Egal</option>
+							<option>Ja</option>
+						</select>
+					</th>
+					<td>Ja</td>
+					<td>Ja</td>
+					<td>Ja</td>
+					<td>Ja</td>
+					<td>Ja</td>
+					<td>Ja</td>
+					<td>Ja</td>
+				</tr>
+				<tr>
+					<th>
+						OSI-konform<br />
+						<small>Open Source Initiative</small><br />
+						<select name="criteria-choose" class="criteria-choose" data-toggle="tooltip" title="Was bevorzugen Sie?">
+							<option>Nein</option>
+							<option selected="selected">Egal</option>
+							<option>Ja</option>
+						</select>
+					</th>
+					<td>Ja</td>
+					<td>Ja</td>
+					<td>Ja</td>
+					<td>Ja</td>
+					<td>Ja</td>
+					<td>Nein</td>
+					<td>Ja</td>
+				</tr>
+				<tr class="result">
+					<th>Ergebnis</th>
+					<th>0</th>
+					<th>0</th>
+					<th>0</th>
+					<th>0</th>
+					<th>0</th>
+					<th>0</th>
+					<th>0</th>
+				</tr>
+			</tbody>
+		</table>
+
+		<hr>
+
+		<h2 id="fragenkatalog">Fragenkatalog</h2>
+
+		<p>Die Idee hinter dem Fragenkatalog ist, das Konzept der populären Entscheidungshilfen vor anstehenden Wahlen wie den Wahl-O-Mat oder
+			smartvote.ch aufzugreifen und gemeinschaftlich hilfreiche Fragenkataloge zur Entscheidungshilfe auszuarbeiten.</p>
+
+		<br />
+		<h4>Beispiel: Abitur nach Klasse 12 (G8)</h4>
+		
+		<div class="row-fluid">
+			<div class="span6 well">
+				<form>
+					<p><strong>Teilen Sie die Befürchtungen, dass der Wegfall eines Unterrichtsjahres bei gleichbleibendem Stoffpensum negative Folgen für Eltern, Lehrer und Schüler hat?</strong></p>
+					
+					<br />
+					<label class="radio">
+						<input type="radio" name="optionsRadios" id="optionsRadios1" value="yes">
+						Ja
+					</label>
+					<label class="radio">
+						<input type="radio" name="optionsRadios" id="optionsRadios2" value="no">
+						Nein
+					</label>
+					<label class="radio">
+						<input type="radio" name="optionsRadios" id="optionsRadios3" value="draw">
+						Dazu habe ich keine Meinung
+					</label>
+					
+					<br />
+					<label class="control-label" for="rating">Wie relevant ist für Sie dieser Punkt?</label>
+					<select id="rating" name="rating">
+						<option>sehr relevant</option>
+						<option>durchschnittlich relevant</option>
+						<option>kaum relevant</option>
+					</select>
+					
+					<br /><br />
+					<button type="button" class="btn btn-primary"><i class="icon-ok icon-white"></i> Weiter</button>
+					<button type="button" class="btn"><i class="icon-remove"></i> Überspringen</button>
+				</form>
+			</div>
+		</div>
+
+		<hr>
+
+		<h2 id="argumente">Argumente und Faktensammlung</h2>
+
+		<p>
+			Eine übersichtliche und aktuelle Faktenlage ist die Grundlage für effektive Diskussionen. Daneben sollen gemeinsam Argumente gesammelt und
+			gewichtet werden, um einen Überblick der wichtigsten Argumente auf beiden Seiten zu erhalten. Für diese Idee existiert bereits ein gut
+			ausgebauter Prototyp, der allerdings noch vereinfacht und für gemeinsame Bearbeitungen optimiert werden muss. Der aktuelle Prototyp ist unter
+			<a href="http://www.argufactum.de">argufactum.de</a> zu finden.
+		</p>
+
+		<iframe src="http://argufactum.de/topic/871/bau-einer-dritten-start--und-landebahn-kurz-slb-fuer-den-flughafen-muenchen--erd"></iframe>
+
+		<hr />
+
+		<div class="footer">
+			<p>
+				Impressum: Argufactum ist ein Projekt von <a href="https://twitter.com/femeb">Felix Ebert</a>, Ganzhornstr. 34, 74172 Neckarsulm, Tel. 07136 830 26 30
+			</p>
+			<p>Gefördert von:</p>
+			<p>
+				<a href="http://stadtlandcode.de"><img src="img/stadtlandcode.png" title="StadtLandCode" /></a>
+				<a href="http://okfn.de/"><img src="img/okfn.jpg" title="Open Knowledge Foundation Deutschland" /></a>
+			</p>
+		</div>
+	</div>
+
+	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
+	<script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/js/bootstrap.min.js"></script>
+	<script src="js/comparisonTable.js"></script>
+	<script type="text/javascript">
+		$(function() {
+		 	comparisonTable.init();
+		});
+	</script>
+</body>
+</html>

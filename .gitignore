@@ -4,3 +4,4 @@ target/
 .project
 log4j.xml
 chromedriver.log
+.DS_Store
