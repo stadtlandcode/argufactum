@@ -1,0 +1,19 @@
+.alternative {
+	width: 11.75%;
+}
+.criteria-choose {
+	font-size: 12px;
+	margin-top: 1em;
+	width: 65px;
+	float: left;
+	height: 22px;
+}
+.ui-slider {
+	width: 105px;
+	float: right;
+	margin-top: 1em;
+	margin-right: 7px;
+}
+.comparison-winner {
+	background: #dff0d8 !important;
+}
