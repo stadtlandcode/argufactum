@@ -4,10 +4,16 @@ var ct = {};
 (function(angular, ct) {
 	var appModule = angular.module('ct', []);
 
-	appModule.config(['$routeProvider', function($routeProvider) {
-		$routeProvider.when('/', {
+	appModule.config(function($routeProvider) {
+		$routeProvider.when('/table', {
 			templateUrl: 'partials/comparison/table.html',
-			controller: TableCtrl
+			controller: 'TableCtrl'
 		});
-	}]);
+		$routeProvider.otherwise({
+			redirectTo: '/table'
+		});
+	});
+
+	appModule.controller('TableCtrl', function() {
+	});
 })(angular, ct);
