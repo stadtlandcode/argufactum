@@ -6,14 +6,52 @@
 	c.table = {
 		loadData: function() {
 			if (localStorage.getItem('ct.data')) {
-				return localStorage.getitem('ct.data');
+				return JSON.parse(localStorage.getItem('ct.data'));
 			}
 			if (typeof comparisonData !== 'undefined') {
 				return comparisonData;
 			}
 		},
+		resetData: function() {
+			localStorage.removeItem('ct.data');
+		},
 		mergeData: function(currentData, newData) {
 			_.extend(currentData, newData);
+		},
+		saveData: function(data) {
+			localStorage.setItem('ct.data', JSON.stringify(data));
+		},
+		getNextPosition: function(objects) {
+			var lastObject = _.max(objects, function(object) {
+				return object.position;
+			});
+			return lastObject ? lastObject.position + 1 : 1;
+		},
+		addGeneric: function(xAxis, xAxisIdField, yAxis, yAxisIdField, cells) {
+			var xAxisObject = {
+				id: new Date().getTime(),
+				label: '',
+				position: this.getNextPosition(xAxis)
+			};
+			xAxis.push(xAxisObject);
+
+			var newCells = [];
+			_.each(yAxis, function(yAxisObject) {
+				var cell = {
+					type: 'boolean',
+					value: true
+				};
+				cell[xAxisIdField] = xAxisObject.id;
+				cell[yAxisIdField] = yAxisObject.id;
+				newCells.push(cell);
+			});
+			cells.push.apply(cells, newCells);
+		},
+		addCriterium: function(data) {
+			this.addGeneric(data.criteria, 'criteriumId', data.options, 'optionId', data.cells);
+		},
+		addOption: function(data) {
+			this.addGeneric(data.options, 'optionId', data.criteria, 'criteriumId', data.cells);
 		},
 		cells: {
 			findInCache: function(criteriumId, cache) {
@@ -48,12 +86,29 @@
 	tableModule.controller('TableCtrl', ['$scope', 'storage', function($scope, storage) {
 		$scope.criteria = storage.getData().criteria;
 		$scope.options = storage.getData().options;
-
 		$scope.cellsOfCriterium = function(criterium) {
 			return c.table.cells.findInCache(criterium.id, storage.getCache());
 		};
 
-		$scope.$watch(storage.getData(), storage.updateCache);
+		$scope.addOption = function() {
+			c.table.addOption(storage.getData());
+			$scope.onChange();
+		};
+		$scope.addCriterium = function() {
+			c.table.addCriterium(storage.getData());
+			$scope.onChange();
+		};
+		$scope.reset = function() {
+			storage.resetData();
+		};
+
+		$scope.onChange = function() {
+			storage.updateCache();
+			storage.saveData();
+		};
+		$scope.$watch(function() {
+			return storage.getData();
+		}, $scope.onChange);
 	}]);
 
 	tableModule.service('storage', function() {
@@ -70,6 +125,12 @@
 		this.loadData = function() {
 			var loaded = c.table.loadData();
 			c.table.mergeData(data, loaded);
+		};
+		this.saveData = function() {
+			c.table.saveData(data);
+		};
+		this.resetData = function() {
+			c.table.resetData();
 		};
 
 		this.updateCache = function() {

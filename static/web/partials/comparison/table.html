@@ -1,14 +1,37 @@
+<div class="pull-right">
+	<button type="button" class="btn" data-ng-click="reset()">
+		<i class="icon-remove"></i>
+		Reset
+	</button>
+	<button type="button" class="btn" data-ng-click="addOption()">
+		<i class="icon-plus"></i>
+		Alternative hinzufügen
+	</button>
+	<br /><br />
+</div>
+
 <table class="table table-bordered table-striped table-comparison">
 	<thead>
 		<tr>
 			<th></th>
-			<th data-ng-repeat="option in options | orderBy: 'position'" class="option">{{option.label}}</th>
+			<th data-ng-repeat="option in options" class="option">
+				<input type="text" data-ng-model="option.label" data-ng-change="onChange()" />
+			</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr data-ng-repeat="criterium in criteria | orderBy: 'position'" class="criterium">
-			<th>{{criterium.label}}</th>
-			<td data-ng-repeat="cell in cellsOfCriterium(criterium)">{{cell.value}}</td>
+			<th>
+				<input type="text" placeholder="Kriterium" data-ng-model="criterium.label" data-ng-change="onChange()" />
+			</th>
+			<td data-ng-repeat="cell in cellsOfCriterium(criterium)">
+				<input type="checkbox" data-ng-model="cell.value" data-ng-change="onChange()" />
+			</td>
 		</tr>
 	</tbody>
 </table>
+
+<button type="button" class="btn" data-ng-click="addCriterium()">
+	<i class="icon-plus"></i>
+	Kriterium hinzufügen
+</button>
