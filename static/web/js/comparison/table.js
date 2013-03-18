@@ -105,8 +105,11 @@
 		$scope.toggleMode = function() {
 			$scope.editMode = !$scope.editMode;
 		};
-		$scope.setRating = function(rating) {
-			console.log(rating);
+		$scope.setRating = function(criteriaId, rating) {
+			this.getRating().push({
+				criteriaId: criteriaId,
+				rating: rating
+			});
 		};
 
 		$scope.onChange = function() {

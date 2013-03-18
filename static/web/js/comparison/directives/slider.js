@@ -12,7 +12,7 @@
 					max: 100,
 					value: 50,
 					slide: function(event, ui) {
-						scope.setRating(ui.value);
+						scope.setRating(event.target.dataset['objectId'], ui.value);
 					}
 				});
 			}
