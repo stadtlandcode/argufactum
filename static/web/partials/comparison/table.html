@@ -2,15 +2,13 @@
 	<thead>
 		<tr>
 			<th></th>
-			<th class="alternative">MIT</th>
-			<th class="alternative">Apache License 2</th>
-			<th class="alternative">GPL</th>
-			<th class="alternative">AGPL</th>
-			<th class="alternative">LGPL</th>
-			<th class="alternative">BSD (original)</th>
-			<th class="alternative">BSD (modified)</th>
+			<th data-ng-repeat="option in options | orderBy: 'position'" class="option">{{option.label}}</th>
 		</tr>
 	</thead>
 	<tbody>
+		<tr data-ng-repeat="criterium in criteria | orderBy: 'position'" class="criterium">
+			<th>{{criterium.label}}</th>
+			<td data-ng-repeat="cell in cellsOfCriterium(criterium)">{{cell.value}}</td>
+		</tr>
 	</tbody>
 </table>

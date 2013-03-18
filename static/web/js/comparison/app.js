@@ -1,8 +1,8 @@
 'use strict';
-var ct = {};
+var comparison = {};
 
-(function(angular, ct) {
-	var appModule = angular.module('ct', []);
+(function(angular) {
+	var appModule = angular.module('ct', ['table']);
 
 	appModule.config(function($routeProvider) {
 		$routeProvider.when('/table', {
@@ -14,6 +14,7 @@ var ct = {};
 		});
 	});
 
-	appModule.controller('TableCtrl', function() {
-	});
-})(angular, ct);
+	appModule.run(['storage', function(storage) {
+		storage.loadData();
+	}]);
+})(angular);
