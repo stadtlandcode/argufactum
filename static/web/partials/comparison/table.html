@@ -29,10 +29,13 @@
 			<th>
 				<input type="text" placeholder="Kriterium" data-ng-show="editMode" data-ng-model="criterium.label" data-ng-change="onChange()" />
 				<span data-ng-hide="editMode">{{criterium.label}}</span>
+				<div data-slider></div>
 			</th>
 			<td data-ng-repeat="cell in cellsOfCriterium(criterium)">
 				<input type="checkbox" data-ng-show="editMode" data-ng-model="cell.value" data-ng-change="onChange()" />
-				<span data-ng-hide="editMode">{{cell.value}}</span>
+				<span data-ng-hide="editMode">
+					{{cell.value}}
+				</span>
 			</td>
 		</tr>
 	</tbody>

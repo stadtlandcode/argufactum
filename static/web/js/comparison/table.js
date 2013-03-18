@@ -4,22 +4,22 @@
 	var tableModule = angular.module('table', []);
 
 	c.table = {
-		loadData: function() {
-			if (localStorage.getItem('ct.data')) {
-				return JSON.parse(localStorage.getItem('ct.data'));
+		load: function(key) {
+			if (localStorage.getItem('ct.' + key)) {
+				return JSON.parse(localStorage.getItem('ct.' + key));
 			}
-			if (typeof comparisonData !== 'undefined') {
-				return comparisonData;
+			if (c[key]) {
+				return c[key];
 			}
 		},
-		resetData: function() {
-			localStorage.removeItem('ct.data');
+		reset: function(key) {
+			localStorage.removeItem('ct.' + key);
 		},
-		mergeData: function(currentData, newData) {
+		merge: function(currentData, newData) {
 			_.extend(currentData, newData);
 		},
-		saveData: function(data) {
-			localStorage.setItem('ct.data', JSON.stringify(data));
+		save: function(data, key) {
+			localStorage.setItem('ct.' + key, JSON.stringify(data));
 		},
 		getNextPosition: function(objects) {
 			var lastObject = _.max(objects, function(object) {
@@ -89,7 +89,7 @@
 		$scope.cellsOfCriterium = function(criterium) {
 			return c.table.cells.findInCache(criterium.id, storage.getCache());
 		};
-		$scope.editMode = true;
+		$scope.editMode = false;
 
 		$scope.addOption = function() {
 			c.table.addOption(storage.getData());
@@ -100,19 +100,19 @@
 			$scope.onChange();
 		};
 		$scope.reset = function() {
-			storage.resetData();
+			storage.reset();
 		};
 		$scope.toggleMode = function() {
 			$scope.editMode = !$scope.editMode;
 		};
+		$scope.setRating = function(rating) {
+			console.log(rating);
+		};
 
 		$scope.onChange = function() {
 			storage.updateCache();
-			storage.saveData();
+			storage.save();
 		};
-		$scope.$watch(function() {
-			return storage.getData();
-		}, $scope.onChange);
 	}]);
 
 	tableModule.service('storage', function() {
@@ -121,20 +121,14 @@
 			criteria: [],
 			cells: []
 		};
+		var rating = [];
 		var cache = [];
 
 		this.getData = function() {
 			return data;
 		};
-		this.loadData = function() {
-			var loaded = c.table.loadData();
-			c.table.mergeData(data, loaded);
-		};
-		this.saveData = function() {
-			c.table.saveData(data);
-		};
-		this.resetData = function() {
-			c.table.resetData();
+		this.getRating = function() {
+			return rating;
 		};
 
 		this.updateCache = function() {
@@ -145,6 +139,19 @@
 				this.updateCache();
 			}
 			return cache;
+		};
+
+		this.load = function() {
+			c.table.merge(data, c.table.load('data'));
+			c.table.merge(rating, c.table.load('rating'));
+		};
+		this.save = function() {
+			c.table.save(data, 'data');
+			c.table.save(rating, 'rating');
+		};
+		this.reset = function() {
+			c.table.reset('data');
+			c.table.reset('rating');
 		};
 	});
 })(angular, comparison, _);

@@ -15,6 +15,6 @@ var comparison = {};
 	});
 
 	appModule.run(['storage', function(storage) {
-		storage.loadData();
+		storage.load();
 	}]);
 })(angular);
