@@ -3,6 +3,10 @@
 		<i class="icon-remove"></i>
 		Reset
 	</button>
+	<button type="button" class="btn" data-ng-click="toggleMode()">
+		<i class="icon-eye-open"></i>
+		change viewmode
+	</button>
 	<button type="button" class="btn" data-ng-click="addOption()">
 		<i class="icon-plus"></i>
 		Alternative hinzufügen
@@ -15,17 +19,20 @@
 		<tr>
 			<th></th>
 			<th data-ng-repeat="option in options" class="option">
-				<input type="text" data-ng-model="option.label" data-ng-change="onChange()" />
+				<input type="text" data-ng-show="editMode" data-ng-model="option.label" data-ng-change="onChange()" />
+				<span data-ng-hide="editMode">{{option.label}}</span>
 			</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr data-ng-repeat="criterium in criteria | orderBy: 'position'" class="criterium">
 			<th>
-				<input type="text" placeholder="Kriterium" data-ng-model="criterium.label" data-ng-change="onChange()" />
+				<input type="text" placeholder="Kriterium" data-ng-show="editMode" data-ng-model="criterium.label" data-ng-change="onChange()" />
+				<span data-ng-hide="editMode">{{criterium.label}}</span>
 			</th>
 			<td data-ng-repeat="cell in cellsOfCriterium(criterium)">
-				<input type="checkbox" data-ng-model="cell.value" data-ng-change="onChange()" />
+				<input type="checkbox" data-ng-show="editMode" data-ng-model="cell.value" data-ng-change="onChange()" />
+				<span data-ng-hide="editMode">{{cell.value}}</span>
 			</td>
 		</tr>
 	</tbody>

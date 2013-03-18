@@ -89,6 +89,7 @@
 		$scope.cellsOfCriterium = function(criterium) {
 			return c.table.cells.findInCache(criterium.id, storage.getCache());
 		};
+		$scope.editMode = true;
 
 		$scope.addOption = function() {
 			c.table.addOption(storage.getData());
@@ -100,6 +101,9 @@
 		};
 		$scope.reset = function() {
 			storage.resetData();
+		};
+		$scope.toggleMode = function() {
+			$scope.editMode = !$scope.editMode;
 		};
 
 		$scope.onChange = function() {
