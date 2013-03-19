@@ -17,20 +17,20 @@
 <table class="table table-bordered table-striped table-comparison">
 	<thead>
 		<tr>
-			<th></th>
-			<th data-ng-repeat="option in options" class="option">
+			<td class="criterium"></td>
+			<th data-ng-repeat="option in options" data-ng-class="getOptionClasses(option)">
 				<input type="text" data-ng-show="editMode" data-ng-model="option.label" data-ng-change="onChange()" />
 				<span data-ng-hide="editMode">{{option.label}}</span>
 			</th>
 		</tr>
 	</thead>
 	<tbody>
-		<tr data-ng-repeat="criterium in criteria | orderBy: 'position'" class="criterium">
-			<th>
+		<tr data-ng-repeat="criterium in criteria | orderBy: 'position'">
+			<td class="criterium">
 				<input type="text" placeholder="Kriterium" data-ng-show="editMode" data-ng-model="criterium.label" data-ng-change="onChange()" />
 				<span data-ng-hide="editMode">{{criterium.label}}</span>
 				<div data-slider data-object-id="{{criterium.id}}"></div>
-			</th>
+			</td>
 			<td data-ng-repeat="cell in cellsOfCriterium(criterium)">
 				<input type="checkbox" data-ng-show="editMode" data-ng-model="cell.value" data-ng-change="onChange()" />
 				<span data-ng-hide="editMode">
@@ -39,6 +39,14 @@
 			</td>
 		</tr>
 	</tbody>
+	<tfoot data-ng-hide="editMode">
+		<tr>
+			<th class="criterium">Ergebnis</th>
+			<td data-ng-repeat="result in results">
+				{{result.sum}}
+			</td>
+		</tr>
+	</tfoot>
 </table>
 
 <button type="button" class="btn" data-ng-click="addCriterium()">

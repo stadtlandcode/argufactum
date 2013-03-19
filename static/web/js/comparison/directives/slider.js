@@ -8,9 +8,9 @@
 			restrict: 'A',
 			link: function(scope, element, attrs) {
 				$(element).slider({
-					min: 0,
-					max: 100,
-					value: 50,
+					min: 1,
+					max: 10,
+					value: scope.ratingOfCriterium(scope.criterium),
 					slide: function(event, ui) {
 						scope.setRating(event.target.dataset['objectId'], ui.value);
 					}

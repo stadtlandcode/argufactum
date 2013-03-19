@@ -1,6 +1,9 @@
 .option {
 	width: 11.75%;
 }
+.ui-slider {
+	max-width: 200px;
+}
 .comparison-winner {
 	background: #dff0d8 !important;
 }

@@ -27,6 +27,54 @@
 			});
 			return lastObject ? lastObject.position + 1 : 1;
 		},
+		updateRating: function(ratingData, criteriumId, rating) {
+			var foundRating = this.findRatingEntry(ratingData, criteriumId);
+
+			if (foundRating) {
+				foundRating.rating = rating;
+			} else {
+				ratingData.push({
+					'criteriumId': criteriumId,
+					'rating': rating
+				});
+			}
+		},
+		getRating: function(ratingData, criterium) {
+			var ratingEntry = this.findRatingEntry(ratingData, criterium.id);
+			return ratingEntry ? ratingEntry.rating : 5;
+		},
+		findRatingEntry: function(ratingData, criteriumId) {
+			return _.find(ratingData, function(ratingEntry) {
+				return ratingEntry.criteriumId == criteriumId;
+			});
+		},
+		updateResultCache: function(resultCache, data, ratingData) {
+			resultCache.length = 0;
+
+			var sortedOptions = _.sortBy(data.options, function(option) {
+				return option.position;
+			});
+
+			_.each(sortedOptions, _.bind(function(option) {
+				var sum = 0;
+				_.each(data.criteria, _.bind(function(criterium) {
+					var rating = this.getRating(ratingData, criterium);
+					var factor = rating / 10;
+					var desired = true;
+
+					var cell = this.cells.find(criterium.id, option.id, data);
+					if (cell.value === desired) {
+						sum += 1 * factor;
+					}
+
+				}, this));
+
+				resultCache.push({
+					'optionId': option.id,
+					'sum': sum
+				});
+			}, this));
+		},
 		addGeneric: function(xAxis, xAxisIdField, yAxis, yAxisIdField, cells) {
 			var xAxisObject = {
 				id: new Date().getTime(),
@@ -53,12 +101,26 @@
 		addOption: function(data) {
 			this.addGeneric(data.options, 'optionId', data.criteria, 'criteriumId', data.cells);
 		},
+		isWinner: function(resultCache, option) {
+			var highestRating = _.max(resultCache, function(resultEntry) {
+				return resultEntry.sum;
+			});
+			var ratingOfOption = _.find(resultCache, function(resultEntry) {
+				return resultEntry.optionId == option.id;
+			});
+			return ratingOfOption.sum === highestRating.sum;
+		},
 		cells: {
-			findInCache: function(criteriumId, cache) {
+			findByCriterium: function(criteriumId, cache) {
 				var found = _.find(cache, function(cacheEntry) {
 					return cacheEntry.criteriumId === criteriumId;
 				});
 				return found ? found.cells : [];
+			},
+			find: function(criteriumId, optionId, data) {
+				return _.find(data.cells, function(cell) {
+					return cell.criteriumId === criteriumId && cell.optionId === optionId;
+				});
 			},
 			updateCache: function(cache, data) {
 				cache.length = 0;
@@ -86,10 +148,11 @@
 	tableModule.controller('TableCtrl', ['$scope', 'storage', function($scope, storage) {
 		$scope.criteria = storage.getData().criteria;
 		$scope.options = storage.getData().options;
-		$scope.cellsOfCriterium = function(criterium) {
-			return c.table.cells.findInCache(criterium.id, storage.getCache());
-		};
 		$scope.editMode = false;
+		$scope.results = storage.getResultCache();
+		$scope.cellsOfCriterium = function(criterium) {
+			return c.table.cells.findByCriterium(criterium.id, storage.getCache());
+		};
 
 		$scope.addOption = function() {
 			c.table.addOption(storage.getData());
@@ -105,15 +168,21 @@
 		$scope.toggleMode = function() {
 			$scope.editMode = !$scope.editMode;
 		};
-		$scope.setRating = function(criteriaId, rating) {
-			this.getRating().push({
-				criteriaId: criteriaId,
-				rating: rating
-			});
+		$scope.setRating = function(criteriumId, rating) {
+			c.table.updateRating(storage.getRating(), criteriumId, rating);
+			$scope.onChange();
+			$scope.$apply();
+		};
+		$scope.ratingOfCriterium = function(criterium) {
+			return c.table.getRating(storage.getRating(), criterium);
+		};
+		$scope.getOptionClasses = function(option) {
+			return c.table.isWinner(storage.getResultCache(), option) ? 'option comparison-winner' : 'option';
 		};
 
 		$scope.onChange = function() {
 			storage.updateCache();
+			storage.updateResultCache();
 			storage.save();
 		};
 	}]);
@@ -126,12 +195,23 @@
 		};
 		var rating = [];
 		var cache = [];
+		var resultCache = [];
 
 		this.getData = function() {
 			return data;
 		};
 		this.getRating = function() {
 			return rating;
+		};
+
+		this.updateResultCache = function() {
+			c.table.updateResultCache(resultCache, data, rating);
+		};
+		this.getResultCache = function() {
+			if (resultCache.length <= 0) {
+				this.updateResultCache();
+			}
+			return resultCache;
 		};
 
 		this.updateCache = function() {
