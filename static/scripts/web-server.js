@@ -6,7 +6,7 @@ var util = require('util'),
     url = require('url'),
     events = require('events');
 
-var DEFAULT_PORT = 8081;
+var DEFAULT_PORT = 8083;
 
 function main(argv) {
   new HttpServer({
@@ -28,10 +28,11 @@ function createServlet(Class) {
 }
 
 /**
- * An Http server implementation that uses a map of methods to decide
- * action routing.
- *
- * @param {Object} Map of method => Handler function
+ * An Http server implementation that uses a map of methods to decide action
+ * routing.
+ * 
+ * @param {Object}
+ *            Map of method => Handler function
  */
 function HttpServer(handlers) {
   this.handlers = handlers;

@@ -1,0 +1,38 @@
+<div class="pull-right actions-above-comparison">
+	<a href="#/editTable" class="btn">
+		<i class="icon-pencil"></i>
+		Bearbeiten
+	</a>
+</div>
+
+<table class="table table-bordered table-striped table-comparison">
+	<thead>
+		<tr>
+			<td class="criterium"></td>
+			<th data-ng-repeat="option in options" data-ng-class="getOptionClasses(option)">
+				<span>{{option.label}}</span>
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr data-ng-repeat="criterium in criteria | orderBy: 'position'">
+			<td class="criterium">
+				<span>{{criterium.label}}</span>
+				<div data-slider data-object-id="{{criterium.id}}"></div>
+			</td>
+			<td data-ng-repeat="cell in cellsOfCriterium(criterium)">
+				<span>
+					{{cell.value}}
+				</span>
+			</td>
+		</tr>
+	</tbody>
+	<tfoot>
+		<tr>
+			<th class="criterium">Ergebnis</th>
+			<td data-ng-repeat="result in results">
+				{{result.sum}}
+			</td>
+		</tr>
+	</tfoot>
+</table>

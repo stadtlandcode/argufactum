@@ -5,12 +5,16 @@ var comparison = {};
 	var appModule = angular.module('ct', ['table']);
 
 	appModule.config(function($routeProvider) {
-		$routeProvider.when('/table', {
-			templateUrl: 'partials/comparison/table.html',
-			controller: 'TableCtrl'
+		$routeProvider.when('/viewTable', {
+			templateUrl: 'partials/comparison/viewTable.html',
+			controller: 'ViewTableCtrl'
+		});
+		$routeProvider.when('/editTable', {
+			templateUrl: 'partials/comparison/editTable.html',
+			controller: 'EditTableCtrl'
 		});
 		$routeProvider.otherwise({
-			redirectTo: '/table'
+			redirectTo: '/viewTable'
 		});
 	});
 

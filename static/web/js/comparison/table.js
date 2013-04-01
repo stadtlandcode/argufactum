@@ -21,8 +21,8 @@
 		save: function(data, key) {
 			localStorage.setItem('ct.' + key, JSON.stringify(data));
 		},
-		getNextPosition: function(objects) {
-			var lastObject = _.max(objects, function(object) {
+		getNextPosition: function(positionedObjects) {
+			var lastObject = _.max(positionedObjects, function(object) {
 				return object.position;
 			});
 			return lastObject ? lastObject.position + 1 : 1;
@@ -142,18 +142,42 @@
 					});
 				});
 			}
+		},
+		setupScope: function($scope, storage) {
+			$scope.criteria = storage.getData().criteria;
+			$scope.options = storage.getData().options;
+			$scope.cellsOfCriterium = function(criterium) {
+				return c.table.cells.findByCriterium(criterium.id, storage.getCache());
+			};
 		}
 	};
 
-	tableModule.controller('TableCtrl', ['$scope', 'storage', function($scope, storage) {
-		$scope.criteria = storage.getData().criteria;
-		$scope.options = storage.getData().options;
-		$scope.editMode = false;
+	tableModule.controller('ViewTableCtrl', ['$scope', 'storage', function($scope, storage) {
+		// data
+		c.table.setupScope($scope, storage);
+		storage.updateResultCache();
 		$scope.results = storage.getResultCache();
-		$scope.cellsOfCriterium = function(criterium) {
-			return c.table.cells.findByCriterium(criterium.id, storage.getCache());
-		};
 
+		// functions
+		$scope.setRating = function(criteriumId, rating) {
+			c.table.updateRating(storage.getRating(), criteriumId, rating);
+			storage.updateResultCache();
+			storage.save();
+			$scope.$apply();
+		};
+		$scope.ratingOfCriterium = function(criterium) {
+			return c.table.getRating(storage.getRating(), criterium);
+		};
+		$scope.getOptionClasses = function(option) {
+			return c.table.isWinner(storage.getResultCache(), option) ? 'option comparison-winner' : 'option';
+		};
+	}]);
+
+	tableModule.controller('EditTableCtrl', ['$scope', 'storage', function($scope, storage) {
+		// data
+		c.table.setupScope($scope, storage);
+
+		// functions
 		$scope.addOption = function() {
 			c.table.addOption(storage.getData());
 			$scope.onChange();
@@ -165,24 +189,9 @@
 		$scope.reset = function() {
 			storage.reset();
 		};
-		$scope.toggleMode = function() {
-			$scope.editMode = !$scope.editMode;
-		};
-		$scope.setRating = function(criteriumId, rating) {
-			c.table.updateRating(storage.getRating(), criteriumId, rating);
-			$scope.onChange();
-			$scope.$apply();
-		};
-		$scope.ratingOfCriterium = function(criterium) {
-			return c.table.getRating(storage.getRating(), criterium);
-		};
-		$scope.getOptionClasses = function(option) {
-			return c.table.isWinner(storage.getResultCache(), option) ? 'option comparison-winner' : 'option';
-		};
 
 		$scope.onChange = function() {
 			storage.updateCache();
-			storage.updateResultCache();
 			storage.save();
 		};
 	}]);
