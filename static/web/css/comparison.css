@@ -1,12 +1,26 @@
-.option {
-	width: 11.75%;
+.criterium-edit {
+	width: 252px;
+	min-width: 252px;
 }
+.option-edit,
+.cell-edit {
+	width: 208px;
+	min-width: 208px;
+}
+
 .ui-slider {
 	max-width: 200px;
 }
+
 .comparison-winner {
 	background: #dff0d8 !important;
 }
 .actions-above-comparison {
 	margin-bottom: 1em;
+}
+.table-comparison input {
+	margin: 0;
+}
+td.cell {
+	vertical-align: middle;
 }

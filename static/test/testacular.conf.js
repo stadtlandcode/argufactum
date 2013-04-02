@@ -8,6 +8,8 @@ files = [
   'web/lib/underscore.js',
   'test/lib/angular/angular-mocks.js',
   'web/js/comparison/app.js',
+  'web/js/comparison/utils.js',
+  'web/js/comparison/table.js',
   'web/js/comparison/**/*.js',
   'test/unit/**/*.js'
 ];

@@ -75,14 +75,7 @@
 				});
 			}, this));
 		},
-		addGeneric: function(xAxis, xAxisIdField, yAxis, yAxisIdField, cells) {
-			var xAxisObject = {
-				id: new Date().getTime(),
-				label: '',
-				position: this.getNextPosition(xAxis)
-			};
-			xAxis.push(xAxisObject);
-
+		addCellsGeneric: function(cells, xAxisObject, xAxisIdField, yAxis, yAxisIdField) {
 			var newCells = [];
 			_.each(yAxis, function(yAxisObject) {
 				var cell = {
@@ -95,11 +88,42 @@
 			});
 			cells.push.apply(cells, newCells);
 		},
+		removeCellsGeneric: function(cells, idField, id) {
+			c.array.rejectAll(cells, function(cell) {
+				return cell[idField] === id;
+			});
+		},
 		addCriterium: function(data) {
-			this.addGeneric(data.criteria, 'criteriumId', data.options, 'optionId', data.cells);
+			var criterium = {
+				id: new Date().getTime(),
+				label: '',
+				position: this.getNextPosition(data.criteria)
+			};
+
+			data.criteria.push(criterium);
+			this.addCellsGeneric(data.cells, criterium, 'criteriumId', data.options, 'optionId');
+		},
+		removeCriterium: function(id, data) {
+			c.array.rejectOne(data.criteria, function(criterium) {
+				return criterium.id === id;
+			});
+			this.removeCellsGeneric(data.cells, 'criteriumId', id);
 		},
 		addOption: function(data) {
-			this.addGeneric(data.options, 'optionId', data.criteria, 'criteriumId', data.cells);
+			var option = {
+				id: new Date().getTime(),
+				label: '',
+				position: this.getNextPosition(data.options)
+			};
+
+			data.options.push(option);
+			this.addCellsGeneric(data.cells, option, 'optionId', data.criteria, 'criteriumId');
+		},
+		removeOption: function(id, data) {
+			c.array.rejectOne(data.options, function(option) {
+				return option.id === id;
+			});
+			this.removeCellsGeneric(data.cells, 'optionId', id);
 		},
 		isWinner: function(resultCache, option) {
 			var highestRating = _.max(resultCache, function(resultEntry) {
@@ -177,19 +201,27 @@
 		// data
 		c.table.setupScope($scope, storage);
 
-		// functions
 		$scope.addOption = function() {
 			c.table.addOption(storage.getData());
 			$scope.onChange();
 		};
+		$scope.removeOption = function(option) {
+			c.table.removeOption(option.id, storage.getData());
+			$scope.onChange();
+		};
+
 		$scope.addCriterium = function() {
 			c.table.addCriterium(storage.getData());
 			$scope.onChange();
 		};
+		$scope.removeCriterium = function(criterium) {
+			c.table.removeCriterium(criterium.id, storage.getData());
+			$scope.onChange();
+		};
+
 		$scope.reset = function() {
 			storage.reset();
 		};
-
 		$scope.onChange = function() {
 			storage.updateCache();
 			storage.save();

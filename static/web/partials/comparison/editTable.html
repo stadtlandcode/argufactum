@@ -1,0 +1,51 @@
+<div class="pull-right actions-above-comparison">
+	<a href="#/viewTable" class="btn">
+		<i class="icon-eye-open"></i>
+		Lesemodus
+	</a>
+	<button type="button" class="btn" data-ng-click="reset()">
+		<i class="icon-remove"></i>
+		Reset
+	</button>
+	<button type="button" class="btn" data-ng-click="addOption()">
+		<i class="icon-plus"></i>
+		Alternative hinzufügen
+	</button>
+</div>
+
+<table class="table table-bordered table-striped table-comparison">
+	<thead>
+		<tr>
+			<td class="criterium-edit"></td>
+			<th data-ng-repeat="option in options" data-ng-class="getOptionClasses(option)" class="option-edit">
+				<input type="text" class="input-medium" data-ng-model="option.label" data-ng-change="onChange()" />
+				<button type="button" class="btn" title="Alternative entfernen" data-ng-click="removeOption(option)">
+					<i class="icon-remove"></i>
+				</button>
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr data-ng-repeat="criterium in criteria | orderBy: 'position'">
+			<td class="criterium-edit">
+				<input type="text" class="input-medium" placeholder="Kriterium" data-ng-model="criterium.label" data-ng-change="onChange()" />
+				<button type="button" class="btn" title="Datentyp ändern">
+					<i class="icon-wrench"></i>
+				</button>
+				<button type="button" class="btn" title="Kriterium entfernen" data-ng-click="removeCriterium(criterium)">
+					<i class="icon-remove"></i>
+				</button>
+			</td>
+			<td data-ng-repeat="cell in cellsOfCriterium(criterium)" class="cell cell-edit">
+				<input type="checkbox" data-ng-model="cell.value" data-ng-change="onChange()" />
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<div class="actions-below-comparison">
+	<button type="button" class="btn" data-ng-click="addCriterium()">
+		<i class="icon-plus"></i>
+		Kriterium hinzufügen
+	</button>
+</div>
