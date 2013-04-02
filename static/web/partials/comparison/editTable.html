@@ -29,7 +29,7 @@
 		<tr data-ng-repeat="criterium in criteria | orderBy: 'position'">
 			<td class="criterium-edit">
 				<input type="text" class="input-medium" placeholder="Kriterium" data-ng-model="criterium.label" data-ng-change="onChange()" />
-				<button type="button" class="btn" title="Datentyp ändern">
+				<button type="button" class="btn" title="Datentyp ändern" data-ng-click="editCriterium(criterium)">
 					<i class="icon-wrench"></i>
 				</button>
 				<button type="button" class="btn" title="Kriterium entfernen" data-ng-click="removeCriterium(criterium)">

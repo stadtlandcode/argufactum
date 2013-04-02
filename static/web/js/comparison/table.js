@@ -1,7 +1,7 @@
 'use strict';
 
 (function(angular, c, _) {
-	var tableModule = angular.module('table', []);
+	var tableModule = angular.module('table', ['ui.bootstrap']);
 
 	c.table = {
 		load: function(key) {
@@ -93,13 +93,11 @@
 				return cell[idField] === id;
 			});
 		},
-		addCriterium: function(data) {
-			var criterium = {
+		addCriterium: function(criterium, data) {
+			criterium = _.extend(criterium, {
 				id: new Date().getTime(),
-				label: '',
 				position: this.getNextPosition(data.criteria)
-			};
-
+			});
 			data.criteria.push(criterium);
 			this.addCellsGeneric(data.cells, criterium, 'criteriumId', data.options, 'optionId');
 		},
@@ -108,6 +106,24 @@
 				return criterium.id === id;
 			});
 			this.removeCellsGeneric(data.cells, 'criteriumId', id);
+		},
+		openCriteriumDialog: function($dialog, criterium, handleResult) {
+			var d = $dialog.dialog({
+				templateUrl: 'partials/comparison/criteriumDialog.html',
+				controller: 'CriteriumDialogCtrl',
+				resolve: {
+					'criterium': function() {
+						return criterium;
+					}
+				}
+			});
+
+			d.open().then(function(result) {
+				if (!result) {
+					return false;
+				}
+				handleResult(result);
+			});
 		},
 		addOption: function(data) {
 			var option = {
@@ -197,7 +213,7 @@
 		};
 	}]);
 
-	tableModule.controller('EditTableCtrl', ['$scope', 'storage', function($scope, storage) {
+	tableModule.controller('EditTableCtrl', ['$scope', '$dialog', 'storage', function($scope, $dialog, storage) {
 		// data
 		c.table.setupScope($scope, storage);
 
@@ -211,8 +227,17 @@
 		};
 
 		$scope.addCriterium = function() {
-			c.table.addCriterium(storage.getData());
-			$scope.onChange();
+			var criterium = {
+				label: ''
+			};
+			var handleResult = function(result) {
+				c.table.addCriterium(result, storage.getData());
+				$scope.onChange();
+			};
+			c.table.openCriteriumDialog($dialog, criterium, handleResult);
+		};
+		$scope.editCriterium = function(criterium) {
+			c.table.openCriteriumDialog($dialog, criterium, $scope.onChange);
 		};
 		$scope.removeCriterium = function(criterium) {
 			c.table.removeCriterium(criterium.id, storage.getData());
@@ -225,6 +250,18 @@
 		$scope.onChange = function() {
 			storage.updateCache();
 			storage.save();
+		};
+	}]);
+
+	tableModule.controller('CriteriumDialogCtrl', ['$scope', 'dialog', 'criterium', function($scope, dialog, criterium) {
+		$scope.criterium = criterium;
+		$scope.edit = criterium.id ? true : false;
+
+		$scope.save = function() {
+			dialog.close($scope.criterium);
+		};
+		$scope.close = function() {
+			dialog.close(false);
 		};
 	}]);
 

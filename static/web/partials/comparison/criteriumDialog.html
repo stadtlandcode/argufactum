@@ -1,0 +1,12 @@
+<form class="dialog-form">
+	<div class="modal-header">
+		<button type="button" class="close" data-ng-click="close()">&times;</button>
+		<h3>Kriterium <span data-ng-show="edit">bearbeiten</span><span data-ng-hide="edit">hinzufügen</span></h3>
+	</div>
+	<div class="modal-body">
+		<label>Bezeichnung:</label> <input type="text" data-ng-model="criterium.label" placeholder="z.B. Preis, Stabilität, CO2-Bilanz ..." />
+	</div>
+	<div class="modal-footer">
+		<button type="submit" class="btn btn-primary" data-ng-click="save()">Speichern</button>
+	</div>
+</form>
