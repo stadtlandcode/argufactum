@@ -14,15 +14,13 @@
 
 .criterium {
 	width: 203px;
+	max-width: 203px;
 }
 .ui-slider {
 	max-width: 200px;
 	margin-top: 7px;
 }
 
-.result {
-	background: #d9edf7;
-}
 .comparison-winner {
 	background: #dff0d8 !important;
 }

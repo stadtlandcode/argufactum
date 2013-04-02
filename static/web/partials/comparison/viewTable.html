@@ -20,7 +20,7 @@
 				<span>{{criterium.label}}</span>
 				<div data-slider data-object-id="{{criterium.id}}"></div>
 			</th>
-			<td data-ng-repeat="cell in cellsOfCriterium(criterium)">
+			<td data-ng-repeat="cell in cellsOfCriterium(criterium)" data-ng-class="getCellClasses(cell)">
 				{{labelOfCell(criterium, cell)}}
 			</td>
 		</tr>
@@ -28,7 +28,7 @@
 	<tfoot>
 		<tr>
 			<th class="criterium result">Ergebnis</th>
-			<th data-ng-repeat="result in results">
+			<th data-ng-repeat="result in results" data-ng-class="getCellClasses(result)">
 				{{result.sum}}
 			</th>
 		</tr>

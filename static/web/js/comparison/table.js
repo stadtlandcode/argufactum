@@ -17,6 +17,9 @@
 		},
 		labelForCell: function(cell) {
 			return cell.value ? 'Ja' : 'Nein';
+		},
+		ratingFor: function(cellValue) {
+			return cellValue ? 1 : 0;
 		}
 	}, {
 		id: 'rating',
@@ -39,6 +42,9 @@
 		},
 		labelForCell: function(cell) {
 			return this.table[cell.value];
+		},
+		ratingFor: function(cellValue) {
+			return cellValue * 2 / 10;
 		}
 	}];
 
@@ -98,19 +104,16 @@
 				var sum = 0;
 				_.each(data.criteria, _.bind(function(criterium) {
 					var rating = this.getRating(ratingData, criterium);
-					var factor = rating / 10;
-					var desired = true;
-
+					var factor = rating ? rating / 10 : 0;
+					var dataType = this.findDataType(criterium.dataTypeId);
 					var cell = this.cells.find(criterium.id, option.id, data);
-					if (cell.value === desired) {
-						sum += 1 * factor;
-					}
 
+					sum += dataType.ratingFor(cell.value) * factor;
 				}, this));
 
 				resultCache.push({
 					'optionId': option.id,
-					'sum': sum
+					'sum': Math.round(sum * 100) / 100
 				});
 			}, this));
 		},
@@ -147,6 +150,13 @@
 				return this.findDataType(criterium.dataTypeId);
 			}, this);
 			this.addCellsGeneric(data.cells, dataTypeFactory, criterium, 'criteriumId', data.options, 'optionId');
+		},
+		editCriterium: function(criterium, cache) {
+			var dataType = this.findDataType(criterium.dataTypeId);
+			var cells = this.cells.findByCriterium(criterium.id, cache);
+			_.each(cells, function(cell) {
+				dataType.configureExistingCell(cell);
+			});
 		},
 		removeCriterium: function(id, data) {
 			c.array.rejectOne(data.criteria, function(criterium) {
@@ -196,12 +206,12 @@
 				return dataType.id === dataTypeId;
 			});
 		},
-		isWinner: function(resultCache, option) {
+		isWinner: function(resultCache, optionId) {
 			var highestRating = _.max(resultCache, function(resultEntry) {
 				return resultEntry.sum;
 			});
 			var ratingOfOption = _.find(resultCache, function(resultEntry) {
-				return resultEntry.optionId == option.id;
+				return resultEntry.optionId == optionId;
 			});
 			return ratingOfOption.sum === highestRating.sum;
 		},
@@ -264,7 +274,10 @@
 			return c.table.getRating(storage.getRating(), criterium);
 		};
 		$scope.getOptionClasses = function(option) {
-			return c.table.isWinner(storage.getResultCache(), option) ? 'option comparison-winner' : 'option';
+			return c.table.isWinner(storage.getResultCache(), option.id) ? 'option comparison-winner' : 'option';
+		};
+		$scope.getCellClasses = function(cell) {
+			return c.table.isWinner(storage.getResultCache(), cell.optionId) ? 'comparison-winner' : '';
 		};
 		$scope.templateUrl = function(criterium) {
 			return 'partials/comparison/dataType/' + criterium.dataTypeId + '.html';
@@ -297,7 +310,11 @@
 			c.table.openCriteriumDialog($dialog, criterium, handleResult);
 		};
 		$scope.editCriterium = function(criterium) {
-			c.table.openCriteriumDialog($dialog, criterium, $scope.onChange);
+			var handleResult = function(result) {
+				c.table.editCriterium(result, storage.getCache());
+				$scope.onChange();
+			};
+			c.table.openCriteriumDialog($dialog, criterium, handleResult);
 		};
 		$scope.removeCriterium = function(criterium) {
 			c.table.removeCriterium(criterium.id, storage.getData());

@@ -12,11 +12,13 @@
 		criteria: [{
 			id: 1,
 			label: 'Copyleft',
-			position: 1
+			position: 1,
+			dataTypeId: 'boolean'
 		}, {
 			id: 2,
 			label: 'Modifikationen',
-			position: 2
+			position: 2,
+			dataTypeId: 'boolean'
 		}],
 		cells: [{
 			optionId: 1,
