@@ -8,7 +8,7 @@
 			restrict: 'A',
 			link: function(scope, element, attrs) {
 				$(element).slider({
-					min: 1,
+					min: 0,
 					max: 10,
 					value: scope.ratingOfCriterium(scope.criterium),
 					slide: function(event, ui) {

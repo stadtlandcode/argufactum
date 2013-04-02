@@ -4,7 +4,12 @@
 		<h3>Kriterium <span data-ng-show="edit">bearbeiten</span><span data-ng-hide="edit">hinzufügen</span></h3>
 	</div>
 	<div class="modal-body">
-		<label>Bezeichnung:</label> <input type="text" data-ng-model="criterium.label" placeholder="z.B. Preis, Stabilität, CO2-Bilanz ..." />
+		<label>Bezeichnung:</label>
+		<input type="text" data-ng-model="criterium.label" placeholder="z.B. Preis, Stabilität, CO2-Bilanz ..." />
+		
+		<label>Datentyp:</label>
+		<select data-ng-model="criterium.dataTypeId" data-ng-options="dataType.id as dataType.label for dataType in dataTypes">
+		</select>
 	</div>
 	<div class="modal-footer">
 		<button type="submit" class="btn btn-primary" data-ng-click="save()">Speichern</button>

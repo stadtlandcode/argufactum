@@ -16,23 +16,21 @@
 	</thead>
 	<tbody>
 		<tr data-ng-repeat="criterium in criteria | orderBy: 'position'">
-			<td class="criterium">
+			<th class="criterium">
 				<span>{{criterium.label}}</span>
 				<div data-slider data-object-id="{{criterium.id}}"></div>
-			</td>
+			</th>
 			<td data-ng-repeat="cell in cellsOfCriterium(criterium)">
-				<span>
-					{{cell.value}}
-				</span>
+				{{labelOfCell(criterium, cell)}}
 			</td>
 		</tr>
 	</tbody>
 	<tfoot>
 		<tr>
-			<th class="criterium">Ergebnis</th>
-			<td data-ng-repeat="result in results">
+			<th class="criterium result">Ergebnis</th>
+			<th data-ng-repeat="result in results">
 				{{result.sum}}
-			</td>
+			</th>
 		</tr>
 	</tfoot>
 </table>

@@ -36,8 +36,7 @@
 					<i class="icon-remove"></i>
 				</button>
 			</td>
-			<td data-ng-repeat="cell in cellsOfCriterium(criterium)" class="cell cell-edit">
-				<input type="checkbox" data-ng-model="cell.value" data-ng-change="onChange()" />
+			<td data-ng-repeat="cell in cellsOfCriterium(criterium)" class="cell cell-edit" data-ng-include="templateUrl(criterium)">
 			</td>
 		</tr>
 	</tbody>

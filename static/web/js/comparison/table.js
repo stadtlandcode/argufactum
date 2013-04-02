@@ -3,6 +3,45 @@
 (function(angular, c, _) {
 	var tableModule = angular.module('table', ['ui.bootstrap']);
 
+	c.dataTypes = [{
+		id: 'boolean',
+		label: 'Ja / Nein',
+		getNewCell: function() {
+			return {
+				value: false
+			};
+		},
+		configureExistingCell: function(cell) {
+			cell.value = false;
+			cell.label = '';
+		},
+		labelForCell: function(cell) {
+			return cell.value ? 'Ja' : 'Nein';
+		}
+	}, {
+		id: 'rating',
+		label: 'Bewertung',
+		table: {
+			5: 'sehr gut',
+			4: 'gut',
+			3: 'durchschnittlich',
+			2: 'schlecht',
+			1: 'sehr schlecht'
+		},
+		getNewCell: function() {
+			return {
+				value: 3
+			};
+		},
+		configureExistingCell: function(cell) {
+			cell.value = 3;
+			cell.label = '';
+		},
+		labelForCell: function(cell) {
+			return this.table[cell.value];
+		}
+	}];
+
 	c.table = {
 		load: function(key) {
 			if (localStorage.getItem('ct.' + key)) {
@@ -75,13 +114,11 @@
 				});
 			}, this));
 		},
-		addCellsGeneric: function(cells, xAxisObject, xAxisIdField, yAxis, yAxisIdField) {
+		addCellsGeneric: function(cells, dataTypeFactory, xAxisObject, xAxisIdField, yAxis, yAxisIdField) {
 			var newCells = [];
 			_.each(yAxis, function(yAxisObject) {
-				var cell = {
-					type: 'boolean',
-					value: true
-				};
+				var dataType = dataTypeFactory(yAxisObject);
+				var cell = dataType.getNewCell();
 				cell[xAxisIdField] = xAxisObject.id;
 				cell[yAxisIdField] = yAxisObject.id;
 				newCells.push(cell);
@@ -93,13 +130,23 @@
 				return cell[idField] === id;
 			});
 		},
+		defaultCriterium: function() {
+			return {
+				label: '',
+				dataTypeId: 'boolean'
+			};
+		},
 		addCriterium: function(criterium, data) {
 			criterium = _.extend(criterium, {
 				id: new Date().getTime(),
 				position: this.getNextPosition(data.criteria)
 			});
 			data.criteria.push(criterium);
-			this.addCellsGeneric(data.cells, criterium, 'criteriumId', data.options, 'optionId');
+
+			var dataTypeFactory = _.bind(function() {
+				return this.findDataType(criterium.dataTypeId);
+			}, this);
+			this.addCellsGeneric(data.cells, dataTypeFactory, criterium, 'criteriumId', data.options, 'optionId');
 		},
 		removeCriterium: function(id, data) {
 			c.array.rejectOne(data.criteria, function(criterium) {
@@ -131,15 +178,23 @@
 				label: '',
 				position: this.getNextPosition(data.options)
 			};
-
 			data.options.push(option);
-			this.addCellsGeneric(data.cells, option, 'optionId', data.criteria, 'criteriumId');
+
+			var dataTypeFactory = _.bind(function(criterium) {
+				return this.findDataType(criterium.dataTypeId);
+			}, this);
+			this.addCellsGeneric(data.cells, dataTypeFactory, option, 'optionId', data.criteria, 'criteriumId');
 		},
 		removeOption: function(id, data) {
 			c.array.rejectOne(data.options, function(option) {
 				return option.id === id;
 			});
 			this.removeCellsGeneric(data.cells, 'optionId', id);
+		},
+		findDataType: function(dataTypeId) {
+			return _.find(c.dataTypes, function(dataType) {
+				return dataType.id === dataTypeId;
+			});
 		},
 		isWinner: function(resultCache, option) {
 			var highestRating = _.max(resultCache, function(resultEntry) {
@@ -211,6 +266,13 @@
 		$scope.getOptionClasses = function(option) {
 			return c.table.isWinner(storage.getResultCache(), option) ? 'option comparison-winner' : 'option';
 		};
+		$scope.templateUrl = function(criterium) {
+			return 'partials/comparison/dataType/' + criterium.dataTypeId + '.html';
+		};
+		$scope.labelOfCell = function(criterium, cell) {
+			var dataType = c.table.findDataType(criterium.dataTypeId);
+			return dataType.labelForCell(cell);
+		};
 	}]);
 
 	tableModule.controller('EditTableCtrl', ['$scope', '$dialog', 'storage', function($scope, $dialog, storage) {
@@ -227,9 +289,7 @@
 		};
 
 		$scope.addCriterium = function() {
-			var criterium = {
-				label: ''
-			};
+			var criterium = c.table.defaultCriterium();
 			var handleResult = function(result) {
 				c.table.addCriterium(result, storage.getData());
 				$scope.onChange();
@@ -242,6 +302,9 @@
 		$scope.removeCriterium = function(criterium) {
 			c.table.removeCriterium(criterium.id, storage.getData());
 			$scope.onChange();
+		};
+		$scope.templateUrl = function(criterium) {
+			return 'partials/comparison/dataType/' + criterium.dataTypeId + 'Edit.html';
 		};
 
 		$scope.reset = function() {
@@ -256,6 +319,7 @@
 	tableModule.controller('CriteriumDialogCtrl', ['$scope', 'dialog', 'criterium', function($scope, dialog, criterium) {
 		$scope.criterium = criterium;
 		$scope.edit = criterium.id ? true : false;
+		$scope.dataTypes = c.dataTypes;
 
 		$scope.save = function() {
 			dialog.close($scope.criterium);

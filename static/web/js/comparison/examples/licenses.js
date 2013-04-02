@@ -21,22 +21,18 @@
 		cells: [{
 			optionId: 1,
 			criteriumId: 1,
-			type: 'boolean',
 			value: true
 		}, {
 			optionId: 1,
 			criteriumId: 2,
-			type: 'boolean',
 			value: true
 		}, {
 			optionId: 2,
 			criteriumId: 1,
-			type: 'boolean',
 			value: true
 		}, {
 			optionId: 2,
 			criteriumId: 2,
-			type: 'boolean',
 			value: false
 		}]
 	};

@@ -12,17 +12,26 @@
 	min-width: 208px;
 }
 
+.criterium {
+	width: 203px;
+}
 .ui-slider {
 	max-width: 200px;
+	margin-top: 7px;
 }
 
+.result {
+	background: #d9edf7;
+}
 .comparison-winner {
 	background: #dff0d8 !important;
 }
+
 .actions-above-comparison {
 	margin-bottom: 1em;
 }
-.table-comparison input {
+.table-comparison input,
+.table-comparison select {
 	margin: 0;
 }
 td.cell {
