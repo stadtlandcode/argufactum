@@ -16,7 +16,7 @@
 			dataTypeId: 'boolean'
 		}, {
 			id: 2,
-			label: 'Modifikationen',
+			label: 'Modifikationen dürfen eine andere Lizenz verwenden',
 			position: 2,
 			dataTypeId: 'boolean'
 		}],

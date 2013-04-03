@@ -32,8 +32,8 @@
 			<h1>Argufactum</h1>
 			<p class="lead">(Politische) Entscheidungen vereinfachen und transparenter gestalten</p>
 			<p>
-				<a class="btn btn-primary" href="http://stadtlandcode.de/blog/">Blog</a>
-				<a class="btn" href="https://github.com/stadtlandcode/argufactum">GitHub project</a>
+				<a class="btn btn-primary" href="http://stadtlandcode.de/blog/">Blog</a> <a class="btn" href="https://github.com/stadtlandcode/argufactum">GitHub
+					project</a>
 			</p>
 		</div>
 
@@ -78,6 +78,11 @@
 			Durch eine persönliche Gewichtung der Kriterien kann die rechnerisch beste Alternative ermittelt werden. Die hinterlegten Daten können mit
 			Quellen belegt werden.</p>
 
+		<p>
+			Neben nachfolgendem Beispiel kann mit einem <a href="comparison.html">ersten Prototypen</a> das Erstellen einer eigenen Vergleichstabelle
+			getestet werden.
+		</p>
+
 		<br />
 		<h4>Beispiel: Vergleich von Open-Source Lizenzen</h4>
 
@@ -96,14 +101,12 @@
 			</thead>
 			<tbody>
 				<tr>
-					<th>
-						Copyleft<br />
-						<small>darf mit einem Programm einer anderen Lizenz verlinkt werden</small><br />
-						<select name="criteria-choose" class="criteria-choose" data-toggle="tooltip" title="Was bevorzugen Sie?">
+					<th>Copyleft<br /> <small>darf mit einem Programm einer anderen Lizenz verlinkt werden</small><br /> <select name="criteria-choose"
+						class="criteria-choose" data-toggle="tooltip" title="Was bevorzugen Sie?">
 							<option value="Nein">Nein</option>
 							<option value="Egal" selected="selected">Egal</option>
 							<option value="Ja">Ja</option>
-						</select>
+					</select>
 					</th>
 					<td>Ja</td>
 					<td>Ja</td>
@@ -114,13 +117,12 @@
 					<td>Ja</td>
 				</tr>
 				<tr>
-					<th>
-						Modifikationen dürfen eine andere Lizenz verwenden<br />
-						<select name="criteria-choose" class="criteria-choose" data-toggle="tooltip" title="Was bevorzugen Sie?">
+					<th>Modifikationen dürfen eine andere Lizenz verwenden<br /> <select name="criteria-choose" class="criteria-choose"
+						data-toggle="tooltip" title="Was bevorzugen Sie?">
 							<option>Nein</option>
 							<option selected="selected">Egal</option>
 							<option>Ja</option>
-						</select>
+					</select>
 					</th>
 					<td>Ja</td>
 					<td>Ja</td>
@@ -131,13 +133,12 @@
 					<td>Ja</td>
 				</tr>
 				<tr>
-					<th>
-						Autoren müssen genannt werden<br />
-						<select name="criteria-choose" class="criteria-choose" data-toggle="tooltip" title="Was bevorzugen Sie?">
+					<th>Autoren müssen genannt werden<br /> <select name="criteria-choose" class="criteria-choose" data-toggle="tooltip"
+						title="Was bevorzugen Sie?">
 							<option>Nein</option>
 							<option selected="selected">Egal</option>
 							<option>Ja</option>
-						</select>
+					</select>
 					</th>
 					<td>Nein</td>
 					<td>Nein</td>
@@ -148,13 +149,11 @@
 					<td>Nein</td>
 				</tr>
 				<tr>
-					<th>
-						Kompatibel mit GPL<br />
-						<select name="criteria-choose" class="criteria-choose" data-toggle="tooltip" title="Was bevorzugen Sie?">
+					<th>Kompatibel mit GPL<br /> <select name="criteria-choose" class="criteria-choose" data-toggle="tooltip" title="Was bevorzugen Sie?">
 							<option>Nein</option>
 							<option selected="selected">Egal</option>
 							<option>Ja</option>
-						</select>
+					</select>
 					</th>
 					<td>Ja</td>
 					<td>Ja</td>
@@ -165,14 +164,12 @@
 					<td>Ja</td>
 				</tr>
 				<tr>
-					<th>
-						FSF-konform<br />
-						<small>Free Software Foundation</small><br />
-						<select name="criteria-choose" class="criteria-choose" data-toggle="tooltip" title="Was bevorzugen Sie?">
+					<th>FSF-konform<br /> <small>Free Software Foundation</small><br /> <select name="criteria-choose" class="criteria-choose"
+						data-toggle="tooltip" title="Was bevorzugen Sie?">
 							<option>Nein</option>
 							<option selected="selected">Egal</option>
 							<option>Ja</option>
-						</select>
+					</select>
 					</th>
 					<td>Ja</td>
 					<td>Ja</td>
@@ -183,14 +180,12 @@
 					<td>Ja</td>
 				</tr>
 				<tr>
-					<th>
-						OSI-konform<br />
-						<small>Open Source Initiative</small><br />
-						<select name="criteria-choose" class="criteria-choose" data-toggle="tooltip" title="Was bevorzugen Sie?">
+					<th>OSI-konform<br /> <small>Open Source Initiative</small><br /> <select name="criteria-choose" class="criteria-choose"
+						data-toggle="tooltip" title="Was bevorzugen Sie?">
 							<option>Nein</option>
 							<option selected="selected">Egal</option>
 							<option>Ja</option>
-						</select>
+					</select>
 					</th>
 					<td>Ja</td>
 					<td>Ja</td>
@@ -220,42 +215,292 @@
 		<p>Die Idee hinter dem Fragenkatalog ist, das Konzept der populären Entscheidungshilfen vor anstehenden Wahlen wie den Wahl-O-Mat oder
 			smartvote.ch aufzugreifen und gemeinschaftlich hilfreiche Fragenkataloge zur Entscheidungshilfe auszuarbeiten.</p>
 
+		<p>Konkret könnte dies beispielsweise ein kurzer, neutral gehaltener Fragenkatalog mit den 10 wichtigsten Fragen zu dem jeweiligen Thema
+			sein. Ein Bürger könnte die Fragen für sich beantworten und jede Frage nach persönlicher Relevanz gewichten. Zu jeder Frage würden dabei
+			Fakten eingeblendet werden, die dem Benutzer bei der Entscheidungsfindung helfen.</p>
+
+		<p>Am Ende würde der Benutzer eine Auswertung mit einer anhand der abgegebenen Antworten gebildeten Tendenz für die Abstimmung erhalten.
+			Zusätzlich erhält der Bürger alleine schon durch die Fragen einen Überblick, welche Punkte relevant für die Entscheidung sind.</p>
+
 		<br />
-		<h4>Beispiel: Abitur nach Klasse 12 (G8)</h4>
-		
-		<div class="row-fluid">
-			<div class="span6 well">
-				<form>
-					<p><strong>Teilen Sie die Befürchtungen, dass der Wegfall eines Unterrichtsjahres bei gleichbleibendem Stoffpensum negative Folgen für Eltern, Lehrer und Schüler hat?</strong></p>
-					
-					<br />
-					<label class="radio">
-						<input type="radio" name="optionsRadios" id="optionsRadios1" value="yes">
-						Ja
-					</label>
-					<label class="radio">
-						<input type="radio" name="optionsRadios" id="optionsRadios2" value="no">
-						Nein
-					</label>
-					<label class="radio">
-						<input type="radio" name="optionsRadios" id="optionsRadios3" value="draw">
-						Dazu habe ich keine Meinung
-					</label>
-					
-					<br />
-					<label class="control-label" for="rating">Wie relevant ist für Sie dieser Punkt?</label>
-					<select id="rating" name="rating">
-						<option>sehr relevant</option>
-						<option>durchschnittlich relevant</option>
-						<option>kaum relevant</option>
-					</select>
-					
-					<br /><br />
-					<button type="button" class="btn btn-primary"><i class="icon-ok icon-white"></i> Weiter</button>
-					<button type="button" class="btn"><i class="icon-remove"></i> Überspringen</button>
-				</form>
+		<h4>Beispiel: Fragenkatalog zum Erhalt der Realschule RBS in Grevenbroich</h4>
+
+		<div class="question-container">
+			<div class="row-fluid question">
+				<div class="span6 well">
+					<form>
+						<p>
+							<small>Frage 1 von 7:</small>
+						</p>
+						<p>
+							<strong>Sind Sie der Meinung, dass die Eltern mit dem Wegfall der Realschule RBS eine zu kleine Wahlmöglichkeit zwischen allen
+								Schulformen haben?</strong>
+						</p>
+
+						<br /> <label class="radio"> <input type="radio" name="optionsRadios" id="optionsRadios1" value="yes"> Ja
+						</label> <label class="radio"> <input type="radio" name="optionsRadios" id="optionsRadios2" value="no"> Nein
+						</label> <label class="radio"> <input type="radio" name="optionsRadios" id="optionsRadios3" value="draw"> Dazu habe ich keine
+							Meinung
+						</label> <br /> <label class="control-label" for="rating">Wie relevant ist für Sie dieser Punkt?</label> <select id="rating" name="rating">
+							<option>sehr relevant</option>
+							<option selected="selected">durchschnittlich relevant</option>
+							<option>kaum relevant</option>
+						</select> <br /> <br />
+						<button type="button" class="btn btn-primary answer-question">
+							<i class="icon-ok icon-white"></i> Weiter
+						</button>
+						<button type="button" class="btn skip-question">
+							<i class="icon-remove"></i> Überspringen
+						</button>
+					</form>
+				</div>
+				<div class="span4 well">
+					<p>
+						<strong>Fakten</strong>
+					</p>
+					<ul>
+						<li>Die Eltern hätten nach Wegfall der Realschule RBS noch die Wahl zwischen 1 Realschule, 3 Gymnasien, 2 Gesamtschulen und 1
+							Werkrealschule in Grevenbroich</li>
+					</ul>
+				</div>
+			</div>
+			<div class="row-fluid question" style="display: none">
+				<div class="span6 well">
+					<form>
+						<p>
+							<small>Frage 2 von 7:</small>
+						</p>
+						<p>
+							<strong>Sind Sie der Meinung, dass die Eltern mit dem Wegfall der Realschule RBS eine zu kleine Wahlmöglichkeit zwischen der
+								Nachmittagsbetreuung haben?</strong>
+						</p>
+
+						<br /> <label class="radio"> <input type="radio" name="optionsRadios" id="optionsRadios1" value="yes"> Ja
+						</label> <label class="radio"> <input type="radio" name="optionsRadios" id="optionsRadios2" value="no"> Nein
+						</label> <label class="radio"> <input type="radio" name="optionsRadios" id="optionsRadios3" value="draw"> Dazu habe ich keine
+							Meinung
+						</label> <br /> <label class="control-label" for="rating">Wie relevant ist für Sie dieser Punkt?</label> <select id="rating" name="rating">
+							<option>sehr relevant</option>
+							<option selected="selected">durchschnittlich relevant</option>
+							<option>kaum relevant</option>
+						</select> <br /> <br />
+						<button type="button" class="btn btn-primary answer-question">
+							<i class="icon-ok icon-white"></i> Weiter
+						</button>
+						<button type="button" class="btn skip-question">
+							<i class="icon-remove"></i> Überspringen
+						</button>
+					</form>
+				</div>
+				<div class="span4 well">
+					<p>
+						<strong>Fakten</strong>
+					</p>
+					<ul>
+						<li>Nur die Realschule RBS sowie die zwei Gesamtschulen bieten eine Nachmittagsbetreuung an</li>
+						<li>Die Realschule RBS bietet eine wahlweise Nachmittagsbetreuung für alle Wochentage an.</li>
+						<li>Bei beiden Gesamtschulen in RBS ist der Nachmittagsunterricht verpflichtend. Der Nachmittagsunterricht findet an beiden
+							Gesamtschulen nur an 3 Wochentagen statt.</li>
+					</ul>
+				</div>
+			</div>
+			<div class="row-fluid question" style="display: none">
+				<div class="span6 well">
+					<form>
+						<p>
+							<small>Frage 3 von 7:</small>
+						</p>
+						<p>
+							<strong>Glauben Sie, dass die Anmeldezahlen für die Realschulen in Grevenbroich zukünftig abnehmen?</strong>
+						</p>
+
+						<br /> <label class="radio"> <input type="radio" name="optionsRadios" id="optionsRadios1" value="yes"> Ja
+						</label> <label class="radio"> <input type="radio" name="optionsRadios" id="optionsRadios2" value="no"> Nein
+						</label> <label class="radio"> <input type="radio" name="optionsRadios" id="optionsRadios3" value="draw"> Dazu habe ich keine
+							Meinung
+						</label> <br /> <label class="control-label" for="rating">Wie relevant ist für Sie dieser Punkt?</label> <select id="rating" name="rating">
+							<option>sehr relevant</option>
+							<option selected="selected">durchschnittlich relevant</option>
+							<option>kaum relevant</option>
+						</select> <br /> <br />
+						<button type="button" class="btn btn-primary answer-question">
+							<i class="icon-ok icon-white"></i> Weiter
+						</button>
+						<button type="button" class="btn skip-question">
+							<i class="icon-remove"></i> Überspringen
+						</button>
+					</form>
+				</div>
+				<div class="span4 well">
+					<p>
+						<strong>Fakten</strong>
+					</p>
+					<ul>
+						<li>- hier müsste eine grafische Visualisierung der Anmeldezahlen der letzten Jahre hin -</li>
+						<li>- Studien -</li>
+					</ul>
+				</div>
+			</div>
+			<div class="row-fluid question" style="display: none">
+				<div class="span6 well">
+					<form>
+						<p>
+							<small>Frage 4 von 7:</small>
+						</p>
+						<p>
+							<strong>Halten Sie die geplante Form der schrittweisen Auflösung der Realschule RBS für vertretbar?</strong>
+						</p>
+
+						<br /> <label class="radio"> <input type="radio" name="optionsRadios" id="optionsRadios1" value="yes"> Ja
+						</label> <label class="radio"> <input type="radio" name="optionsRadios" id="optionsRadios2" value="no"> Nein
+						</label> <label class="radio"> <input type="radio" name="optionsRadios" id="optionsRadios3" value="draw"> Dazu habe ich keine
+							Meinung
+						</label> <br /> <label class="control-label" for="rating">Wie relevant ist für Sie dieser Punkt?</label> <select id="rating" name="rating">
+							<option>sehr relevant</option>
+							<option selected="selected">durchschnittlich relevant</option>
+							<option>kaum relevant</option>
+						</select> <br /> <br />
+						<button type="button" class="btn btn-primary answer-question">
+							<i class="icon-ok icon-white"></i> Weiter
+						</button>
+						<button type="button" class="btn skip-question">
+							<i class="icon-remove"></i> Überspringen
+						</button>
+					</form>
+				</div>
+				<div class="span4 well">
+					<p>
+						<strong>Fakten</strong>
+					</p>
+					<ul>
+						<li>Die Schule soll schrittweise geschlossen werden, indem keine neuen Schüler hinzukommen. Entsprechend der abnehmenden Schülerzahl
+							würde auch die Lehrerzahl über die Jahre schrittweise verringert werden.</li>
+						<li>Die Eltern befürchten, dass spätestens nach 2-3 Jahren kaum noch qualifizierte Lehrer für alle Unterrichtsfächer vorhanden sein
+							werden und mit der Zeit ein solcher Notstand eintritt, dass viele Unterrichtsstunden ausfallen und beispielsweise ein Sportlehrer
+							Englischunterricht geben muss.</li>
+						<li>- hier müssten Erfahrungswerte bei anderen Schulschließungen hin -</li>
+					</ul>
+				</div>
+			</div>
+			<div class="row-fluid question" style="display: none">
+				<div class="span6 well">
+					<form>
+						<p>
+							<small>Frage 5 von 7:</small>
+						</p>
+						<p>
+							<strong>Halten Sie die Mehrkosten für den Erhalt der Realschule RBS für vertretbar?</strong>
+						</p>
+
+						<br /> <label class="radio"> <input type="radio" name="optionsRadios" id="optionsRadios1" value="yes"> Ja
+						</label> <label class="radio"> <input type="radio" name="optionsRadios" id="optionsRadios2" value="no"> Nein
+						</label> <label class="radio"> <input type="radio" name="optionsRadios" id="optionsRadios3" value="draw"> Dazu habe ich keine
+							Meinung
+						</label> <br /> <label class="control-label" for="rating">Wie relevant ist für Sie dieser Punkt?</label> <select id="rating" name="rating">
+							<option>sehr relevant</option>
+							<option selected="selected">durchschnittlich relevant</option>
+							<option>kaum relevant</option>
+						</select> <br /> <br />
+						<button type="button" class="btn btn-primary answer-question">
+							<i class="icon-ok icon-white"></i> Weiter
+						</button>
+						<button type="button" class="btn skip-question">
+							<i class="icon-remove"></i> Überspringen
+						</button>
+					</form>
+				</div>
+				<div class="span4 well">
+					<p>
+						<strong>Fakten</strong>
+					</p>
+					<ul>
+						<li>Für den Erhalt der Realschule fallen Mehrkosten von 400.000 Euro verteilt über 5 Jahre an</li>
+						<li>Die Kosten für einen Schüler je Schuljahr betragen bei der Realschule 400 Euro, bei der neuen Gesamtschule 1200 Euro</li>
+					</ul>
+				</div>
+			</div>
+			<div class="row-fluid question" style="display: none">
+				<div class="span6 well">
+					<form>
+						<p>
+							<small>Frage 6 von 7:</small>
+						</p>
+						<p>
+							<strong>Sind Sie dafür, dass die Stadt weitere Optionen als die Auflösung der Realschule RBS prüfen muss?</strong>
+						</p>
+
+						<br /> <label class="radio"> <input type="radio" name="optionsRadios" id="optionsRadios1" value="yes"> Ja
+						</label> <label class="radio"> <input type="radio" name="optionsRadios" id="optionsRadios2" value="no"> Nein
+						</label> <label class="radio"> <input type="radio" name="optionsRadios" id="optionsRadios3" value="draw"> Dazu habe ich keine
+							Meinung
+						</label> <br /> <label class="control-label" for="rating">Wie relevant ist für Sie dieser Punkt?</label> <select id="rating" name="rating">
+							<option>sehr relevant</option>
+							<option selected="selected">durchschnittlich relevant</option>
+							<option>kaum relevant</option>
+						</select> <br /> <br />
+						<button type="button" class="btn btn-primary answer-question">
+							<i class="icon-ok icon-white"></i> Weiter
+						</button>
+						<button type="button" class="btn skip-question">
+							<i class="icon-remove"></i> Überspringen
+						</button>
+					</form>
+				</div>
+				<div class="span4 well">
+					<p>
+						<strong>Fakten</strong>
+					</p>
+					<ul>
+						<li>Die Stadt hat bisher nur die Option zur Auflösung der Realschule RBS geprüft. Alternativen wurden nicht berücksichtigt. (<em>Quelle fehlt</em>)</li>
+					</ul>
+				</div>
+			</div>
+			<div class="row-fluid question" style="display: none">
+				<div class="span6 well">
+					<form>
+						<p>
+							<small>Frage 7 von 7:</small>
+						</p>
+						<p>
+							<strong>Halten Sie die Realschule RBS für besonders erhaltenswert?</strong>
+						</p>
+
+						<br /> <label class="radio"> <input type="radio" name="optionsRadios" id="optionsRadios1" value="yes"> Ja
+						</label> <label class="radio"> <input type="radio" name="optionsRadios" id="optionsRadios2" value="no"> Nein
+						</label> <label class="radio"> <input type="radio" name="optionsRadios" id="optionsRadios3" value="draw"> Dazu habe ich keine
+							Meinung
+						</label> <br /> <label class="control-label" for="rating">Wie relevant ist für Sie dieser Punkt?</label> <select id="rating" name="rating">
+							<option>sehr relevant</option>
+							<option selected="selected">durchschnittlich relevant</option>
+							<option>kaum relevant</option>
+						</select> <br /> <br />
+						<button type="button" class="btn btn-primary answer-question">
+							<i class="icon-ok icon-white"></i> Weiter
+						</button>
+						<button type="button" class="btn skip-question">
+							<i class="icon-remove"></i> Überspringen
+						</button>
+					</form>
+				</div>
+				<div class="span4 well">
+					<p>
+						<strong>Fakten</strong>
+					</p>
+					<ul>
+						<li>Die Realschule RBS wurde im Sommer 2012 von Ministerpräsidentin Hannelore Kraft als eine der herausragenden Schulen in NRW
+							ausgezeichnet</li>
+						<li>Das Förderkonzept zur individuellen Förderung sowie die Profilklassen sichern mit einem bewährten und verlässlichen Angebot
+							erfolgreiche Schulabschlüsse.</li>
+					</ul>
+				</div>
 			</div>
 		</div>
+
+		<p>
+			<small>Dieser Fragenkatalog wurde in Zusammenarbeit mit der Bürgerinitiative <a href="http://rettet-die-rbs.de/">Rettet die RBS</a>
+				erstellt. Die Fakten sind derzeit noch exemplarisch.
+			</small>
+		</p>
 
 		<hr>
 
@@ -274,12 +519,13 @@
 
 		<div class="footer">
 			<p>
-				Impressum: Argufactum ist ein Projekt von <a href="https://twitter.com/femeb">Felix Ebert</a>, Ganzhornstr. 34, 74172 Neckarsulm, Tel. 07136 830 26 30
+				Impressum: Argufactum ist ein Projekt von <a href="https://twitter.com/femeb">Felix Ebert</a>, Ganzhornstr. 34, 74172 Neckarsulm, Tel. 07136
+				830 26 30
 			</p>
 			<p>Gefördert von:</p>
 			<p>
-				<a href="http://stadtlandcode.de"><img src="img/stadtlandcode.png" title="StadtLandCode" /></a>
-				<a href="http://okfn.de/"><img src="img/okfn.jpg" title="Open Knowledge Foundation Deutschland" /></a>
+				<a href="http://stadtlandcode.de"><img src="img/stadtlandcode.png" title="StadtLandCode" /></a> <a href="http://okfn.de/"><img
+					src="img/okfn.jpg" title="Open Knowledge Foundation Deutschland" /></a>
 			</p>
 		</div>
 	</div>
@@ -287,10 +533,12 @@
 	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 	<script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
 	<script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/js/bootstrap.min.js"></script>
+	<script src="js/survey.js"></script>
 	<script src="js/comparisonTable.js"></script>
 	<script type="text/javascript">
 		$(function() {
-		 	comparisonTable.init();
+			comparisonTable.init();
+			survey.init();
 		});
 	</script>
 </body>

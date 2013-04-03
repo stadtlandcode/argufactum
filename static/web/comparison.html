@@ -1,22 +1,53 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<meta charset="utf-8" />
-	<link href="css/bootstrap.css" rel="stylesheet" />
-	<link href="css/bootstrap-responsive.css" rel="stylesheet" />
-	<link href="css/jquery-ui.css" rel="stylesheet" />
-	<link href="css/comparison.css" rel="stylesheet" />
-	<title>Argufactum - Vergleichstabelle</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta charset="utf-8" />
+<link href="css/bootstrap.css" rel="stylesheet" />
+<link href="css/bootstrap-responsive.css" rel="stylesheet" />
+<link href="css/jquery-ui.css" rel="stylesheet" />
+<link href="css/comparison.css" rel="stylesheet" />
+<title>Argufactum - Vergleichstabelle Prototyp</title>
 </head>
 <body data-ng-app="ct">
 	<div class="navbar">
 		<div class="navbar-inner">
-			<span class="brand">Argufactum Vergleichstabelle</span>
+			<span class="brand">Argufactum - Vergleichstabelle Prototyp</span>
 		</div>
 	</div>
 
-	<div class="container" data-ng-view></div>
+	<div class="container">
+		<div class="alert alert-info"><i class="icon-info-sign"></i> Dieser Prototyp befindet sich noch in einer frühen Entwicklungsphase. Aktuell können Kriterien und
+			Alternativen hinzugefügt, bearbeitet und entfernt werden sowie grundlegende Datentypen ausgewählt werden. Daneben ist die Gewichtung und
+			Auswertung der Daten funktionsfähig. Die Daten werden im LocalStorage gespeichert.</div>
+
+		<div data-ng-view></div>
+		
+		<br /><br />
+
+		<div class="well">
+			<p><strong>Die nächsten geplanten Features sind:</strong></p>
+			<ul>
+				<li> Speicherung der Vergleichstabelle unter einer eindeutigen ID auf einem Server, um die Vergleichstabelle teilen zu können</li>
+				<li> Integration weiterer grundlegender Datentypen wie Zahlen und Freitext</li>
+				<li> Auswahl der eigenen Präferenz je Kriterium ("was ist gewünscht?")</li>
+			</ul>
+		</div>
+		
+		<hr>
+		
+		<div class="footer">
+			<p>
+				Impressum: Argufactum ist ein Projekt von <a href="https://twitter.com/femeb">Felix Ebert</a>, Ganzhornstr. 34, 74172 Neckarsulm, Tel. 07136
+				830 26 30
+			</p>
+			<p>Gefördert von:</p>
+			<p>
+				<a href="http://stadtlandcode.de"><img src="img/stadtlandcode.png" title="StadtLandCode" /></a> <a href="http://okfn.de/"><img
+					src="img/okfn.jpg" title="Open Knowledge Foundation Deutschland" /></a>
+			</p>
+		</div>
+	</div>
 
 	<script src="lib/angular/angular.js"></script>
 	<script src="lib/angular/angular-resource.js"></script>
