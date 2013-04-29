@@ -1,0 +1,56 @@
+<div class="page-header">
+	<h2>Fragenkatalog erstellen</h2>
+</div>
+
+<form class="form-horizontal">
+		<p>
+			<label>Thema des Fragenkatalogs</label>
+			<input type="text" name="title" data-ng-model="model.title">
+		</p>
+		
+		<p>
+			<label class="checkbox">
+				<input type="checkbox" name="public" data-ng-model="model.isPublic" /> öffentlich
+			</label>
+		</p>
+	
+	<fieldset>
+		<legend>Fragen</legend>
+		
+		<ol>
+			<li data-ng-repeat="question in model.questions | orderBy: 'number'">
+				<input type="text" name="question" data-ng-model="question.text" />
+				<br />
+				
+				Welche Antwort befürwortet das Thema?
+				<select data-ng-model="question.supports">
+					<option value="NO">Nein</option>
+					<option value="YES">Ja</option>
+				</select>
+				<br />
+				
+				Fakten: <i class="icon-plus" data-ng-click="addFact(question)"></i>
+				<br />
+				<ul>
+					<li data-ng-repeat="fact in question.facts | orderBy: 'number'">
+						<input type="text" name="fact" data-ng-model="fact.text" />
+					</li>
+				</ul>
+				<br />
+			</li>
+		</ol>
+		
+		<button type="button" class="btn" data-ng-click="addQuestion()">
+			<i class="icon-plus"></i>
+			Frage hinzufügen
+		</button>
+	</fieldset>
+	
+	<br /><br />
+	<p>
+		<button type="submit" class="btn btn-primary" data-ng-click="save()">
+			<i class="icon-check icon-white"></i>
+			Fragenkatalog erstellen
+		</button>
+	</p>
+</form>

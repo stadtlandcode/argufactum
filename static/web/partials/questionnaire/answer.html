@@ -1,0 +1,47 @@
+<div class="page-header">
+	<h2>{{questionnaire.title}}</h2>
+</div>
+
+<div class="row-fluid question">
+	<div class="span6 well">
+		<form>
+			<p>
+				<small>Frage {{question.number}} von {{questionnaire.questions.length}}:</small>
+			</p>
+			<p>
+				<strong>{{question.text}}</strong>
+			</p>
+
+			<br />
+			<label class="radio"> <input type="radio" name="optionsRadios" value="YES" data-ng-model="answer.choice"> Ja</label>
+			<label class="radio"> <input type="radio" name="optionsRadios" value="NO" data-ng-model="answer.choice"> Nein</label>
+			<label class="radio"> <input type="radio" name="optionsRadios" value="DRAW" data-ng-model="answer.choice"> Dazu habe ich keine Meinung</label>
+			
+			<br />
+			<label class="control-label" for="rating">Wie relevant ist für Sie dieser Punkt?</label>
+			<select id="rating" name="rating" data-ng-model="answer.relevance">
+				<option value="HIGH">sehr relevant</option>
+				<option value="AVERAGE">durchschnittlich relevant</option>
+				<option value="LOW">kaum relevant</option>
+			</select>
+			
+			<br /> <br />
+			<button type="button" class="btn btn-primary" data-ng-show="answer.choice.length > 0" data-ng-click="saveAnswer()">
+				<i class="icon-ok icon-white"></i> Weiter
+			</button>
+			<button type="button" class="btn" data-ng-click="forward()">
+				<i class="icon-remove"></i> Überspringen
+			</button>
+		</form>
+	</div>
+	<div class="span4 well">
+		<p>
+			<strong>Fakten</strong>
+		</p>
+		<ul>
+			<li data-ng-repeat="fact in question.facts | orderBy: 'number'">
+				{{fact.text}}
+			</li>
+		</ul>
+	</div>
+</div>
