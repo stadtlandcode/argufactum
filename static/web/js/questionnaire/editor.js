@@ -80,6 +80,10 @@
 			storage.saveModel($scope.model);
 			$location.path('/create/success');
 		};
+		$scope.exportJson = function() {
+			var text = angular.toJson($scope.model);
+			window.prompt("Copy to clipboard: Ctrl+C, Enter", text);
+		};
 	});
 
 	editorModule.controller('QuestionDialogCtrl', function($scope, dialog, question, questions) {
