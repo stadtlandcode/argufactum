@@ -1,19 +1,52 @@
 <div class="page-header">
 	<h2>Auswertung Ihrer Antworten</h2>
-	<small>zum Thema: {{questionnaire.title}}</small>
 </div>
 
-<p>Sie haben</p>
+<h4>{{questionnaire.title}}</h4>
 
-<ul>
-	<li>{{analysis.positive}} Fragen befürwortend</li>
-	<li>{{analysis.negative}} Fragen ablehnend</li>
-	<li>{{analysis.neutral}} Fragen neutral</li>
-</ul>
+<div class="row">
+	<div class="span5">
+		<div class="chart">
+			<awesomechart type="doughnut" id='chart1' width="450" height="450" data="model.chart"></awesomechart>
+		</div>
+	</div>
+	<div class="span7">
+		<p>Sie haben</p>
+		
+		<ul>
+			<li class="text-success"><strong>{{model.numbers.positive}}</strong> Fragen zustimmend</li>
+			<li class="text-error"><strong>{{model.numbers.negative}}</strong> Fragen ablehnend</li>
+			<li class="muted"><strong>{{model.numbers.neutral}}</strong> Fragen neutral</li>
+			<li class="muted"><strong>{{model.numbers.notAnswered}}</strong> Fragen nicht</li>
+		</ul>
+		
+		<p>beantwortet</p>
+	</div>
+</div>
 
-<p>beantwortet</p>
+<div class="row">
+	<div class="span8">
+		<h4>Ihre Antworten:</h4>
+		<ol>
+			<li data-ng-repeat="answer in model.answers | orderBy: 'question.number'">
+				{{answer.question.text}}
+				<br />
+				Ihre Antwort:
+				<span data-ng-class="cssClassForAnswer(answer)">
+					{{answer.label}}
+				</span>
+				<br /><br />
+			</li>
+		</ol>
+	</div>
+</div>
 
 <br />
 <p>
-	<a href="#/start" class="btn btn-primary">Zur Übersicht</a>
+	<a href="#/start" class="btn btn-primary">
+		<i class="icon-home icon-white"></i>
+		Zur Übersicht
+	</a>
 </p>
+
+<br clear="right" /><br />

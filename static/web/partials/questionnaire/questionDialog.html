@@ -1,0 +1,46 @@
+<form class="form-horizontal dialog-form">
+	<div class="modal-header">
+		<button type="button" class="close" data-ng-click="close()">&times;</button>
+		<h3>Frage bearbeiten</h3>
+	</div>
+	
+	<div class="modal-body">
+		<p>
+			<label>Frage</label>
+			<input type="text" name="question" autofocus="autofocus" class="input-block-level" data-ng-model="question.text" placeholder="z.B. Sind Sie der Meinung, dass die Umweltbelastung zu hoch ist?" />
+		</p>
+		
+		<p>
+			<label>Art der Fragenstellung <i class="icon-info-sign" data-tooltip='Die Antwort "Ja" gilt bei einer befürwortenden Frage als Zustimmung. Umgekehrt gilt die Antwort "Ja" bei einer bestreitenden Frage als Ablehnung.'></i></label>
+			<select data-ng-model="question.supports">
+				<option value="NO">Bestreitende Frage</option>
+				<option value="YES">Befürwortende Frage</option>
+			</select>
+		</p>
+		
+		<p>
+			Begleitinformationen / Fakten:
+		</p>
+		<ol class="facts-editor">
+			<li data-ng-repeat="fact in question.facts | orderBy: 'number'" class="editable-fact">
+				<input type="text" name="fact" data-ng-model="fact.text" />
+				<i class="icon-remove clickable" data-ng-click="removeFact(fact)"></i>
+			</li>
+		</ol>
+		
+		<button type="button" class="btn" data-ng-click="addFact(question)">
+			<i class="icon-plus"></i> Information hinzufügen
+		</button>
+	</div>
+	
+	<div class="modal-footer">
+		<button type="submit" class="btn btn-primary" data-ng-click="close()">
+			<i class="icon-ok icon-white"></i>
+			Speichern
+		</button>
+		<button type="submit" class="btn btn-danger" data-ng-click="remove()">
+			<i class="icon-remove icon-white"></i>
+			Frage löschen
+		</button>
+	</div>
+</form>

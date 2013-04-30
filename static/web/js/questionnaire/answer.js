@@ -9,7 +9,7 @@
 		getEmpty: function(question) {
 			return {
 				'question': question.number,
-				'choice': '',
+				'choice': null,
 				'relevance': 'AVERAGE'
 			};
 		},
@@ -21,6 +21,9 @@
 			return _.find(questions, function(question) {
 				return question.number == numberOfNextQuestion;
 			});
+		},
+		getProgress: function(numberOfQuestions) {
+			return Math.round((q.answers.length + 1) / numberOfQuestions * 100);
 		}
 	};
 
@@ -28,10 +31,17 @@
 		$scope.questionnaire = storage.getModel();
 		$scope.question = $scope.questionnaire.questions[0];
 		$scope.answer = q.answer.getEmpty($scope.question);
+		$scope.progress = function() {
+			return q.answer.getProgress($scope.questionnaire.questions.length);
+		};
 
 		$scope.saveAnswer = function() {
 			q.answer.save($scope.answer);
 			$scope.forward();
+		};
+		$scope.skip = function() {
+			$scope.answer.choice = null;
+			$scope.saveAnswer();
 		};
 		$scope.forward = function() {
 			$scope.question = q.answer.getNextQuestion($scope.answer, $scope.questionnaire.questions);

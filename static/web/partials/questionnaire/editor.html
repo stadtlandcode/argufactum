@@ -2,55 +2,76 @@
 	<h2>Fragenkatalog erstellen</h2>
 </div>
 
-<form class="form-horizontal">
-		<p>
-			<label>Thema des Fragenkatalogs</label>
-			<input type="text" name="title" data-ng-model="model.title">
-		</p>
-		
-		<p>
-			<label class="checkbox">
-				<input type="checkbox" name="public" data-ng-model="model.isPublic" /> öffentlich
-			</label>
-		</p>
-	
-	<fieldset>
-		<legend>Fragen</legend>
-		
-		<ol>
-			<li data-ng-repeat="question in model.questions | orderBy: 'number'">
-				<input type="text" name="question" data-ng-model="question.text" />
-				<br />
+<div class="row">
+	<div class="span8">
+		<form class="form-horizontal">
+			<p>
+				<label><strong>Thema des Fragenkatalogs</strong></label>
+				<input type="text" name="title" class="input-xxlarge" data-ng-model="model.title" placeholder="z.B. Stuttgart 21">
+			</p>
+			
+			<br />
+			<table class="table table-bordered questionniare-table">
+				<thead>
+					<tr>
+						<th>Befürwortende Fragen</th>
+						<th>Bestreitende Fragen</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<ol data-ng-show="model.questions.length > 0">
+								<li data-ng-repeat="question in model.questions | filter: {supports: 'YES'} | orderBy: 'number'">
+									{{question.text}}
+									(<span class="muted" data-ng-pluralize data-count="question.facts.length" data-when="{1: '1 Fakt', other: '{} Fakten'}"></span>)
+									<i class="icon-pencil clickable" data-ng-click="editQuestion(question)"></i>
+									<i class="icon-remove clickable" data-ng-click="removeQuestion(question)"></i>
+								</li>
+							</ol>
+							<span data-ng-show="(model.questions | filter: {supports: 'YES'}).length < 1">Fügen Sie die 1. Frage hinzu!</span>
+						</td>
+						<td>
+							<ol data-ng-show="model.questions.length > 0">
+								<li data-ng-repeat="question in model.questions | filter: {supports: 'NO'} | orderBy: 'number'">
+									{{question.text}} 
+									(<span class="muted" data-ng-pluralize data-count="question.facts.length" data-when="{1: '1 Fakt', other: '{} Fakten'}"></span>)
+									<i class="icon-pencil clickable" data-ng-click="editQuestion(question)"></i>
+									<i class="icon-remove clickable" data-ng-click="removeQuestion(question)"></i>
+								</li>
+							</ol>
+							<span data-ng-show="(model.questions | filter: {supports: 'NO'}).length < 1">Fügen Sie die 1. Frage hinzu!</span>
+						</td>
+					</tr>
+				</tbody>
+			</table>
 				
-				Welche Antwort befürwortet das Thema?
-				<select data-ng-model="question.supports">
-					<option value="NO">Nein</option>
-					<option value="YES">Ja</option>
-				</select>
-				<br />
-				
-				Fakten: <i class="icon-plus" data-ng-click="addFact(question)"></i>
-				<br />
-				<ul>
-					<li data-ng-repeat="fact in question.facts | orderBy: 'number'">
-						<input type="text" name="fact" data-ng-model="fact.text" />
-					</li>
-				</ul>
-				<br />
-			</li>
-		</ol>
-		
-		<button type="button" class="btn" data-ng-click="addQuestion()">
-			<i class="icon-plus"></i>
-			Frage hinzufügen
-		</button>
-	</fieldset>
-	
-	<br /><br />
-	<p>
-		<button type="submit" class="btn btn-primary" data-ng-click="save()">
-			<i class="icon-check icon-white"></i>
-			Fragenkatalog erstellen
-		</button>
-	</p>
-</form>
+			<button type="button" class="btn" data-ng-click="addQuestion()">
+				<i class="icon-plus"></i>
+				Frage hinzufügen
+			</button>
+			
+			<p><br /></p><br />
+			<p>
+				<button type="submit" class="btn btn-primary" data-ng-click="save()">
+					<i class="icon-check icon-white"></i>
+					Fragenkatalog erstellen
+				</button>
+			</p>
+		</form>
+	</div>
+	<div class="span4">
+		<div class="well">
+			<p>
+				Bitte beachten Sie folgende Hinweise:
+			</p>
+			
+			<ul>
+				<li>Wählen Sie ein Thema, dem man zustimmen oder widersprechen kann (z.B. Stuttgart 21, 3. Startbahn Flughafen München)</li>
+				<li>Stellen Sie nur <strong><a href="https://de.wikipedia.org/wiki/Entscheidungsfrage" target="_blank">Entscheidungsfragen</a></strong> - also Fragen, auf die man nur mit <em>Ja</em> oder <em>Nein</em> antworten kann</li>
+				<li>Formulieren Sie die Fragen möglichst <strong>kurz und verständlich</strong></li>
+				<li>Achten Sie auf eine <strong>neutrale Formulierung</strong>. <a href="http://de.wikipedia.org/wiki/Suggestivfrage" target="_blank">Suggestivfragen</a> sind unerwünscht.</li>
+			</ul>
+		</div>
+	</div>
+</div>

@@ -1,4 +1,91 @@
-angular.module("ui.bootstrap", ["ui.bootstrap.dialog", "ui.bootstrap.modal", "ui.bootstrap.transition"]);
+angular.module("ui.bootstrap", ["ui.bootstrap.tpls", "ui.bootstrap.dialog", "ui.bootstrap.popover"]);
+angular.module("ui.bootstrap.tpls", ["template/dialog/message.html", "template/popover/popover.html"]);
+angular.module('ui.bootstrap.position', [])
+
+/**
+ * A set of utility methods that can be use to retrieve position of DOM
+ * elements. It is meant to be used where we need to absolute-position DOM
+ * elements in relation to other, existing elements (this is the case for
+ * tooltips, popovers, typeahead suggestions etc.).
+ */
+.factory('$position', ['$document', '$window', function($document, $window) {
+
+	function getStyle(el, cssprop) {
+		if (el.currentStyle) { // IE
+			return el.currentStyle[cssprop];
+		} else if ($window.getComputedStyle) {
+			return $window.getComputedStyle(el)[cssprop];
+		}
+		// finally try and get inline style
+		return el.style[cssprop];
+	}
+
+	/**
+	 * Checks if a given element is statically positioned
+	 * 
+	 * @param element -
+	 *            raw DOM element
+	 */
+	function isStaticPositioned(element) {
+		return (getStyle(element, "position") || 'static') === 'static';
+	}
+
+	/**
+	 * returns the closest, non-statically positioned parentOffset of a given
+	 * element
+	 * 
+	 * @param element
+	 */
+	var parentOffsetEl = function(element) {
+		var docDomEl = $document[0];
+		var offsetParent = element.offsetParent || docDomEl;
+		while (offsetParent && offsetParent !== docDomEl && isStaticPositioned(offsetParent)) {
+			offsetParent = offsetParent.offsetParent;
+		}
+		return offsetParent || docDomEl;
+	};
+
+	return {
+		/**
+		 * Provides read-only equivalent of jQuery's position function:
+		 * http://api.jquery.com/position/
+		 */
+		position: function(element) {
+			var elBCR = this.offset(element);
+			var offsetParentBCR = {
+				top: 0,
+				left: 0
+			};
+			var offsetParentEl = parentOffsetEl(element[0]);
+			if (offsetParentEl != $document[0]) {
+				offsetParentBCR = this.offset(angular.element(offsetParentEl));
+				offsetParentBCR.top += offsetParentEl.clientTop;
+				offsetParentBCR.left += offsetParentEl.clientLeft;
+			}
+
+			return {
+				width: element.prop('offsetWidth'),
+				height: element.prop('offsetHeight'),
+				top: elBCR.top - offsetParentBCR.top,
+				left: elBCR.left - offsetParentBCR.left
+			};
+		},
+
+		/**
+		 * Provides read-only equivalent of jQuery's offset function:
+		 * http://api.jquery.com/offset/
+		 */
+		offset: function(element) {
+			var boundingClientRect = element[0].getBoundingClientRect();
+			return {
+				width: element.prop('offsetWidth'),
+				height: element.prop('offsetHeight'),
+				top: boundingClientRect.top + ($window.pageYOffset || $document[0].body.scrollTop),
+				left: boundingClientRect.left + ($window.pageXOffset || $document[0].body.scrollLeft)
+			};
+		}
+	};
+}]);
 
 // The `$dialogProvider` can be used to configure global defaults for your
 // `$dialog` service.
@@ -63,21 +150,20 @@ dialogModule.provider("$dialog", function() {
 			}
 
 			// The `Dialog` class represents a modal dialog. The dialog class
-			// can be
-			// invoked by providing an options object
+			// can be invoked by providing an options object
 			// containing at lest template or templateUrl and controller:
 			//
 			// var d = new Dialog({templateUrl: 'foo.html', controller:
 			// 'BarController'});
 			//
 			// Dialogs can also be created using templateUrl and controller as
-			// distinct
-			// arguments:
+			// distinct arguments:
 			//
 			// var d = new Dialog('path/to/dialog.html', MyDialogController);
 			function Dialog(opts) {
 
 				var self = this, options = this.options = angular.extend({}, defaults, globalOptions, opts);
+				this._open = false;
 
 				this.backdropEl = createElement(options.backdropClass);
 				if (options.backdropFade) {
@@ -114,8 +200,7 @@ dialogModule.provider("$dialog", function() {
 
 			// The `open(templateUrl, controller)` method opens the dialog.
 			// Use the `templateUrl` and `controller` arguments if specifying
-			// them at
-			// dialog creation time is not desired.
+			// them at dialog creation time is not desired.
 			Dialog.prototype.open = function(templateUrl, controller) {
 				var self = this, options = this.options;
 
@@ -162,8 +247,7 @@ dialogModule.provider("$dialog", function() {
 			};
 
 			// closes the dialog and resolves the promise returned by the `open`
-			// method
-			// with the specified result.
+			// method with the specified result.
 			Dialog.prototype.close = function(result) {
 				var self = this;
 				var fadingElements = this._getFadingElements();
@@ -291,24 +375,19 @@ dialogModule.provider("$dialog", function() {
 					return new Dialog(opts);
 				},
 				// creates a new `Dialog` tied to the default message box
-				// template and
-				// controller.
+				// template and controller.
 				//
 				// Arguments `title` and `message` are rendered in the modal
-				// header and
-				// body sections respectively.
+				// header and body sections respectively.
 				// The `buttons` array holds an object with the following
-				// members for
-				// each button to include in the
+				// members for each button to include in the
 				// modal footer section:
 				//
 				// * `result`: the result to pass to the `close` method of the
-				// dialog
-				// when the button is clicked
+				// dialog when the button is clicked
 				// * `label`: the label of the button
 				// * `cssClass`: additional css class(es) to apply to the button
-				// for
-				// styling
+				// for styling
 				messageBox: function(title, message, buttons) {
 					return new Dialog({
 						templateUrl: 'template/dialog/message.html',
@@ -328,60 +407,26 @@ dialogModule.provider("$dialog", function() {
 		}];
 });
 
-angular.module('ui.bootstrap.modal', ['ui.bootstrap.dialog']).directive('modal', ['$parse', '$dialog', function($parse, $dialog) {
-	var backdropEl;
-	var body = angular.element(document.getElementsByTagName('body')[0]);
+/**
+ * The following features are still outstanding: popup delay, animation as a
+ * function, placement as a function, inside, support for more triggers than
+ * just mouse enter/leave, html popovers, and selector delegatation.
+ */
+angular.module('ui.bootstrap.popover', ['ui.bootstrap.tooltip']).directive('popoverPopup', function() {
 	return {
 		restrict: 'EA',
-		terminal: true,
-		link: function(scope, elm, attrs) {
-			var opts = angular.extend({}, scope.$eval(attrs.uiOptions || attrs.bsOptions || attrs.options));
-			var shownExpr = attrs.modal || attrs.show;
-			var setClosed;
-
-			// Create a dialog with the template as the contents of the
-			// directive
-			// Add the current scope as the resolve in order to make the
-			// directive
-			// scope as a dialog controller scope
-			opts = angular.extend(opts, {
-				template: elm.html(),
-				resolve: {
-					$scope: function() {
-						return scope;
-					}
-				}
-			});
-			var dialog = $dialog.dialog(opts);
-
-			elm.remove();
-
-			if (attrs.close) {
-				setClosed = function() {
-					$parse(attrs.close)(scope);
-				};
-			} else {
-				setClosed = function() {
-					if (angular.isFunction($parse(shownExpr).assign)) {
-						$parse(shownExpr).assign(scope, false);
-					}
-				};
-			}
-
-			scope.$watch(shownExpr, function(isShown, oldShown) {
-				if (isShown) {
-					dialog.open().then(function() {
-						setClosed();
-					});
-				} else {
-					// Make sure it is not opened
-					if (dialog.isOpen()) {
-						dialog.close();
-					}
-				}
-			});
-		}
+		replace: true,
+		scope: {
+			title: '@',
+			content: '@',
+			placement: '@',
+			animation: '&',
+			isOpen: '&'
+		},
+		templateUrl: 'template/popover/popover.html'
 	};
+}).directive('popover', ['$compile', '$timeout', '$parse', '$window', '$tooltip', function($compile, $timeout, $parse, $window, $tooltip) {
+	return $tooltip('popover', 'popover', 'click');
 }]);
 
 angular.module('ui.bootstrap.transition', [])
@@ -419,8 +464,7 @@ angular.module('ui.bootstrap.transition', [])
 		}
 
 		// Wrap in a timeout to allow the browser time to update the DOM before
-		// the
-		// transition is to occur
+		// the transition is to occur
 		$timeout(function() {
 			if (angular.isString(trigger)) {
 				element.addClass(trigger);
@@ -437,8 +481,7 @@ angular.module('ui.bootstrap.transition', [])
 
 		// Add our custom cancel function to the promise that is returned
 		// We can call this if we are about to run a new transition, which we
-		// know
-		// will prevent this transition from ending,
+		// know will prevent this transition from ending,
 		// i.e. it will therefore never raise a transitionEnd event for that
 		// transition
 		deferred.promise.cancel = function() {
@@ -457,14 +500,12 @@ angular.module('ui.bootstrap.transition', [])
 		'WebkitTransition': 'webkitTransitionEnd',
 		'MozTransition': 'transitionend',
 		'OTransition': 'oTransitionEnd',
-		'msTransition': 'MSTransitionEnd',
 		'transition': 'transitionend'
 	};
 	var animationEndEventNames = {
 		'WebkitTransition': 'webkitAnimationEnd',
 		'MozTransition': 'animationend',
 		'OTransition': 'oAnimationEnd',
-		'msTransition': 'MSAnimationEnd',
 		'transition': 'animationend'
 	};
 	function findEndEventName(endEventNames) {
@@ -478,3 +519,325 @@ angular.module('ui.bootstrap.transition', [])
 	$transition.animationEndEventName = findEndEventName(animationEndEventNames);
 	return $transition;
 }]);
+
+/**
+ * The following features are still outstanding: animation as a function,
+ * placement as a function, inside, support for more triggers than just mouse
+ * enter/leave, html tooltips, and selector delegation.
+ */
+angular.module('ui.bootstrap.tooltip', ['ui.bootstrap.position'])
+
+/**
+ * The $tooltip service creates tooltip- and popover-like directives as well as
+ * houses global options for them.
+ */
+.provider(
+		'$tooltip',
+		function() {
+			// The default options tooltip and popover.
+			var defaultOptions = {
+				placement: 'top',
+				animation: true,
+				popupDelay: 0
+			};
+
+			// The options specified to the provider globally.
+			var globalOptions = {};
+
+			/**
+			 * `options({})` allows global configuration of all tooltips in the
+			 * application.
+			 * 
+			 * var app = angular.module( 'App', ['ui.bootstrap.tooltip'],
+			 * function( $tooltipProvider ) { // place tooltips left instead of
+			 * top by default $tooltipProvider.options( { placement: 'left' } );
+			 * });
+			 */
+			this.options = function(value) {
+				angular.extend(globalOptions, value);
+			};
+
+			/**
+			 * This is a helper function for translating camel-case to
+			 * snake-case.
+			 */
+			function snake_case(name) {
+				var regexp = /[A-Z]/g;
+				var separator = '-';
+				return name.replace(regexp, function(letter, pos) {
+					return (pos ? separator : '') + letter.toLowerCase();
+				});
+			}
+
+			/**
+			 * Returns the actual instance of the $tooltip service. TODO support
+			 * multiple triggers
+			 */
+			this.$get = [
+				'$window',
+				'$compile',
+				'$timeout',
+				'$parse',
+				'$document',
+				'$position',
+				function($window, $compile, $timeout, $parse, $document, $position) {
+					return function $tooltip(type, prefix, defaultTriggerShow, defaultTriggerHide) {
+						var options = angular.extend({}, defaultOptions, globalOptions);
+						var directiveName = snake_case(type);
+
+						var template = '<' + directiveName + '-popup ' + 'title="{{tt_title}}" ' + 'content="{{tt_content}}" '
+								+ 'placement="{{tt_placement}}" ' + 'animation="tt_animation()" ' + 'is-open="tt_isOpen"' + '>' + '</' + directiveName
+								+ '-popup>';
+
+						return {
+							restrict: 'EA',
+							scope: true,
+							link: function link(scope, element, attrs) {
+								var tooltip = $compile(template)(scope);
+								var transitionTimeout;
+								var popupTimeout;
+								var $body;
+
+								attrs.$observe(type, function(val) {
+									scope.tt_content = val;
+								});
+
+								attrs.$observe(prefix + 'Title', function(val) {
+									scope.tt_title = val;
+								});
+
+								attrs.$observe(prefix + 'Placement', function(val) {
+									scope.tt_placement = angular.isDefined(val) ? val : options.placement;
+								});
+
+								attrs.$observe(prefix + 'Animation', function(val) {
+									scope.tt_animation = angular.isDefined(val) ? $parse(val) : function() {
+										return options.animation;
+									};
+								});
+
+								attrs.$observe(prefix + 'PopupDelay', function(val) {
+									var delay = parseInt(val, 10);
+									scope.tt_popupDelay = !isNaN(delay) ? delay : options.popupDelay;
+								});
+
+								// By default, the tooltip is not open.
+								// TODO add ability to start tooltip opened
+								scope.tt_isOpen = false;
+
+								// show the tooltip with delay if specified,
+								// otherwise show it immediately
+								function showWithDelay() {
+									if (scope.tt_popupDelay) {
+										popupTimeout = $timeout(show, scope.tt_popupDelay);
+									} else {
+										scope.$apply(show);
+									}
+								}
+
+								// Show the tooltip popup element.
+								function show() {
+									var position, ttWidth, ttHeight, ttPosition;
+
+									// Don't show empty tooltips.
+									if (!scope.tt_content) {
+										return;
+									}
+
+									// If there is a pending remove transition,
+									// we must cancel it, lest the
+									// tooltip be mysteriously removed.
+									if (transitionTimeout) {
+										$timeout.cancel(transitionTimeout);
+									}
+
+									// Set the initial positioning.
+									tooltip.css({
+										top: 0,
+										left: 0,
+										display: 'block'
+									});
+
+									// Now we add it to the DOM because need
+									// some info about it. But it's not
+									// visible yet anyway.
+									if (options.appendToBody) {
+										$body = $body || $document.find('body');
+										$body.append(tooltip);
+									} else {
+										element.after(tooltip);
+									}
+
+									// Get the position of the directive
+									// element.
+									position = $position.position(element);
+
+									// Get the height and width of the tooltip
+									// so we can center it.
+									ttWidth = tooltip.prop('offsetWidth');
+									ttHeight = tooltip.prop('offsetHeight');
+
+									// Calculate the tooltip's top and left
+									// coordinates to center it with
+									// this directive.
+									switch (scope.tt_placement) {
+									case 'right':
+										ttPosition = {
+											top: (position.top + position.height / 2 - ttHeight / 2) + 'px',
+											left: (position.left + position.width) + 'px'
+										};
+										break;
+									case 'bottom':
+										ttPosition = {
+											top: (position.top + position.height) + 'px',
+											left: (position.left + position.width / 2 - ttWidth / 2) + 'px'
+										};
+										break;
+									case 'left':
+										ttPosition = {
+											top: (position.top + position.height / 2 - ttHeight / 2) + 'px',
+											left: (position.left - ttWidth) + 'px'
+										};
+										break;
+									default:
+										ttPosition = {
+											top: (position.top - ttHeight) + 'px',
+											left: (position.left + position.width / 2 - ttWidth / 2) + 'px'
+										};
+										break;
+									}
+
+									// Now set the calculated positioning.
+									tooltip.css(ttPosition);
+
+									// And show the tooltip.
+									scope.tt_isOpen = true;
+								}
+
+								// Hide the tooltip popup element.
+								function hide() {
+									// First things first: we don't show it
+									// anymore.
+									// tooltip.removeClass( 'in' );
+									scope.tt_isOpen = false;
+
+									// if tooltip is going to be shown after
+									// delay, we must cancel this
+									$timeout.cancel(popupTimeout);
+
+									// And now we remove it from the DOM.
+									// However, if we have animation, we
+									// need to wait for it to expire beforehand.
+									// FIXME: this is a placeholder for a port
+									// of the transitions library.
+									if (angular.isDefined(scope.tt_animation) && scope.tt_animation()) {
+										transitionTimeout = $timeout(function() {
+											tooltip.remove();
+										}, 500);
+									} else {
+										tooltip.remove();
+									}
+								}
+
+								// Register the event listeners. If only one
+								// event listener was
+								// supplied, we use the same event listener for
+								// showing and hiding.
+								// TODO add ability to customize event triggers
+								if (!angular.isDefined(defaultTriggerHide)) {
+									element.bind(defaultTriggerShow, function toggleTooltipBind() {
+										if (!scope.tt_isOpen) {
+											showWithDelay();
+										} else {
+											scope.$apply(hide);
+										}
+									});
+								} else {
+									element.bind(defaultTriggerShow, function showTooltipBind() {
+										showWithDelay();
+									});
+									element.bind(defaultTriggerHide, function hideTooltipBind() {
+										scope.$apply(hide);
+									});
+								}
+							}
+						};
+					};
+				}];
+		})
+
+.directive('tooltipPopup', function() {
+	return {
+		restrict: 'E',
+		replace: true,
+		scope: {
+			content: '@',
+			placement: '@',
+			animation: '&',
+			isOpen: '&'
+		},
+		templateUrl: 'template/tooltip/tooltip-popup.html'
+	};
+})
+
+.directive('tooltip', ['$tooltip', function($tooltip) {
+	return $tooltip('tooltip', 'tooltip', 'mouseenter', 'mouseleave');
+}])
+
+.directive('tooltipHtmlUnsafePopup', function() {
+	return {
+		restrict: 'E',
+		replace: true,
+		scope: {
+			content: '@',
+			placement: '@',
+			animation: '&',
+			isOpen: '&'
+		},
+		templateUrl: 'template/tooltip/tooltip-html-unsafe-popup.html'
+	};
+})
+
+.directive('tooltipHtmlUnsafe', ['$tooltip', function($tooltip) {
+	return $tooltip('tooltipHtmlUnsafe', 'tooltip', 'mouseenter', 'mouseleave');
+}])
+
+;
+
+angular.module("template/dialog/message.html", []).run(
+		[
+			"$templateCache",
+			function($templateCache) {
+				$templateCache.put("template/dialog/message.html", "<div class=\"modal-header\">" + "	<h1>{{ title }}</h1>" + "</div>"
+						+ "<div class=\"modal-body\">" + "	<p>{{ message }}</p>" + "</div>" + "<div class=\"modal-footer\">"
+						+ "	<button ng-repeat=\"btn in buttons\" ng-click=\"close(btn.result)\" class=btn ng-class=\"btn.cssClass\">{{ btn.label }}</button>"
+						+ "</div>" + "");
+			}]);
+
+angular.module("template/popover/popover.html", []).run(
+		[
+			"$templateCache",
+			function($templateCache) {
+				$templateCache.put("template/popover/popover.html", "<div class=\"popover {{placement}}\" ng-class=\"{ in: isOpen(), fade: animation() }\">"
+						+ "  <div class=\"arrow\"></div>" + "" + "  <div class=\"popover-inner\">"
+						+ "      <h3 class=\"popover-title\" ng-bind=\"title\" ng-show=\"title\"></h3>"
+						+ "      <div class=\"popover-content\" ng-bind=\"content\"></div>" + "  </div>" + "</div>" + "");
+			}]);
+
+angular.module("template/tooltip/tooltip-html-unsafe-popup.html", []).run(
+		[
+			"$templateCache",
+			function($templateCache) {
+				$templateCache.put("template/tooltip/tooltip-html-unsafe-popup.html",
+						"<div class=\"tooltip {{placement}}\" ng-class=\"{ in: isOpen(), fade: animation() }\">" + "  <div class=\"tooltip-arrow\"></div>"
+								+ "  <div class=\"tooltip-inner\" ng-bind-html-unsafe=\"content\"></div>" + "</div>" + "");
+			}]);
+
+angular.module("template/tooltip/tooltip-popup.html", []).run(
+		[
+			"$templateCache",
+			function($templateCache) {
+				$templateCache.put("template/tooltip/tooltip-popup.html",
+						"<div class=\"tooltip {{placement}}\" ng-class=\"{ in: isOpen(), fade: animation() }\">" + "  <div class=\"tooltip-arrow\"></div>"
+								+ "  <div class=\"tooltip-inner\" ng-bind=\"content\"></div>" + "</div>" + "");
+			}]);

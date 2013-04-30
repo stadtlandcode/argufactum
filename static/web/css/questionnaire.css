@@ -1,0 +1,22 @@
+.questionniare-table th,
+.questionniare-table td {
+	width: 50%;
+}
+.questionniare-table ol {
+	margin-bottom: 0;
+}
+.dialog-form {
+	display: inline;
+}
+.facts-editor li {
+	margin-bottom: 4px;
+}
+.clickable {
+	cursor: pointer;
+}
+.editable-fact input {
+	width: 473px;
+}
+.chart {
+	margin: -55px 0;
+}
