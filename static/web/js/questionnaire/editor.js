@@ -84,6 +84,10 @@
 			var text = angular.toJson($scope.model);
 			window.prompt("Copy to clipboard: Ctrl+C, Enter", text);
 		};
+		$scope.importJson = function() {
+			var json = window.prompt("JSON einfügen", '');
+			$scope.model = JSON.parse(json);
+		};
 	});
 
 	editorModule.controller('QuestionDialogCtrl', function($scope, dialog, question, questions) {

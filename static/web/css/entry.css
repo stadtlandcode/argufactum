@@ -16,18 +16,10 @@
   padding: 14px 24px;
 }
 
-/* Supporting marketing content */
-.marketing {
-  margin: 60px 0;
-}
-.marketing p + h4 {
-  margin-top: 28px;
-}
-
+/* navbar */
 .brand {
 	font-weight: bold;
 }
-
 .navbar .brand {
   float: left;
   display: block;
