@@ -1,0 +1,74 @@
+.argument {
+	padding: .25em;
+}
+.argument-text {
+	padding-top: 8px;
+}
+.pro-contra-table th,.pro-contra-table td {
+	width: 50%;
+}
+
+/* scale */
+.scale {
+	width: 100%;
+	height: 400px;
+	position: relative;
+}
+.scale svg {
+	position: relative;
+	left: 50%;
+	margin-left: -192px;
+	width: 384px !important;
+}
+
+/* SVG */
+circle,
+rect {
+	fill: #006dcc;
+}
+.weight > circle,
+.weight > rect {
+	fill: #FFF;
+}
+.weights > .weight > circle,
+.weights > .weight > rect {
+	fill: #006dcc !important;
+}
+.weights > .weight > .cutout {
+	fill: #FFF !important;
+}
+.cutout {
+	fill: #FFF;
+}
+text {
+	fill: #FFF;
+	font-family: 'Helvetica-Bold';
+	font-size: 76px;
+}
+
+/* draggable weights */
+.weights {
+	height: 48px;
+	line-height: 96px;
+}
+.weights div {
+	float: left;
+	vertical-align: bottom;
+	margin-right: 3px;
+}
+.weight-light {
+	width: 7px;
+	height: 12px;
+}
+.weight-normal {
+	width: 14px;
+	height: 24px;
+}
+.weight-heavy {
+	width: 21px;
+	height: 36px;
+}
+.weight-superheavy {
+	width: 28px;
+	height: 48px;
+}
