@@ -5,7 +5,6 @@
 
 	q.analysis = {
 		getViewModel: function(questions, answers) {
-			var answersContainer = [];
 			var numbers = {
 				'positive': 0,
 				'negative': 0,
@@ -14,33 +13,20 @@
 			};
 			_.each(questions, _.bind(function(question) {
 				var answer = this.getAnswer(question.number, answers);
-				var meaning = 'neutral';
-				var label = null;
 
 				if (!answer || !answer.choice) {
 					numbers.notAnswered++;
-					label = 'Nicht beantwortet';
 				} else if (answer.choice === 'DRAW') {
 					numbers.neutral++;
-					label = 'Dazu habe ich keine Meinung';
 				} else {
 					var countFor = (question.supports === answer.choice) ? 'positive' : 'negative';
 					numbers[countFor]++;
-					meaning = countFor;
-					label = (answer.choice === 'YES') ? 'Ja' : 'Nein';
 				}
-
-				answersContainer.push({
-					'question': question,
-					'answer': answer,
-					'meaning': meaning,
-					'label': label
-				});
 			}, this));
 
 			var model = {
 				'numbers': numbers,
-				'answers': answersContainer,
+				'answers': answers,
 				'chart': [],
 			};
 			model.chart.push({
@@ -60,7 +46,7 @@
 		},
 		getAnswer: function(questionNumber, answers) {
 			return _.find(answers, function(answer) {
-				return answer.question == questionNumber;
+				return answer.question.number == questionNumber;
 			});
 		}
 	};

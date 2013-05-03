@@ -17,7 +17,7 @@
 			</p>
 			
 			<br />
-			<div class="well" data-ng-show="question.facts.length > 0">
+			<div class="alert alert-info" data-ng-show="question.facts.length > 0">
 				<p>
 					<i class="icon-info-sign"></i> <strong>Begleitinformationen / Fakten</strong>
 				</p>
@@ -44,5 +44,21 @@
 				Zurück
 			</button>
 		</form>
+	</div>
+	<div class="span6 answered-questions" data-ng-show="answers.length > 0">
+		<div class="well">
+			<p><strong>Beantwortete Fragen:</strong></p>
+		
+			<ol>
+				<li data-ng-repeat="answer in answers | orderBy: 'number'">
+					{{answer.question.text}}<br />
+					<p>
+						<strong>Ihre Antwort:</strong>
+						<span class="{{answer.choiceCssClass}}">{{answer.choiceLabel}}</span>
+						<i class="icon-pencil clickable" data-ng-click="gotoQuestion(answer.question)"></i>
+					</p>
+				</li>
+			</ol>
+		</div>
 	</div>
 </div>

@@ -28,3 +28,7 @@
 .screenshot {
 	margin: 1em 0 2em;
 }
+.answered-questions {
+	padding-left: 2em;
+	font-size: small;
+}
