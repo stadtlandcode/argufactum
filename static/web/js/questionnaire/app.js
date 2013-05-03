@@ -21,6 +21,10 @@ var questionnaire = {};
 			templateUrl: 'partials/questionnaire/answer.html',
 			controller: 'AnswerCtrl'
 		});
+		$routeProvider.when('/answer/:questionId', {
+			templateUrl: 'partials/questionnaire/answer.html',
+			controller: 'AnswerCtrl'
+		});
 		$routeProvider.when('/analysis', {
 			templateUrl: 'partials/questionnaire/analysis.html',
 			controller: 'AnalysisCtrl'

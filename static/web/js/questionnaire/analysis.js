@@ -53,16 +53,6 @@
 
 	analysisModule.controller('AnalysisCtrl', function($scope, storage) {
 		$scope.questionnaire = storage.getModel();
-		console.log(q.answers);
 		$scope.model = q.analysis.getViewModel($scope.questionnaire.questions, q.answers);
-		$scope.cssClassForAnswer = function(answer) {
-			if (answer.meaning == 'positive') {
-				return 'text-success';
-			} else if (answer.meaning == 'negative') {
-				return 'text-error';
-			} else {
-				return 'muted';
-			}
-		};
 	});
 })(angular, questionnaire, _);

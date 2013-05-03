@@ -31,11 +31,14 @@
 			<li data-ng-repeat="answer in model.answers | orderBy: 'question.number'">
 				{{answer.question.text}}
 				<br />
-				Ihre Antwort:
-				<span data-ng-class="cssClassForAnswer(answer)">
-					{{answer.label}}
-				</span>
-				<br /><br />
+				<p>
+					Ihre Antwort:
+					<span class="{{answer.meaningCssClass}}">
+						{{answer.choiceLabel}}
+						({{answer.meaningLabel}} zum Thema)
+					</span>
+					<a href="#/answer/{{answer.question.number}}"><i class="icon-pencil clickable"></i></a>
+				</p>
 			</li>
 		</ol>
 	</div>

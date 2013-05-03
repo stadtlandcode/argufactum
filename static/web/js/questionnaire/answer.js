@@ -18,6 +18,7 @@
 				'relevance': 'AVERAGE',
 				'meaning': null,
 				'meaningCssClass': '',
+				'meaningLabel': '',
 				'choiceLabel': '',
 				'choiceCssClass': ''
 			};
@@ -39,11 +40,13 @@
 				answer.choiceCssClass = 'muted';
 				answer.meaning = 'neutral';
 				answer.meaningCssClass = answer.choiceCssClass;
+				answer.meaningLabel = 'neutral';
 			} else {
 				answer.choiceLabel = (answer.choice === 'YES') ? 'Ja' : 'Nein';
 				answer.choiceCssClass = (answer.choice === 'YES') ? 'text-success' : 'text-error';
 				answer.meaning = (answer.question.supports === answer.choice) ? 'positive' : 'negative';
 				answer.meaningCssClass = (answer.meaning === 'positive') ? 'text-success' : 'text-error';
+				answer.meaningLabel = (answer.meaning === 'positive') ? 'zustimmend' : 'ablehnend';
 			}
 		},
 		getNextQuestion: function(answer, questions) {
@@ -64,9 +67,11 @@
 		}
 	};
 
-	answerModule.controller('AnswerCtrl', function($scope, storage, $location) {
+	answerModule.controller('AnswerCtrl', function($scope, storage, $location, $routeParams) {
+		var initialQuestionNumber = $routeParams.questionId ? $routeParams.questionId : 1;
+
 		$scope.questionnaire = storage.getModel();
-		$scope.question = $scope.questionnaire.questions[0];
+		$scope.question = q.answer.findQuestion(initialQuestionNumber, $scope.questionnaire.questions);
 		$scope.answer = q.answer.forQuestion($scope.question);
 		$scope.answers = q.answers;
 		$scope.progress = function() {
