@@ -14,7 +14,7 @@
 
 			return {
 				'argument': argument,
-				'choice': null,
+				'value': null,
 				'height': 0
 			};
 		},
@@ -39,7 +39,7 @@
 			}
 		},
 		completeWeight: function(weight) {
-			weight.height = weight.choice * 10;
+			weight.height = weight.value * 10;
 		},
 		getNextArgument: function(weight, topicArguments) {
 			var numberOfNextArgument = weight.argument.number + 1;
@@ -81,7 +81,7 @@
 			$scope.forward();
 		};
 		$scope.skip = function() {
-			$scope.weight.choice = null;
+			$scope.weight.value = null;
 			$scope.saveWeight();
 		};
 		$scope.forward = function() {
@@ -97,10 +97,10 @@
 		};
 
 		$scope.choice = function(possibleChoice) {
-			$scope.weight.choice = possibleChoice.value;
+			$scope.weight.value = possibleChoice.value;
 		};
 		$scope.getSelectedClass = function(possibleChoice) {
-			return ($scope.weight.choice === possibleChoice.value) ? 'weight-selected' : '';
+			return ($scope.weight.value === possibleChoice.value) ? 'weight-selected' : '';
 		};
 	});
 })(angular, argue, _);

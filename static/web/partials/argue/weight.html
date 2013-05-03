@@ -28,7 +28,7 @@
 			</div>
 			
 			<br /><br />
-			<button type="button" class="btn btn-primary" data-ng-show="weight.choice > 0" data-ng-click="saveWeight()">
+			<button type="button" class="btn btn-primary" data-ng-show="weight.value > 0" data-ng-click="saveWeight()">
 				<i class="icon-ok icon-white"></i> Weiter
 			</button>
 			<button type="button" class="btn" data-ng-click="skip()">
@@ -47,13 +47,12 @@
 			<ol>
 				<li data-ng-repeat="weight in weights | orderBy: 'number'">
 					{{weight.argument.text}}<br />
-					<p>
-						<strong>Ihre Gewichtung:</strong>
-						<div class="weight-{{weight.choice}} inline-weight">
-							<ng-include src="'partials/argue/weightSvgSimple.html'"></ng-include>
-						</div>
-						<i class="icon-pencil clickable" data-ng-click="gotoQuestion(weight.argument)"></i>
-					</p>
+					
+					<strong>Ihre Gewichtung:</strong>
+					<div class="weight-{{weight.value}} inline-weight">
+						<ng-include src="'partials/argue/weightSvgSimple.html'"></ng-include>
+					</div>
+					<i class="icon-pencil clickable" data-ng-click="gotoQuestion(weight.argument)"></i>
 				</li>
 			</ol>
 		</div>
