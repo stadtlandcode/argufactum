@@ -29,7 +29,7 @@
 									<i class="icon-remove clickable" data-ng-click="removeQuestion(question)"></i>
 								</li>
 							</ol>
-							<span data-ng-show="(model.questions | filter: {supports: 'YES'}).length < 1">Fügen Sie die 1. Frage hinzu!</span>
+							<span class="clickable" data-ng-show="(model.questions | filter: {supports: 'YES'}).length < 1" data-ng-click="addQuestion()">Fügen Sie die 1. Frage hinzu!</span>
 						</td>
 						<td>
 							<ol data-ng-show="model.questions.length > 0">
@@ -40,7 +40,7 @@
 									<i class="icon-remove clickable" data-ng-click="removeQuestion(question)"></i>
 								</li>
 							</ol>
-							<span data-ng-show="(model.questions | filter: {supports: 'NO'}).length < 1">Fügen Sie die 1. Frage hinzu!</span>
+							<span class="clickable" data-ng-show="(model.questions | filter: {supports: 'NO'}).length < 1" data-ng-click="addQuestion()">Fügen Sie die 1. Frage hinzu!</span>
 						</td>
 					</tr>
 				</tbody>
