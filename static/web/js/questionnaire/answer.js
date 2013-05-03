@@ -18,12 +18,19 @@
 		},
 		getNextQuestion: function(answer, questions) {
 			var numberOfNextQuestion = answer.question + 1;
+			return this.findQuestion(numberOfNextQuestion, questions);
+		},
+		getPreviousQuestion: function(answer, questions) {
+			var numberOfPreviousQuestion = answer.question - 1;
+			return this.findQuestion(numberOfPreviousQuestion, questions);
+		},
+		findQuestion: function(number, questions) {
 			return _.find(questions, function(question) {
-				return question.number == numberOfNextQuestion;
+				return question.number == number;
 			});
 		},
-		getProgress: function(numberOfQuestions) {
-			return Math.round((q.answers.length + 1) / numberOfQuestions * 100);
+		getProgress: function(question, numberOfQuestions) {
+			return Math.round(question.number / numberOfQuestions * 100);
 		}
 	};
 
@@ -31,8 +38,9 @@
 		$scope.questionnaire = storage.getModel();
 		$scope.question = $scope.questionnaire.questions[0];
 		$scope.answer = q.answer.getEmpty($scope.question);
+		$scope.answers = q.answers;
 		$scope.progress = function() {
-			return q.answer.getProgress($scope.questionnaire.questions.length);
+			return q.answer.getProgress($scope.question, $scope.questionnaire.questions.length);
 		};
 
 		$scope.saveAnswer = function() {
@@ -50,6 +58,9 @@
 			} else {
 				$location.path('/analysis');
 			}
+		};
+		$scope.back = function() {
+			$scope.question = q.answer.getPreviousQuestion($scope.answer, $scope.questionnaire.questions);
 		};
 	});
 })(angular, questionnaire, _);
