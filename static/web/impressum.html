@@ -6,10 +6,9 @@
 <link href="css/bootstrap.css" rel="stylesheet" />
 <link href="css/bootstrap-responsive.css" rel="stylesheet" />
 <link href="css/main.css" rel="stylesheet" />
-<link href="css/argue.css" rel="stylesheet" />
-<title>Argufactum - Argument- und Faktensammlung Prototyp</title>
+<title>Argufactum - Impressum</title>
 </head>
-<body data-ng-app="argue">
+<body>
 	<div class="navbar">
 		<div class="navbar-inner">
 			<span class="brand"></span>
@@ -18,17 +17,28 @@
 				<li><a href="index.html">Das Projekt</a></li>
 				<li><a href="vergleichstabelle.html">Vergleichstabelle</a></li>
 				<li><a href="fragenkatalog.html">Fragenkatalog</a></li>
-				<li class="active"><a href="argumente.html">Argumente und Faktensammlung</a></li>
+				<li><a href="argumente.html">Argumente und Faktensammlung</a></li>
 			</ul>
 			
 			<ul class="nav pull-right">
-				<li><a href="impressum.html">Impressum</a>
+				<li class="active"><a href="impressum.html">Impressum</a>
 			</ul>
 		</div>
 	</div>
 
 	<div class="container">
-		<div data-ng-view></div>
+		<div class="page-header">
+			<h1>Impressum</h1>
+		</div>
+		
+		<p>Argufactum ist ein Projekt von:</p>
+		<address>
+			<strong><a href="https://twitter.com/femeb">Felix Ebert</a></strong><br />
+			Ganzhornstr. 34<br />
+			74172 Neckarsulm<br />
+			<br />
+			Tel. 07136 / 830 26 30
+		</address>
 
 		<hr>
 
@@ -39,15 +49,5 @@
 			</p>
 		</div>
 	</div>
-
-	<script src="lib/angular/angular.js"></script>
-	<script src="lib/angular/angular-resource.js"></script>
-	<script src="lib/angular/angular-locale_de-de.js"></script>
-	<script src="lib/angular/ui-bootstrap.js"></script>
-	<script src="lib/underscore.js"></script>
-	<script src="js/argue/app.js"></script>
-	<script src="js/argue/examples/bge.js"></script>
-	<script src="js/argue/evaluate.js"></script>
-	<script src="js/argue/weight.js"></script>
 </body>
 </html>

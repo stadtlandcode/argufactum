@@ -13,3 +13,12 @@
   color: #e0e0e0;
   padding: 0;
 }
+
+/* footer */
+.promotion {
+	width: 100%;
+	text-align: center;
+}
+.promotion img {
+	margin-right: 32px;
+}
