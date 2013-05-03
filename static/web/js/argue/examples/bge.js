@@ -30,6 +30,7 @@
 			number: 7,
 			text: 'Anreiz zu verstärkter Einwanderung',
 			thesis: 'CONTRA',
+			thesisOverrideable: true
 		}, {
 			number: 8,
 			text: 'Auch die finanziell gut Gestellten und Vermögenden würden das BGE erhalten',

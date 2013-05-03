@@ -8,6 +8,39 @@
 	width: 50%;
 }
 
+/* selectable weights */
+.select-weight {
+	height: 60px;
+	line-height: 120px;
+}
+.selectable-weight {
+	float: left;
+	vertical-align: bottom;
+	margin-right: 10px;
+}
+.weight-1 {
+	width: 14px;
+	height: 24px;
+}
+.weight-2 {
+	width: 21px;
+	height: 36px;
+}
+.weight-3 {
+	width: 28px;
+	height: 48px;
+}
+.weight-4 {
+	width: 35px;
+	height: 60px;
+}
+.weight-selected .normal {
+	fill: #FF0000 !important;
+}
+.inline-weight {
+	display: inline-block;
+} 
+
 /* scale */
 .scale {
 	width: 100%;
@@ -25,17 +58,6 @@
 circle,
 rect {
 	fill: #006dcc;
-}
-.weight > circle,
-.weight > rect {
-	fill: #FFF;
-}
-.weights > .weight > circle,
-.weights > .weight > rect {
-	fill: #006dcc !important;
-}
-.weights > .weight > .cutout {
-	fill: #FFF !important;
 }
 .cutout {
 	fill: #FFF;

@@ -1,9 +1,61 @@
-<svg xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;" version="1.1" viewBox="0 0 58 106" preserveAspectRatio="xMinYMin meet">
-	<circle cx="28.75" cy="15" r="15" />
- 	<rect x="15" y="25" width="28" height="20" />
-	<circle class="cutout" cx="11.5" cy="29.75" r="7.75" />
-	<circle class="cutout" cx="46" cy="29.75" r="7.75" />
- 	
- 	<rect x="0" y="35.5" width="58" height="70" rx="4" ry="4" />
- 	<text x="11" y="93.5" style="font-size:60px">{{argument.number}}</text>
-</svg>
+<div class="page-header">
+	<h2>{{topic.title}}</h2>
+</div>
+
+<div class="row-fluid">
+	<div class="span6">
+		<form>
+			<div class="progress">
+				<div class="bar" style="width: {{progress()}}%;"></div>
+			</div>
+			
+			<p>
+				<small>Argument {{argument.number}} von {{topic.arguments.length}}:</small>
+			</p>
+			<p>
+				<strong>{{argument.text}}</strong>
+			</p>
+			
+			<br />
+			<p>
+				<em>Ihre Gewichtung:</em>
+			</p>
+			
+			<div class="select-weight">
+				<div data-ng-repeat="possibleChoice in possibleChoices | orderBy: 'value'" class="selectable-weight weight-{{possibleChoice.value}}" data-ng-class="getSelectedClass(possibleChoice)" data-ng-click="choice(possibleChoice)">
+					<ng-include src="'partials/argue/weightSvgSimple.html'"></ng-include>
+				</div>
+			</div>
+			
+			<br /><br />
+			<button type="button" class="btn btn-primary" data-ng-show="weight.choice > 0" data-ng-click="saveWeight()">
+				<i class="icon-ok icon-white"></i> Weiter
+			</button>
+			<button type="button" class="btn" data-ng-click="skip()">
+				<i class="icon-remove"></i> Überspringen
+			</button>
+			<button type="button" class="btn pull-right" data-ng-show="weights.length > 0" data-ng-click="back()">
+				<i class="icon-arrow-left"></i>
+				Zurück
+			</button>
+		</form>
+	</div>
+	<div class="span6 weighted-arguments" data-ng-show="weights.length > 0">
+		<div class="well">
+			<p><strong>Beantwortete Argumente:</strong></p>
+		
+			<ol>
+				<li data-ng-repeat="weight in weights | orderBy: 'number'">
+					{{weight.argument.text}}<br />
+					<p>
+						<strong>Ihre Gewichtung:</strong>
+						<div class="weight-{{weight.choice}} inline-weight">
+							<ng-include src="'partials/argue/weightSvgSimple.html'"></ng-include>
+						</div>
+						<i class="icon-pencil clickable" data-ng-click="gotoQuestion(weight.argument)"></i>
+					</p>
+				</li>
+			</ol>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,43 @@
+<div class="page-header">
+	<h2>Auswertung Ihrer Gewichtung</h2>
+</div>
+
+<h4>{{model.title}}</h4>
+
+<div class="scale" ondrop="argue.evaluate.onDrop(event)" ondragover="argue.evaluate.allowDrop(event)">
+	<svg xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;" version="1.1" viewBox="0 0 360 375" preserveAspectRatio="xMinYMin meet">
+		<g id="leftPlate">
+			<rect x="0" y="198" width="124" height="6.062" />
+		 	<rect x="11" y="198" width="103" height="21" rx="4" ry="4" />
+		 	<rect x="49" y="215" width="25" height="42" />
+		 	
+		 	<g class="weight">
+				<circle cx="28.75" cy="89.5" r="15" />
+			 	<rect x="15" y="99.5" width="28" height="20" />
+				<circle class="cutout" cx="11.5" cy="104.25" r="7.75" />
+				<circle class="cutout" cx="46" cy="104.25" r="7.75" />
+			 	
+			 	<rect x="0" y="110" width="58" height="80" rx="4" ry="4" />
+			 	<text x="9" y="178" style="">1</text>
+			</g>
+		</g>
+	
+		<g id="rightPlate">
+			<rect x="233" y="198" width="124" height="6.062" />
+		 	<rect x="244" y="198" width="103" height="21" rx="4" ry="4" />
+		 	<rect x="282" y="215" width="25" height="42" />
+		</g>
+	 	
+	 	<g id="base">
+		 	<rect x="168" y="260" width="23" height="74" />
+		 	<rect x="49" y="331" width="258" height="34" rx="4" ry="4" />
+	 	</g>
+	
+		<g id="scalebeam">
+		 	<rect x="49" y="247" width="258" height="21" rx="12" ry="12" />
+			<circle class="cutout" cx="60" cy="257" r="9" />
+		 	<circle class="cutout" cx="179" cy="257" r="9" />
+			<circle class="cutout" cx="296" cy="257" r="9" />
+		</g>
+	</svg>
+</div>
