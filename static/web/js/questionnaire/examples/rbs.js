@@ -10,9 +10,14 @@
 				facts: [
 					{
 						number: 1,
+						references: [],
 						text: 'Die Eltern hätten nach Wegfall der Realschule RBS noch die Wahl zwischen 1 Realschule, 3 Gymnasien, 2 Gesamtschulen und 1 Werkrealschule in Grevenbroich'
 					}, {
 						number: 2,
+						references: [{
+							number: 1,
+							text: 'http://de.wikipedia.org/wiki/Grevenbroich'
+						}],
 						text: 'Grevenbroich hat ca. 64.000 Einwohner'
 					}]
 			},
@@ -23,14 +28,17 @@
 				facts: [
 					{
 						number: 1,
+						references: [],
 						text: 'Nur die Realschule RBS sowie die zwei Gesamtschulen bieten eine Nachmittagsbetreuung an'
 					},
 					{
 						number: 2,
+						references: [],
 						text: 'Die Realschule RBS bietet eine wahlweise Nachmittagsbetreuung für alle Wochentage an'
 					},
 					{
 						number: 3,
+						references: [],
 						text: 'Bei beiden Gesamtschulen in RBS ist der Nachmittagsunterricht verpflichtend. Der Nachmittagsunterricht findet an beiden Gesamtschulen nur an 3 Wochentagen statt'
 					}]
 			},
@@ -47,10 +55,12 @@
 				facts: [
 					{
 						number: 1,
+						references: [],
 						text: 'Die Schule soll schrittweise geschlossen werden, indem keine neuen Schüler hinzukommen. Entsprechend der abnehmenden Schülerzahl würde auch die Lehrerzahl über die Jahre schrittweise verringert werden.'
 					},
 					{
 						number: 2,
+						references: [],
 						text: 'Die Eltern befürchten, dass spätestens nach 2-3 Jahren kaum noch qualifizierte Lehrer für alle Unterrichtsfächer vorhanden sein werden und mit der Zeit ein solcher Notstand eintritt, dass viele Unterrichtsstunden ausfallen und beispielsweise ein Sportlehrer Englischunterricht geben muss.'
 					}]
 			},
@@ -60,6 +70,7 @@
 				supports: 'YES',
 				facts: [{
 					number: 1,
+					references: [],
 					text: 'Für den Erhalt der Realschule fallen Mehrkosten von 400.000 Euro verteilt über 5 Jahre an'
 				}]
 			},
@@ -69,6 +80,7 @@
 				supports: 'YES',
 				facts: [{
 					number: 1,
+					references: [],
 					text: 'Die Stadt hat laut den Eltern bisher nur die Option zur Auflösung der Realschule RBS geprüft. Alternativen sollen dabei keine Rolle gespielt haben.'
 				}]
 			},
@@ -79,10 +91,12 @@
 				facts: [
 					{
 						number: 1,
+						references: [],
 						text: 'Die Realschule RBS wurde im Sommer 2012 von Ministerpräsidentin Hannelore Kraft als eine der herausragenden Schulen in NRW ausgezeichnet'
 					},
 					{
 						number: 2,
+						references: [],
 						text: 'Das Förderkonzept zur individuellen Förderung sowie die Profilklassen sichern mit einem bewährten und verlässlichen Angebot erfolgreiche Schulabschlüsse.'
 					}]
 			}]

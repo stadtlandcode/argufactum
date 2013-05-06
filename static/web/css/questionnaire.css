@@ -20,6 +20,10 @@
 .chart {
 	margin: -55px 0;
 }
+.question-list li,
+.fact-references li {
+	margin-bottom: 4px;
+}
 
 /* start */
 .questionCount {

@@ -24,6 +24,9 @@
 				<ul style="margin-bottom:0">
 					<li data-ng-repeat="fact in question.facts | orderBy: 'number'">
 						{{fact.text}}
+						<a data-ng-repeat="reference in fact.references | orderBy: 'number'" href="{{reference.text}}" target="_blank" title="{{reference.text}}" data-ng-show="reference.text.length > 0">
+							[{{reference.number}}]
+						</a>
 					</li>
 				</ul>
 			</div>
@@ -34,7 +37,7 @@
 			
 			<br />
 			<button type="button" class="btn btn-primary" data-ng-show="answer.choice.length > 0" data-ng-click="saveAnswer()">
-				<i class="icon-ok icon-white"></i> Weiter
+				<i class="icon-arrow-right icon-white"></i> Weiter
 			</button>
 			<button type="button" class="btn" data-ng-click="skip()">
 				<i class="icon-remove"></i> Überspringen

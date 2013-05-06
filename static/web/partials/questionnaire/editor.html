@@ -3,57 +3,57 @@
 </div>
 
 <div class="row">
-	<div class="span8">
+	<div class="span7">
 		<form class="form-horizontal">
 			<p>
-				<label><strong>Thema des Fragenkatalogs</strong></label>
-				<input type="text" name="title" class="input-xxlarge" data-ng-model="model.title" placeholder="z.B. Stuttgart 21">
+				<input type="text" tabindex="1" name="title" class="input-xxlarge" placeholder="Thema" data-ng-model="model.title" data-popover="Wählen Sie ein Thema, dem man zustimmen oder widersprechen kann (z.B. 'Stuttgart 21', 'Erhalt der Grundschule')" data-popover-trigger="focus">
 			</p>
 			
 			<br />
-			<table class="table table-bordered questionniare-table">
-				<thead>
-					<tr>
-						<th>Befürwortende Fragen</th>
-						<th>Bestreitende Fragen</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>
-							<ol data-ng-show="model.questions.length > 0">
-								<li data-ng-repeat="question in model.questions | filter: {supports: 'YES'} | orderBy: 'number'">
-									{{question.text}}
-									(<span class="muted" data-ng-pluralize data-count="question.facts.length" data-when="{1: '1 Fakt', other: '{} Fakten'}"></span>)
-									<i class="icon-pencil clickable" data-ng-click="editQuestion(question)"></i>
-									<i class="icon-remove clickable" data-ng-click="removeQuestion(question)"></i>
-								</li>
-							</ol>
-							<span class="clickable" data-ng-show="(model.questions | filter: {supports: 'YES'}).length < 1" data-ng-click="addQuestion()">Fügen Sie die 1. Frage hinzu!</span>
-						</td>
-						<td>
-							<ol data-ng-show="model.questions.length > 0">
-								<li data-ng-repeat="question in model.questions | filter: {supports: 'NO'} | orderBy: 'number'">
-									{{question.text}} 
-									(<span class="muted" data-ng-pluralize data-count="question.facts.length" data-when="{1: '1 Fakt', other: '{} Fakten'}"></span>)
-									<i class="icon-pencil clickable" data-ng-click="editQuestion(question)"></i>
-									<i class="icon-remove clickable" data-ng-click="removeQuestion(question)"></i>
-								</li>
-							</ol>
-							<span class="clickable" data-ng-show="(model.questions | filter: {supports: 'NO'}).length < 1" data-ng-click="addQuestion()">Fügen Sie die 1. Frage hinzu!</span>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-				
-			<button type="button" class="btn" data-ng-click="addQuestion()">
-				<i class="icon-plus"></i>
-				Frage hinzufügen
-			</button>
+			<p><strong>Frage {{question.number}}</strong></p>	
 			
-			<p><br /></p><br />
+			<div class="well">		
 			<p>
-				<button type="submit" class="btn btn-primary" data-ng-click="save()">
+				<label>Frage</label>
+				<input type="text" tabindex="2" id="questionInput" name="question" autofocus="autofocus" class="input-xxlarge" data-ng-model="question.text" placeholder="z.B. Sind Sie der Meinung, dass die Umweltbelastung zu hoch ist?" data-popover='Stellen Sie Entscheidungsfragen - also Fragen, auf die man nur mit Ja oder Nein antworten kann. Formulieren Sie die Fragen möglichst neutral, kurz und verständlich - Suggestivfragen sind unerwünscht.' data-popover-trigger="focus" required="required" maxlength="255" />
+			</p>
+			
+			<p>
+				<label>Art der Fragenstellung <i class="icon-info-sign" data-popover='Die Antwort "Ja" gilt bei einer befürwortenden Frage als Zustimmung. Umgekehrt gilt die Antwort "Ja" bei einer bestreitenden Frage als Ablehnung.' data-popover-trigger="focus"></i></label>
+				<select data-ng-model="question.supports">
+					<option value="NO">Bestreitende Frage</option>
+					<option value="YES">Befürwortende Frage</option>
+				</select>
+			</p>
+			
+			<p>
+				Zusatzinformationen
+			</p>
+			<ol class="facts-editor">
+				<li data-ng-repeat="fact in question.facts | orderBy: 'number'" class="editable-fact">
+					{{fact.text}}
+					<a data-ng-repeat="reference in fact.references | orderBy: 'number'" href="{{reference.text}}" target="_blank" title="{{reference.text}}" data-ng-show="reference.text.length > 0">
+						[{{reference.number}}]
+					</a>
+					<i class="icon-pencil clickable" data-ng-click="editFact(fact, question)"></i>
+					<i class="icon-remove clickable" data-ng-click="removeFact(fact, question)"></i>
+				</li>
+			</ol>
+			
+			<button type="button" class="btn" data-ng-click="addFact(question)">
+				<i class="icon-plus"></i> Information hinzufügen
+			</button>
+			</div>
+
+			<p>
+				<button type="submit" class="btn btn-info" data-ng-click="addQuestion()">
+					<i class="icon-arrow-right icon-white"></i>
+					Nächste Frage hinzufügen
+				</button>
+			</p>
+			
+			<div class="form-actions">
+				<button type="button" class="btn btn-primary" data-ng-click="save()">
 					<i class="icon-check icon-white"></i>
 					Fertigstellen
 				</button>
@@ -63,21 +63,19 @@
 				<button type="button" class="btn" data-ng-click="importJson()">
 					JSON-Import
 				</button>
-			</p>
+			</div>
 		</form>
 	</div>
-	<div class="span4">
-		<div class="well">
-			<p>
-				Bitte beachten Sie folgende Hinweise:
-			</p>
-			
-			<ul>
-				<li>Wählen Sie ein Thema, dem man zustimmen oder widersprechen kann (z.B. Stuttgart 21, 3. Startbahn Flughafen München)</li>
-				<li>Stellen Sie nur <strong><a href="https://de.wikipedia.org/wiki/Entscheidungsfrage" target="_blank">Entscheidungsfragen</a></strong> - also Fragen, auf die man nur mit <em>Ja</em> oder <em>Nein</em> antworten kann</li>
-				<li>Formulieren Sie die Fragen möglichst <strong>kurz und verständlich</strong></li>
-				<li>Achten Sie auf eine <strong>neutrale Formulierung</strong>. <a href="http://de.wikipedia.org/wiki/Suggestivfrage" target="_blank">Suggestivfragen</a> sind unerwünscht.</li>
-			</ul>
-		</div>
+	<div class="span5">
+		<strong>Alle Fragen:</strong><br />
+		<br />
+		<ol class="question-list">
+			<li data-ng-repeat="question in model.questions | orderBy: 'number'">
+				<span data-ng-class="getCssClassForQuestion(question)">{{question.text}}</span>
+				(<span class="muted" data-ng-pluralize data-count="question.facts.length" data-when="{1: '1 Fakt', other: '{} Fakten'}"></span>)
+				<i class="icon-pencil clickable" data-ng-click="editQuestion(question)"></i>
+				<i class="icon-remove clickable" data-ng-click="removeQuestion(question)"></i>
+			</li>
+		</ol>
 	</div>
 </div>

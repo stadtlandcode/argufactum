@@ -24,16 +24,42 @@
 		},
 		addFact: function(facts) {
 			var nextNumber = this.getNextNumber(facts);
-			facts.push({
+			var fact = {
+				number: nextNumber,
+				references: [],
+				text: ''
+			};
+			this.addReference(fact.references);
+			facts.push(fact);
+			return fact;
+		},
+		addReference: function(references) {
+			var nextNumber = this.getNextNumber(references);
+			var reference = {
 				number: nextNumber,
 				text: ''
-			});
+			};
+			references.push(reference);
+			return reference;
 		},
 		removeQuestion: function(question, questions) {
 			q.array.remove(questions, question);
 		},
 		removeFact: function(fact, facts) {
 			q.array.remove(facts, fact);
+		},
+		renumerate: function(questions) {
+			var number = 1;
+			_.each(questions, function(question) {
+				question.number = number;
+				number++;
+			});
+		},
+		getSomeQuestion: function(questions) {
+			if (questions.length > 0) {
+				return _.first(questions);
+			}
+			return this.addQuestion(questions);
 		},
 		getNextNumber: function(objects) {
 			if (_.isEmpty(objects)) {
@@ -44,36 +70,62 @@
 			});
 			return maxObject.number + 1;
 		},
-		openQuestionDialog: function($dialog, question, questions) {
+		openFactDialog: function($dialog, fact, facts) {
 			var d = $dialog.dialog({
-				templateUrl: 'partials/questionnaire/questionDialog.html',
-				controller: 'QuestionDialogCtrl',
+				templateUrl: 'partials/questionnaire/factDialog.html',
+				controller: 'FactDialogCtrl',
 				resolve: {
-					'question': function() {
-						return question;
+					'fact': function() {
+						return fact;
 					},
-					'questions': function() {
-						return questions;
+					'facts': function() {
+						return facts;
 					}
 				}
 			});
 
 			d.open();
+		},
+		assureReferenceInput: function(fact) {
+			var emptyReference = _.find(fact.references, function(reference) {
+				return reference.text === '';
+			});
+			if (!emptyReference) {
+				this.addReference(fact.references);
+			}
 		}
 	};
 
 	editorModule.controller('EditorCtrl', function($scope, storage, $location, $dialog) {
 		$scope.model = q.editor.getEmptyModel();
+		$scope.question = q.editor.getSomeQuestion($scope.model.questions);
 
 		$scope.addQuestion = function() {
-			var question = q.editor.addQuestion($scope.model.questions);
-			$scope.editQuestion(question);
+			$scope.question = q.editor.addQuestion($scope.model.questions);
+			document.getElementById('questionInput').focus();
 		};
 		$scope.editQuestion = function(question) {
-			q.editor.openQuestionDialog($dialog, question, $scope.model.questions);
+			$scope.question = question;
+			document.getElementById('questionInput').focus();
 		};
 		$scope.removeQuestion = function(question) {
 			q.editor.removeQuestion(question, $scope.model.questions);
+			q.editor.renumerate($scope.model.questions);
+			if (question === $scope.question) {
+				$scope.question = q.editor.getSomeQuestion($scope.model.questions);
+			}
+		};
+		$scope.getCssClassForQuestion = function(question) {
+			return question.supports === 'YES' ? 'text-success' : 'text-error';
+		};
+		$scope.addFact = function(question) {
+			q.editor.openFactDialog($dialog, q.editor.addFact(question.facts), question.facts);
+		};
+		$scope.editFact = function(fact, question) {
+			q.editor.openFactDialog($dialog, fact, question.facts);
+		};
+		$scope.removeFact = function(fact, question) {
+			q.editor.removeFact(fact, question.facts);
 		};
 
 		$scope.save = function() {
@@ -90,20 +142,17 @@
 		};
 	});
 
-	editorModule.controller('QuestionDialogCtrl', function($scope, dialog, question, questions) {
-		$scope.question = question;
+	editorModule.controller('FactDialogCtrl', function($scope, dialog, fact, facts) {
+		$scope.fact = fact;
 
-		$scope.addFact = function(question) {
-			q.editor.addFact(question.facts);
-		};
-		$scope.removeFact = function(fact) {
-			q.editor.removeFact(fact, question.facts);
+		$scope.assureReferenceInput = function(fact) {
+			q.editor.assureReferenceInput(fact);
 		};
 		$scope.close = function() {
 			dialog.close(false);
 		};
 		$scope.remove = function() {
-			q.editor.removeQuestion(question, questions);
+			q.editor.removeFact(fact, facts);
 			dialog.close();
 		};
 	});
