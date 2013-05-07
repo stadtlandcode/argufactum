@@ -1,8 +1,7 @@
+<div class="span10 argument-text">
+	{{argument.text}}
+</div>
 <div class="span2 weights">
-	<div class="weight-light" data-weight="1" data-number="{{argument.number}}" draggable="true" ondragstart="argue.evaluate.dragWeight(event)">
-		<ng-include src="'partials/argue/weightSvg.html'"></ng-include>
-	</div>
-	
 	<div class="weight-normal" data-weight="2" data-number="{{argument.number}}" draggable="true" ondragstart="argue.evaluate.dragWeight(event)">
 		<ng-include src="'partials/argue/weightSvg.html'"></ng-include>
 	</div>
@@ -14,7 +13,4 @@
 	<div class="weight-superheavy" data-weight="4" data-number="{{argument.number}}" draggable="true" ondragstart="argue.evaluate.dragWeight(event)">
 		<ng-include src="'partials/argue/weightSvg.html'"></ng-include>
 	</div>
-</div>
-<div class="span10 argument-text">
-	{{argument.text}}
 </div>

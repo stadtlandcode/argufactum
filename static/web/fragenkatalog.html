@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="css/bootstrap.css" rel="stylesheet" />
 <link href="css/bootstrap-responsive.css" rel="stylesheet" />
 <link href="css/main.css" rel="stylesheet" />
@@ -12,18 +13,26 @@
 <body data-ng-app="q">
 	<div class="navbar">
 		<div class="navbar-inner">
+			<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</a>
+		
 			<span class="brand"></span>
 			
-			<ul class="nav">
-				<li><a href="index.html">Das Projekt</a></li>
-				<li><a href="vergleichstabelle.html">Vergleichstabelle</a></li>
-				<li class="active"><a href="fragenkatalog.html">Fragenkatalog</a></li>
-				<li><a href="argumente.html">Argumente und Faktensammlung</a></li>
-			</ul>
-			
-			<ul class="nav pull-right">
-				<li><a href="impressum.html">Impressum</a>
-			</ul>
+			<div class="nav-collapse">
+				<ul class="nav">
+					<li><a href="index.html">Das Projekt</a></li>
+					<li class="active"><a href="fragenkatalog.html">Fragenkatalog</a></li>
+					<li><a href="argumente.html">Argumentensammlung</a></li>
+					<li><a href="vergleichstabelle.html">Vergleichstabelle</a></li>
+				</ul>
+
+				<ul class="nav pull-right">
+					<li><a href="impressum.html">Impressum</a>
+				</ul>
+			</div>
 		</div>
 	</div>
 
@@ -45,6 +54,8 @@
 	<script src="lib/angular/angular-locale_de-de.js"></script>
 	<script src="lib/angular/ui-bootstrap.js"></script>
 	<script src="lib/angular/awesomechart.js"></script>
+	<script src="lib/jquery.js"></script>
+	<script src="lib/bootstrap.js"></script>
 	<script src="lib/underscore.js"></script>
 	<script src="lib/awesomechart.js"></script>
 	<script src="js/questionnaire/app.js"></script>

@@ -23,13 +23,14 @@
 
 			// winner
 			var winnerChoice = numbers.positive > numbers.negative ? 'positive' : 'negative';
+			var winnerAdjective = null;
 			if (numbers[winnerChoice] === 0) {
 				winnerChoice = 'neutral';
 			} else if (numbers.positive === numbers.negative) {
 				winnerChoice = 'draw';
 			} else {
 				var winnerPercent = Math.round(numbers[winnerChoice] / questions.length * 100);
-				var winnerAdjective = 'größtenteils';
+				winnerAdjective = 'größtenteils';
 				if (winnerPercent > 90) {
 					winnerAdjective = 'absolut';
 				} else if (winnerPercent < 70) {

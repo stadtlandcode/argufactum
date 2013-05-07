@@ -20,7 +20,7 @@
 			document.getElementById('leftPlate').setAttribute('transform', 'translate(' + translateX + ', ' + (translateY * -1) + ')');
 			document.getElementById('rightPlate').setAttribute('transform', 'translate(' + (translateX * -1) + ', ' + translateY + ')');
 
-			document.getElementById('scalebeam').setAttribute('transform', 'rotate(' + leaning + ', 178, 257)');
+			document.getElementById('scalebeam').setAttribute('transform', 'rotate(' + leaning + ', 178, 207)');
 		},
 		recalculateLeaning: function() {
 			var totalWeight = {
@@ -46,7 +46,6 @@
 				'PRO': document.getElementById('leftPlateWeights'),
 				'CONTRA': document.getElementById('rightPlateWeights')
 			};
-			var totalWeightCount = this.getWeightCountPerThesis();
 			var weightCount = {
 				'PRO': 0,
 				'CONTRA': 0
@@ -66,16 +65,17 @@
 				var plate = plates[weight.argument.thesis];
 
 				// set argument number
-				clone.getElementsByTagName('text')[0].firstChild.nodeValue = weight.argument.number;
+				// clone.getElementsByTagName('text')[0].firstChild.nodeValue =
+				// weight.argument.number;
 				clone.setAttribute('id', 'weight' + weight.argument.number);
 
 				// set proportions
-				var scale = weight.value / 7;
+				var scale = weight.value / 10;
 				var translateX = weightCount[weight.argument.thesis] * 40;
 				if (weight.argument.thesis === 'CONTRA') {
 					translateX += 233;
 				}
-				var translateY = (114.5 - (114.5 * scale)) * 1.667;
+				var translateY = (84.5 - (84.5 * scale)) * 1.667;
 				console.log(translateY);
 
 				clone.setAttribute('transform', 'translate(' + translateX + ', ' + translateY + ') scale(' + scale + ')');

@@ -44,14 +44,11 @@
 /* scale */
 .scale {
 	width: 100%;
-	height: 400px;
-	position: relative;
 }
 .scale svg {
-	position: relative;
-	left: 50%;
-	margin-left: -192px;
-	width: 384px !important;
+	max-height: 400px;
+	max-width: 440px;
+	float: right;
 }
 
 /* SVG */
@@ -77,6 +74,7 @@ text {
 	float: left;
 	vertical-align: bottom;
 	margin-right: 3px;
+	cursor: move;
 }
 .weight-light {
 	width: 7px;

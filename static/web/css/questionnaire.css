@@ -32,7 +32,16 @@
 .screenshot {
 	margin: 1em 0 2em;
 }
+@media (min-width: 768px) {
+	.answered-questions {
+		padding-left: 2em;
+	}
+}
+@media (max-width: 767px) {
+	.answered-questions {
+		padding-top: 2em;
+	}
+}
 .answered-questions {
-	padding-left: 2em;
 	font-size: small;
 }
