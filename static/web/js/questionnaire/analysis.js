@@ -8,15 +8,12 @@
 			var numbers = {
 				'positive': 0,
 				'negative': 0,
-				'neutral': 0,
-				'notAnswered': 0
+				'neutral': 0
 			};
 			_.each(questions, _.bind(function(question) {
 				var answer = this.getAnswer(question.number, answers);
 
-				if (!answer || !answer.choice) {
-					numbers.notAnswered++;
-				} else if (answer.choice === 'DRAW') {
+				if (!answer || !answer.choice || answer.choice === 'DRAW') {
 					numbers.neutral++;
 				} else {
 					var countFor = (question.supports === answer.choice) ? 'positive' : 'negative';
@@ -24,10 +21,31 @@
 				}
 			}, this));
 
+			// winner
+			var winnerChoice = numbers.positive > numbers.negative ? 'positive' : 'negative';
+			if (numbers[winnerChoice] === 0) {
+				winnerChoice = 'neutral';
+			} else if (numbers.positive === numbers.negaitve) {
+				winnerChoice = 'draw';
+			} else {
+				var winnerPercent = Math.round(numbers[winnerChoice] / questions.length * 100);
+				var winnerAdjective = 'größtenteils';
+				if (winnerPercent > 90) {
+					winnerAdjective = 'absolut';
+				} else if (winnerPercent < 50) {
+					winnerAdjective = 'knapp';
+				}
+			}
+			var winner = {
+				choice: winnerChoice,
+				adjective: winnerAdjective
+			};
+
 			var model = {
 				'numbers': numbers,
 				'answers': answers,
 				'chart': [],
+				'winner': winner
 			};
 			model.chart.push({
 				value: numbers.positive,
@@ -38,7 +56,7 @@
 				color: 'red'
 			});
 			model.chart.push({
-				value: numbers.neutral + numbers.notAnswered,
+				value: numbers.neutral,
 				color: 'grey'
 			});
 

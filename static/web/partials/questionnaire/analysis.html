@@ -1,8 +1,26 @@
 <div class="page-header">
-	<h2>Auswertung Ihrer Antworten</h2>
+	<h2>Auswertung</h2>
 </div>
 
-<h4>{{questionnaire.title}}</h4>
+<h4>
+	{{questionnaire.title}}
+</h4>
+
+<p class="lead">
+	<strong class="text-success" data-ng-show="model.winner.choice == 'positive'">
+		Du stimmst diesem Thema {{model.winner.adjective}} zu
+	</strong>
+	<strong class="text-error" data-ng-show="model.winner.choice == 'negative'">
+		Du lehnst dieses Thema {{model.winner.adjective}} ab
+	</strong>
+	<strong class="muted" data-ng-show="model.winner.choice == 'neutral'">
+		Du stehst diesem Thema neutral gegenüber
+	</strong>
+	<strong class="muted" data-ng-show="model.winner.choice == 'draw'">
+		Du bist bei diesem Thema geteilter Meinung, Zustimmung und Ablehnung halten sich die Waage
+	</strong>
+</p>
+<br />
 
 <div class="row">
 	<div class="span5">
@@ -11,13 +29,12 @@
 		</div>
 	</div>
 	<div class="span7">
-		<p>Sie haben</p>
+		<p>Du hast</p>
 		
 		<ul>
 			<li class="text-success"><strong>{{model.numbers.positive}}</strong> Fragen zustimmend</li>
 			<li class="text-error"><strong>{{model.numbers.negative}}</strong> Fragen ablehnend</li>
 			<li class="muted"><strong>{{model.numbers.neutral}}</strong> Fragen neutral</li>
-			<li class="muted"><strong>{{model.numbers.notAnswered}}</strong> Fragen nicht</li>
 		</ul>
 		
 		<p>beantwortet</p>
@@ -26,13 +43,13 @@
 
 <div class="row">
 	<div class="span8">
-		<h4>Ihre Antworten:</h4>
+		<h4>Deine Antworten:</h4>
 		<ol>
 			<li data-ng-repeat="answer in model.answers | orderBy: 'question.number'">
 				{{answer.question.text}}
 				<br />
 				<p>
-					Ihre Antwort:
+					Deine Antwort:
 					<span class="{{answer.meaningCssClass}}">
 						{{answer.choiceLabel}}
 						({{answer.meaningLabel}} zum Thema)

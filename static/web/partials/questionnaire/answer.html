@@ -36,11 +36,8 @@
 			<label class="radio"> <input type="radio" name="optionsRadios" value="DRAW" data-ng-model="answer.choice"> Dazu habe ich keine Meinung</label>
 			
 			<br />
-			<button type="button" class="btn btn-primary" data-ng-show="answer.choice.length > 0" data-ng-click="saveAnswer()">
+			<button type="button" class="btn btn-primary" data-ng-disabled="answer.choice.length < 1" data-ng-click="saveAnswer()">
 				<i class="icon-arrow-right icon-white"></i> Weiter
-			</button>
-			<button type="button" class="btn" data-ng-click="skip()">
-				<i class="icon-remove"></i> Überspringen
 			</button>
 			<button type="button" class="btn pull-right" data-ng-show="answers.length > 0" data-ng-click="back()">
 				<i class="icon-arrow-left"></i>
@@ -56,7 +53,7 @@
 				<li data-ng-repeat="answer in answers | orderBy: 'number'">
 					{{answer.question.text}}<br />
 					<p>
-						<strong>Ihre Antwort:</strong>
+						<strong>Deine Antwort:</strong>
 						<span class="{{answer.choiceCssClass}}">{{answer.choiceLabel}}</span>
 						<i class="icon-pencil clickable" data-ng-click="gotoQuestion(answer.question)"></i>
 					</p>
