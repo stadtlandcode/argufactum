@@ -25,14 +25,14 @@
 			var winnerChoice = numbers.positive > numbers.negative ? 'positive' : 'negative';
 			if (numbers[winnerChoice] === 0) {
 				winnerChoice = 'neutral';
-			} else if (numbers.positive === numbers.negaitve) {
+			} else if (numbers.positive === numbers.negative) {
 				winnerChoice = 'draw';
 			} else {
 				var winnerPercent = Math.round(numbers[winnerChoice] / questions.length * 100);
 				var winnerAdjective = 'größtenteils';
 				if (winnerPercent > 90) {
 					winnerAdjective = 'absolut';
-				} else if (winnerPercent < 50) {
+				} else if (winnerPercent < 70) {
 					winnerAdjective = 'knapp';
 				}
 			}
