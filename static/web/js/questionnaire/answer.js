@@ -80,7 +80,7 @@
 			storage.saveModel(q.a100);
 			$location.path('/answer').replace();
 		} else {
-			$.get('http://argufactum.de/v1/storage/' + qId, function(data) {
+			$.get(HostUtils.v1Url('/storage' + qId), function(data) {
 				var model = JSON.parse(data.jsonString);
 				model.qId = qId;
 				storage.saveModel(model);

@@ -98,7 +98,7 @@
 		save: function($http, model, successCallback, errorCallback) {
 			var jsonString = angular.toJson(model);
 			var postData = 'json=' + jsonString;
-			var jqXHR = $.post('http://argufactum.de/v1/storage', postData);
+			var jqXHR = $.post(HostUtils.v1Url('/storage'), postData);
 			jqXHR.done(function(data) {
 				successCallback(data);
 			});
