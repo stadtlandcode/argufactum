@@ -19,4 +19,5 @@
 	<bean id="searchDao" class="de.ifcore.argue.dao.hibernate.HibernateSearchDao" />
 	<bean id="feedbackDao" class="de.ifcore.argue.dao.hibernate.HibernateFeedbackDao" />
 	<bean id="selectedTopicDao" class="de.ifcore.argue.dao.hibernate.HibernateSelectedTopicDao" />
+	<bean id="jsonStringDao" class="de.ifcore.argue.dao.hibernate.HibernateJsonStringDao" />
 </beans>
