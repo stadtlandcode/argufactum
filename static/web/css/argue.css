@@ -44,11 +44,11 @@
 /* scale */
 .scale {
 	width: 100%;
+	text-align: center;
 }
 .scale svg {
-	max-height: 400px;
-	max-width: 440px;
-	float: right;
+	max-height: 360px;
+	max-width: 400px;
 }
 
 /* SVG */
@@ -57,7 +57,10 @@ rect {
 	fill: #006dcc;
 }
 .cutout {
-	fill: #FFF;
+	fill: #FFF !important;
+}
+.droparea {
+	fill: transparent !important;
 }
 text {
 	fill: #FFF;
@@ -76,19 +79,96 @@ text {
 	margin-right: 3px;
 	cursor: move;
 }
-.weight-light {
+.plate text {
+	font-size: 12px;
+}
+.weight-value-1 {
 	width: 7px;
 	height: 12px;
 }
-.weight-normal {
+.weight-value-2 {
 	width: 14px;
 	height: 24px;
 }
-.weight-heavy {
+.weight-value-3 {
 	width: 21px;
 	height: 36px;
 }
-.weight-superheavy {
+.weight-value-4 {
 	width: 28px;
 	height: 48px;
+}
+
+/* colored weights */
+.weight-colored-1 circle,
+.weight-colored-1 rect {
+	fill: #1abc9c;
+}
+.weight-colored-2 circle,
+.weight-colored-2 rect {
+	fill: #2ecc71;
+}
+.weight-colored-3 circle,
+.weight-colored-3 rect {
+	fill: #3498db;
+}
+.weight-colored-4 circle,
+.weight-colored-4 rect {
+	fill: #9b59b6;
+}
+.weight-colored-5 circle,
+.weight-colored-5 rect {
+	fill: #34495e;
+}
+.weight-colored-11 circle,
+.weight-colored-11 rect {
+	fill: #16a085;
+}
+.weight-colored-12 circle,
+.weight-colored-12 rect {
+	fill: #27ae60;
+}
+.weight-colored-13 circle,
+.weight-colored-13 rect {
+	fill: #2980b9;
+}
+.weight-colored-14 circle,
+.weight-colored-14 rect {
+	fill: #8e44ad;
+}
+.weight-colored-10 circle,
+.weight-colored-10 rect {
+	fill: #2c3e50;
+}
+.weight-colored-6 circle,
+.weight-colored-6 rect {
+	fill: #f1c40f;
+}
+.weight-colored-7 circle,
+.weight-colored-7 rect {
+	fill: #e67e22;
+}
+.weight-colored-8 circle,
+.weight-colored-8 rect {
+	fill: #e74c3c;
+}
+.weight-colored-9 circle,
+.weight-colored-9 rect {
+	fill: #95a5a6;
+}
+.weight-colored-15 circle,
+.weight-colored-15 rect {
+	fill: #f39c12;
+}
+.weight-colored-16 circle,
+.weight-colored-16 rect {
+	fill: #d35400;
+}
+.weight-colored-17 circle,
+.weight-colored-17 rect {
+	fill: #c0392b;
+}
+.weight-colored-18 circle,
+.weight-colored-18 rect {
+	fill: #7f8c8d;
 }

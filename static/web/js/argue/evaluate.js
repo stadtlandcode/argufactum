@@ -8,57 +8,72 @@
 			return _.find(a.model.arguments, function(argument) {
 				return argument.number == number;
 			});
+		},
+		getModel: function() {
+			return a.model;
 		}
 	};
 
 	a.evaluate = {
 		maxLeaning: 32,
-		attachedWeights: [],
-		lean: function(leaning) {
-			var translateY = leaning * 2;
-			var translateX = Math.pow(leaning, 2) * 0.018;
-			document.getElementById('leftPlate').setAttribute('transform', 'translate(' + translateX + ', ' + (translateY * -1) + ')');
-			document.getElementById('rightPlate').setAttribute('transform', 'translate(' + (translateX * -1) + ', ' + translateY + ')');
-
-			document.getElementById('scalebeam').setAttribute('transform', 'rotate(' + leaning + ', 178, 207)');
+		calculateScale: function(weights) {
+			var leaning = this.calculateLeaning(weights);
+			var scale = {
+				'leaning': leaning,
+				'leftPlate': {
+					'translate': this.translatePlate(leaning, 'left')
+				},
+				'rightPlate': {
+					'translate': this.translatePlate(leaning, 'right')
+				},
+				'weightCount': this.getWeightCount(weights)
+			};
+			return scale;
 		},
-		recalculateLeaning: function() {
+		getWeightCount: function(weights) {
+			var count = {
+				'pro': 0,
+				'contra': 0
+			};
+			_.each(weights, function(weight) {
+				if (weight.attachedTo) {
+					count[weight.attachedTo]++;
+				}
+			});
+			return count;
+		},
+		translatePlate: function(leaning, side) {
+			var translate = {
+				x: Math.pow(leaning, 2) * 0.018,
+				y: leaning * 2
+			};
+			var flip = (side === 'left') ? 'y' : 'x';
+			translate[flip] = translate[flip] * -1;
+			return translate;
+		},
+		calculateLeaning: function(weights) {
 			var totalWeight = {
-				'PRO': 0,
-				'CONTRA': 0
+				'pro': 0,
+				'contra': 0
 			};
 
-			_.each(this.attachedWeights, function(weight) {
-				totalWeight[weight.argument.thesis] += weight.value;
+			_.each(weights, function(weight) {
+				if (weight.attachedTo) {
+					totalWeight[weight.attachedTo] += weight.value;
+				}
 			});
 
-			var prefix = totalWeight.PRO > totalWeight.CONTRA ? -1 : 1;
-			var highestValue = Math.max(totalWeight.PRO, totalWeight.CONTRA);
-			var lowestValue = Math.min(totalWeight.PRO, totalWeight.CONTRA);
-			var factor = lowestValue / highestValue;
-			var leaning = Math.round(this.maxLeaning - (this.maxLeaning * factor)) * prefix;
+			if (totalWeight.pro === 0 && totalWeight.contra === 0) {
+				return 0;
+			}
 
-			this.lean(leaning);
+			var prefix = totalWeight.pro > totalWeight.contra ? -1 : 1;
+			var highestValue = Math.max(totalWeight.pro, totalWeight.contra);
+			var lowestValue = Math.min(totalWeight.pro, totalWeight.contra);
+			var factor = lowestValue / highestValue;
+			return Math.round(this.maxLeaning - (this.maxLeaning * factor)) * prefix;
 		},
 		redrawWeights: function() {
-			var templateWeight = document.getElementById('templateWeight');
-			var plates = {
-				'PRO': document.getElementById('leftPlateWeights'),
-				'CONTRA': document.getElementById('rightPlateWeights')
-			};
-			var weightCount = {
-				'PRO': 0,
-				'CONTRA': 0
-			};
-
-			// clear existing weights
-			while (plates.PRO.firstChild) {
-				plates.PRO.removeChild(plates.PRO.firstChild);
-			}
-			while (plates.CONTRA.firstChild) {
-				plates.CONTRA.removeChild(plates.CONTRA.firstChild);
-			}
-
 			// attach weights
 			_.each(this.attachedWeights, function(weight) {
 				var clone = templateWeight.cloneNode(true);
@@ -67,7 +82,9 @@
 				// set argument number
 				// clone.getElementsByTagName('text')[0].firstChild.nodeValue =
 				// weight.argument.number;
+				clone.removeAttribute('style');
 				clone.setAttribute('id', 'weight' + weight.argument.number);
+				clone.setAttribute('class', 'weight weight-colored-' + weight.argument.colorNumber);
 
 				// set proportions
 				var scale = weight.value / 10;
@@ -76,7 +93,6 @@
 					translateX += 233;
 				}
 				var translateY = (84.5 - (84.5 * scale)) * 1.667;
-				console.log(translateY);
 
 				clone.setAttribute('transform', 'translate(' + translateX + ', ' + translateY + ') scale(' + scale + ')');
 
@@ -84,53 +100,60 @@
 				weightCount[weight.argument.thesis]++;
 			});
 		},
-		getWeightCountPerThesis: function() {
-			var count = {
-				'PRO': 0,
-				'CONTRA': 0
-			};
-
+		getNextFreeColorNumber: function() {
+			var colors = [1, 2, 3, 4, 5, 6, 7, 8];
 			_.each(this.attachedWeights, function(weight) {
-				count[weight.argument.thesis]++;
+				a.array.remove(colors, weight.argument.colorNumber);
+			});
+			return colors[0];
+		},
+		findWeight: function(argumentNumber, weightValue, weights) {
+			return _.find(weights, function(weight) {
+				return weight.value == weightValue && weight.argument.number == argumentNumber;
 			});
 		},
-		addWeight: function(weight) {
-			var existingWeight = this.findAttachedWeight(weight.argument);
-			if (existingWeight) {
-				existingWeight.value = weight.value;
-			} else {
-				this.attachedWeights.push(weight);
-			}
+		getWeightsForArgument: function(argument, weights) {
+			return _.filter(weights, function(weight) {
+				return weight.argument.number === argument.number;
+			});
+		},
+		getWeights: function(argumentList) {
+			var weights = [];
+			_.each(argumentList, function(argument) {
+				for ( var size = 1; size <= 4; size++) {
+					weights.push({
+						'value': size,
+						'argument': argument,
+						'colorNumber': 0,
+						'attachedTo': null
+					});
+				}
+			});
 
-			this.redrawWeights();
-			this.recalculateLeaning();
-		},
-		findAttachedWeight: function(argument) {
-			return _.find(this.attachedWeights, function(weight) {
-				return weight.argument.number == argument.number;
-			});
-		},
-		dragWeight: function(event) {
-			event.dataTransfer.setData('weight', event.target.getAttribute('data-weight'));
-			event.dataTransfer.setData('number', event.target.getAttribute('data-number'));
-		},
-		allowDrop: function(event) {
-			event.preventDefault();
-		},
-		onDrop: function(event) {
-			event.preventDefault();
-			var weight = event.dataTransfer.getData('weight');
-			var number = event.dataTransfer.getData('number');
-			var argument = a.storage.findArgument(number);
-
-			this.addWeight({
-				'value': Number(weight),
-				'argument': argument
-			});
+			return weights;
 		}
 	};
 
 	evaluateModule.controller('EvaluateCtrl', function($scope) {
-		$scope.model = a.model;
+		$scope.model = a.storage.getModel();
+		$scope.weights = a.evaluate.getWeights($scope.model.arguments);
+		$scope.scale = a.evaluate.calculateScale();
+
+		$scope.weightsForArgument = function(argument) {
+			return a.evaluate.getWeightsForArgument(argument, $scope.weights);
+		};
+		$scope.scaleForWeight = function(weight) {
+			return weight.value / 10;
+		};
+		$scope.translateValuesForWeight = function(weight) {
+			console.log($scope.scale.weightCount[weight.attachedTo]);
+			var translateX = $scope.scale.weightCount[weight.attachedTo] * 40;
+			if (weight.attachedTo === 'contra') {
+				translateX += 233;
+			}
+			var translateY = (159.5 - (84.5 * weight.value / 10)) * 1.667;
+			console.log(translateX + ', ' + translateY);
+			return translateX + ', ' + translateY;
+		};
 	});
 })(angular, argue, _);
