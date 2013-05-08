@@ -120,7 +120,7 @@
 		getWeights: function(argumentList) {
 			var weights = [];
 			_.each(argumentList, function(argument) {
-				for ( var size = 1; size <= 4; size++) {
+				for ( var size = 4; size <= 4; size++) {
 					weights.push({
 						'value': size,
 						'argument': argument,
@@ -146,13 +146,14 @@
 			return weight.value / 10;
 		};
 		$scope.translateValuesForWeight = function(weight) {
-			console.log($scope.scale.weightCount[weight.attachedTo]);
-			var translateX = $scope.scale.weightCount[weight.attachedTo] * 40;
+			var translateX = weight.attachedToIndex * 70;
 			if (weight.attachedTo === 'contra') {
-				translateX += 233;
+				translateX += 523;
+			} else {
+				translateX -= 50;
 			}
-			var translateY = (159.5 - (84.5 * weight.value / 10)) * 1.667;
-			console.log(translateX + ', ' + translateY);
+			var translateY = (50 + (550 / (weight.value * 0.9)));
+			console.log(weight.value + ': ' + translateX + ', ' + translateY);
 			return translateX + ', ' + translateY;
 		};
 	});

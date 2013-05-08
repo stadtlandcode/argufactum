@@ -6,6 +6,7 @@
 	q.editor = {
 		getEmptyModel: function() {
 			var model = {
+				qId: null,
 				title: '',
 				isPublic: true,
 				questions: []
@@ -93,12 +94,22 @@
 			if (!emptyReference) {
 				this.addReference(fact.references);
 			}
+		},
+		save: function($http, model, successCallback, errorCallback) {
+			var jsonString = angular.toJson(model);
+			var postData = 'json=' + jsonString;
+			var jqXHR = $.post('http://argufactum.de/v1/storage', postData);
+			jqXHR.done(function(data) {
+				successCallback(data);
+			});
+			jqXHR.fail(errorCallback);
 		}
 	};
 
-	editorModule.controller('EditorCtrl', function($scope, storage, $location, $dialog) {
-		$scope.model = q.editor.getEmptyModel();
+	editorModule.controller('EditorCtrl', function($scope, storage, $location, $dialog, $http, $routeParams) {
+		$scope.model = ($routeParams.qId) ? storage.getModel() : q.editor.getEmptyModel();
 		$scope.question = q.editor.getSomeQuestion($scope.model.questions);
+		$scope.loading = false;
 
 		$scope.addQuestion = function() {
 			$scope.question = q.editor.addQuestion($scope.model.questions);
@@ -129,9 +140,21 @@
 		};
 
 		$scope.save = function() {
-			storage.saveModel($scope.model);
-			$location.path('/create/success');
+			$scope.loading = true;
+			q.editor.save($http, $scope.model, $scope.saveSuccess, $scope.saveError);
 		};
+		$scope.saveSuccess = function(id) {
+			$scope.loading = false;
+			$scope.model.qId = id;
+			storage.saveModel($scope.model);
+
+			$location.path('/create/success/' + id);
+			$scope.$apply();
+		};
+		$scope.saveError = function() {
+			$scope.loading = false;
+		};
+
 		$scope.exportJson = function() {
 			var text = angular.toJson($scope.model);
 			window.prompt("Copy to clipboard: Ctrl+C, Enter", text);

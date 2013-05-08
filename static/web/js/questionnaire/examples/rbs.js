@@ -1,5 +1,5 @@
 (function(q) {
-	q.model = {
+	q.rbs = {
 		title: 'Erhalt der Realschule RBS in Grevenbroich',
 		isPublic: true,
 		questions: [
@@ -72,6 +72,10 @@
 					number: 1,
 					references: [],
 					text: 'Für den Erhalt der Realschule fallen Mehrkosten von 400.000 Euro verteilt über 5 Jahre an'
+				}, {
+					number: 2,
+					references: [],
+					text: 'Grevenbroich ist im Nothaushalt mit nahezu 83 Millionen Euro Schulden'
 				}]
 			},
 			{
@@ -99,6 +103,163 @@
 						references: [],
 						text: 'Das Förderkonzept zur individuellen Förderung sowie die Profilklassen sichern mit einem bewährten und verlässlichen Angebot erfolgreiche Schulabschlüsse.'
 					}]
+			}]
+	};
+
+	q.energie = {
+		"title": "Soll das Energienetz Berlin zurück in Bürgerhand?",
+		"isPublic": true,
+		"questions": [
+			{
+				"number": 1,
+				"supports": "YES",
+				"facts": [{
+					"number": 1,
+					"text": "Die Berliner Stadtwerke haben zum Ziel, keine Kohle- oder Atomenergie zu verwenden, sondern ausschließlich dezentrale eneuerbare Energien, also zu 100 % Ökostrom."
+				}],
+				"text": "Soll die Region Berlin-Brandenburg mit reinem Ökostrom versorgt werden?"
+			},
+			{
+				"number": 2,
+				"supports": "NO",
+				"facts": [{
+					"number": 1,
+					"text": "Die Stadtwerke könnten wettbewerblich nicht genug Gewinn erzielen auf dem Berliner Energiemarkt für den Aufbau sozialer Angebote."
+				}, {
+					"number": 2,
+					"text": "Der Gesetzentwurf macht den vorgesehenen Stadtwerken tarifpolitische Vorgaben"
+				}],
+				"text": "Sind Sie der Meinung, dass die Gründung von kommunalen Stadtwerken Risiken für den Haushalt birgt?"
+			},
+			{
+				"number": 3,
+				"supports": "YES",
+				"facts": [{
+					"number": 1,
+					"text": "Beim Rückkauf der Netze würde das erwirtschaftete Geld in Berlin bleiben. Die Stadt würde langfristig davon profitieren. Bleibt das Netz im Besitz von Vattenfall, so fließen die Gewinne in deren Konzernzentrale.."
+				}],
+				"text": "Sind Sie der Meinung, dass die Gewinne aus dem Netzbetrieb in der Kommune bleiben sollten?"
+			},
+			{
+				"number": 4,
+				"supports": "NO",
+				"facts": [
+					{
+						"number": 1,
+						"text": "Das Energienetz müsste vom derzeitigen Betreiber zurückgekauft werden. Über den Kaufpreis wird gestritten: Die Befürworter halten sich an das einzige Gutachten, worin 400 Millionen für angemessen gehalten werden. Die Gegner sprechen von einer Milliarde Euro."
+					}, {
+						"number": 2,
+						"text": "Gesetzlich darf das Netz nicht mehr kosten, als es in der 20-jährigen Vertragslaufzeit an Ertrag bringt."
+					}],
+				"text": "Befürchten Sie zu hohe Kosten für den Rückkauf des Energienetzes?"
+			},
+			{
+				"number": 5,
+				"supports": "NO",
+				"facts": [
+					{
+						"number": 1,
+						"text": "Der jetzige Betreiberkonzern, Vattenfall, hat hohes Knowhow und möchte zuverlässig Strom liefern, ohne Störfälle."
+					},
+					{
+						"number": 2,
+						"text": "Die jahrelangen Mitarbeiter kennen das Netz am besten. Sie sollen jedoch von den Stadtwerken übernommen werden, somit wäre das Knowhow ebenfalls gewährleistet."
+					}],
+				"text": "Halten Sie es für am sichersten, wenn der Strom weiterhin in wirtschaftlicher Hand bleibt?"
+			},
+			{
+				"number": 6,
+				"supports": "YES",
+				"facts": [{
+					"number": 2,
+					"text": "Für Stadtwerke und Netzgesellschaft gelten klare Transparenzvorgaben. Wichtige Unterlagen werden im Internet veröffentlicht. Alle erhalten Einblick in die Geschäftspolitik, so dass z. B. die Preisbildung von Stromtarifen  nachvollziehbar wird."
+				}],
+				"text": "Soll die Betreibung des Energienetzes transparanter werden und es keine geheimen Verträge mehr geben?"
+			},
+			{
+				"number": 7,
+				"supports": "YES",
+				"facts": [{
+					"number": 1,
+					"text": "Eine sozialverträgliche Gestaltung würde beispielsweise eine gute Beratung beinhalten. Sozial schwache Haushalte werden beraten und erhalten einen Sozialtarif, die Anschaffung von energiesparenden Haushaltsgeräten wird gefördert"
+				}],
+				"text": "Soll die Energiewende sozialverträglich gestaltet werden?"
+			}]
+	};
+
+	q.a100 = {
+		"title": "Weiterführung der A 100 in Berlin - Weiterbau vom Dreieck Neukölln bis zur Frankfurter Allee 3,2 km über- und unterirdisch",
+		"isPublic": true,
+		"questions": [
+			{
+				"number": 1,
+				"supports": "YES",
+				"facts": [
+					{
+						"number": 1,
+						"text": "Auf der Autobahn wird der Verkehr gebündelt und somit die stark befahrenen Stadtstraßen in Treptow und Neukölln von Stau und Lärm entlastet"
+					},
+					{
+						"number": 2,
+						"text": "Prognostiziert werden am Autobahnanschluss 65.000 bis 80.000 KFZ pro Tag, auf der Elsensbrücke mit ca. 90.000, beim 2. Abschnitt sogar mit 130.000 KFZ/Tag. Dies führt im weiteren ampelgeregelten Verkehr unweigerlich zum Dauerstau."
+					}],
+				"text": "Sind Sie der Meinung, dass der Verkehr in Berlin entlastet wird?"
+			},
+			{
+				"number": 2,
+				"supports": "YES",
+				"facts": [{
+					"number": 1,
+					"text": "Wenn mehr Autos und LKW auf der Autobahn gebündelt werden, erhöht das besonders auch für Fußgänger und Fahrradfahrer in der Stadt die Verkehrssicherheit"
+				}],
+				"text": "Sind Sie der Meinung, dass die Verkehrssicherheit erhöht wird?"
+			},
+			{
+				"number": 3,
+				"supports": "YES",
+				"facts": [{
+					"number": 1,
+					"text": "Über 2.000 Tonnen CO2 werden durch die direkte Verbindung im Jahr eingespart."
+				}],
+				"text": "Sind Sie der Meinung, dass klimaschädliche Emissionen verringert werden?"
+			},
+			{
+				"number": 4,
+				"supports": "YES",
+				"facts": [
+					{
+						"number": 1,
+						"text": "Bisher fehlte im Südosten der Stadt eine besonders leistungsfähige Verbindungsstraße zwischen der früheren West- und Osthälfte Berlins. Die neue Stadtautobahn wird deshalb den Wirtschaftsverkehr deutlich erleichtern in diesem Bereich der Stadt."
+					},
+					{
+						"number": 2,
+						"text": "Die Erreichbarkeit wichtiger Wirtschaftsstandorte in Friedrichhain Kreuzberg und Neukölln wird verbessert, das neue Entwicklungsgebiet Mediaspree wird besser angebunden, der ehemalige Osthafen, das Industriegebiet Neukölln, bisher verkehrlich im Abseits"
+					}, {
+						"number": 3,
+						"text": "Barriere für den West-Ost-Verkehr wird überwunden."
+					}],
+				"text": "Sind Sie der Meinung, dass es für die Ost-West-Verbindung keine andere Alternative gibt?"
+			},
+			{
+				"number": 5,
+				"supports": "NO",
+				"facts": [
+					{
+						"number": 1,
+						"text": "Gegner sagen, dass dieses Geld woanders dringender gebraucht würde, z. B. lebt in Berlin bereits jedes dritte Kind von Hartz IV. Im Bundesvergleich ist Berlin somit das Schlusslicht beim Rückgang der Kinderarmut."
+					}, {
+						"number": 2,
+						"text": ""
+					}],
+				"text": "Halten Sie die nicht vom Bund zu tragendenden Kosten von 14,3 Mio EUR für gerechtfertigt?"
+			}, {
+				"number": 7,
+				"supports": "NO",
+				"facts": [{
+					"number": 1,
+					"text": "Es sind Mieter in 200 Wohnungen direkt betroffen, Pächter von 300 Kleingärten und knapp 300 Bäume"
+				}],
+				"text": "Sind Sie der Meinung, dass die Häuser und Kleingärten der Weiterführung nicht zum Opfer fallen dürfen?"
 			}]
 	};
 })(questionnaire);

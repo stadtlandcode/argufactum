@@ -67,6 +67,29 @@
 		}
 	};
 
+	answerModule.controller('LoadCtrl', function($scope, storage, $location, $routeParams) {
+		var qId = $routeParams.qId;
+
+		if (qId == 'a') {
+			storage.saveModel(q.rbs);
+			$location.path('/answer').replace();
+		} else if (qId == 'b') {
+			storage.saveModel(q.energie);
+			$location.path('/answer').replace();
+		} else if (qId == 'c') {
+			storage.saveModel(q.a100);
+			$location.path('/answer').replace();
+		} else {
+			$.get('http://argufactum.de/v1/storage/' + qId, function(data) {
+				var model = JSON.parse(data.jsonString);
+				model.qId = qId;
+				storage.saveModel(model);
+				$location.path('/answer').replace();
+				$scope.$apply();
+			});
+		}
+	});
+
 	answerModule.controller('AnswerCtrl', function($scope, storage, $location, $routeParams) {
 		var initialQuestionNumber = $routeParams.questionId ? $routeParams.questionId : 1;
 

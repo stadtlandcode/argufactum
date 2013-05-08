@@ -4,7 +4,7 @@
 
 <div class="row">
 	<div class="span7">
-		<form class="form-horizontal">
+		<form class="form-horizontal" id="editor">
 			<p>
 				<input type="text" tabindex="1" name="title" class="input-xxlarge" placeholder="Thema" data-ng-model="model.title" data-popover="Wähle ein Thema, dem man zustimmen oder widersprechen kann (z.B. 'Stuttgart 21', 'Erhalt der Grundschule')" data-popover-trigger="focus" autofocus="autofocus">
 			</p>
@@ -57,12 +57,15 @@
 					<i class="icon-check icon-white"></i>
 					Fertigstellen
 				</button>
-				<button type="button" class="btn" data-ng-click="exportJson()">
-					JSON-Export
-				</button>
-				<button type="button" class="btn" data-ng-click="importJson()">
-					JSON-Import
-				</button>
+				<i class="icon-ajax-loader" data-ng-show="loading"></i>
+				<div class="pull-right">
+					<button type="button" class="btn" data-ng-click="exportJson()">
+						JSON-Export
+					</button>
+					<button type="button" class="btn" data-ng-click="importJson()">
+						JSON-Import
+					</button>
+				</div>
 			</div>
 		</form>
 	</div>

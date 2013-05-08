@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import de.ifcore.argue.domain.entities.JsonString;
 import de.ifcore.argue.domain.form.JsonStringForm;
 import de.ifcore.argue.services.JsonStorageService;
 
@@ -18,9 +19,9 @@ public class JsonStorageController
 
 	@RequestMapping(value = "/storage/{base36Id}", method = RequestMethod.GET)
 	@ResponseBody
-	public String get(@PathVariable String base36Id)
+	public JsonString get(@PathVariable String base36Id)
 	{
-		String jsonString = storageService.get(base36Id);
+		JsonString jsonString = storageService.get(base36Id);
 		return jsonString;
 	}
 

@@ -15,11 +15,11 @@ public class JsonStorageServiceImpl implements JsonStorageService
 
 	@Override
 	@Transactional(readOnly = true)
-	public String get(String base36Id)
+	public JsonString get(String base36Id)
 	{
 		long id = Long.parseLong(base36Id, 36);
 		JsonString jsonString = dao.get(id);
-		return jsonString == null ? null : jsonString.getJsonString();
+		return jsonString;
 	}
 
 	@Override

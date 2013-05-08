@@ -13,9 +13,17 @@ var questionnaire = {};
 			templateUrl: 'partials/questionnaire/editor.html',
 			controller: 'EditorCtrl'
 		});
-		$routeProvider.when('/create/success', {
+		$routeProvider.when('/edit/:qId', {
+			templateUrl: 'partials/questionnaire/editor.html',
+			controller: 'EditorCtrl'
+		});
+		$routeProvider.when('/create/success/:qId', {
 			templateUrl: 'partials/questionnaire/createdSuccessfuly.html',
 			controller: 'SuccessCtrl'
+		});
+		$routeProvider.when('/q/:qId', {
+			templateUrl: 'partials/questionnaire/loading.html',
+			controller: 'LoadCtrl'
 		});
 		$routeProvider.when('/answer', {
 			templateUrl: 'partials/questionnaire/answer.html',

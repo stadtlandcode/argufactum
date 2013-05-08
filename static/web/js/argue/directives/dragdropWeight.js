@@ -25,7 +25,14 @@
 					var weightValue = event.originalEvent.dataTransfer.getData('weightValue');
 					var weight = a.evaluate.findWeight(argumentNumber, weightValue, scope.weights);
 
+					var argumentWeights = a.evaluate.getWeightsForArgument(weight.argument, scope.weights);
+					_.each(argumentWeights, function(argumentWeight) {
+						argumentWeight.attachedTo = null;
+						argumentWeight.attachedToIndex = 0;
+					});
+
 					weight.attachedTo = element.data('plate');
+					weight.attachedToIndex = a.evaluate.getWeightCount(scope.weights)[element.data('plate')];
 					scope.scale = a.evaluate.calculateScale(scope.weights);
 					scope.$digest();
 				});
