@@ -17,7 +17,7 @@ public class JsonStorageController
 	@Autowired
 	private JsonStorageService storageService;
 
-	@RequestMapping(value = "/storage/{base36Id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/storage/{base36Id}", method = RequestMethod.GET, produces = "application/json; charset=UTF-8")
 	@ResponseBody
 	public JsonString get(@PathVariable String base36Id)
 	{

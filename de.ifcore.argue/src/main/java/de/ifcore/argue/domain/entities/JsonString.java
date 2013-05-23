@@ -6,6 +6,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 
+import org.hibernate.annotations.Type;
+
 @Entity
 public class JsonString
 {
@@ -15,6 +17,7 @@ public class JsonString
 
 	@Lob
 	@Column(nullable = false, updatable = false)
+	@Type(type = "org.hibernate.type.TextType")
 	private String jsonString;
 
 	JsonString()

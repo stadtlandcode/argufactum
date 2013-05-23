@@ -188,7 +188,8 @@
 	};
 
 	q.a100 = {
-		"title": "Weiterführung der A 100 in Berlin - Weiterbau vom Dreieck Neukölln bis zur Frankfurter Allee 3,2 km über- und unterirdisch",
+		"qId": 'c',
+		"title": "Weiterführung der A100 in Berlin (Dreieck Neukölln bis Frankfurter Allee)",
 		"isPublic": true,
 		"questions": [
 			{
@@ -197,20 +198,44 @@
 				"facts": [
 					{
 						"number": 1,
-						"text": "Auf der Autobahn wird der Verkehr gebündelt und somit die stark befahrenen Stadtstraßen in Treptow und Neukölln von Stau und Lärm entlastet"
+						"references": [{
+							"number": 1,
+							"text": ""
+						}],
+						"text": "Auf der Autobahn wird der Verkehr gebündelt, manche große Umwege können entfallen. Die stark befahrenen Stadtstraßen in Treptow und Neukölln werden von Stau und Lärm entlastet."
 					},
 					{
 						"number": 2,
-						"text": "Prognostiziert werden am Autobahnanschluss 65.000 bis 80.000 KFZ pro Tag, auf der Elsensbrücke mit ca. 90.000, beim 2. Abschnitt sogar mit 130.000 KFZ/Tag. Dies führt im weiteren ampelgeregelten Verkehr unweigerlich zum Dauerstau."
+						"references": [{
+							"number": 1,
+							"text": ""
+						}],
+						"text": "Gegner prognostizieren Anschlussprobleme. 65.000 bis 80.000 Kfz/Tag am Autbahnanschluss sowie 80.000 bis 130.000 Kfz/Tag an der Elsensbrücke würden im weiteren ampelgeregelten Verkehr unweigerlich zum Dauerstau führen"
+					},
+					{
+						"number": 3,
+						"references": [
+							{
+								"number": 1,
+								"text": "http://www.google.com/url?q=http%3A%2F%2Fwww.stadtentwicklung.berlin.de%2Fv…Fde%2Ferweiterung.shtml&sa=D&sntz=1&usg=AFQjCNE-dxVaxRA8dO6UmwKAGBZBhddIuQ"
+							}, {
+								"number": 2,
+								"text": ""
+							}],
+						"text": "Der Bereich zwischen Treptower Park bis zur Frankfurter Allee ist zum großen Teil als Tunnel geplant. Durch die Tunnellage kommt es zu bedeutender Lärm- und Luftschadstoffentlastung im Stadtgebiet."
 					}],
-				"text": "Sind Sie der Meinung, dass der Verkehr in Berlin entlastet wird?"
+				"text": "Sind Sie der Meinung, dass die Weiterführung den Verkehr in Berlin entlastet?"
 			},
 			{
 				"number": 2,
 				"supports": "YES",
 				"facts": [{
 					"number": 1,
-					"text": "Wenn mehr Autos und LKW auf der Autobahn gebündelt werden, erhöht das besonders auch für Fußgänger und Fahrradfahrer in der Stadt die Verkehrssicherheit"
+					"references": [{
+						"number": 1,
+						"text": ""
+					}],
+					"text": "Die Befürwörter prognostizieren, dass durch die Bündelung der Autos und LKW auf der Autobahn die Verkehrssicherheit für Fußgänger und Fahrradfahrer in der Stadt erhöht wird"
 				}],
 				"text": "Sind Sie der Meinung, dass die Verkehrssicherheit erhöht wird?"
 			},
@@ -219,26 +244,26 @@
 				"supports": "YES",
 				"facts": [{
 					"number": 1,
-					"text": "Über 2.000 Tonnen CO2 werden durch die direkte Verbindung im Jahr eingespart."
+					"references": [{
+						"number": 1,
+						"text": ""
+					}],
+					"text": "Prognostiziert wird eine CO2-Einsparung von 2.000 Tonnen im Jahr durch die direkte Verbindung und weniger Ampelkreuzungen"
 				}],
 				"text": "Sind Sie der Meinung, dass klimaschädliche Emissionen verringert werden?"
 			},
 			{
 				"number": 4,
 				"supports": "YES",
-				"facts": [
-					{
+				"facts": [{
+					"number": 2,
+					"references": [{
 						"number": 1,
-						"text": "Bisher fehlte im Südosten der Stadt eine besonders leistungsfähige Verbindungsstraße zwischen der früheren West- und Osthälfte Berlins. Die neue Stadtautobahn wird deshalb den Wirtschaftsverkehr deutlich erleichtern in diesem Bereich der Stadt."
-					},
-					{
-						"number": 2,
-						"text": "Die Erreichbarkeit wichtiger Wirtschaftsstandorte in Friedrichhain Kreuzberg und Neukölln wird verbessert, das neue Entwicklungsgebiet Mediaspree wird besser angebunden, der ehemalige Osthafen, das Industriegebiet Neukölln, bisher verkehrlich im Abseits"
-					}, {
-						"number": 3,
-						"text": "Barriere für den West-Ost-Verkehr wird überwunden."
+						"text": ""
 					}],
-				"text": "Sind Sie der Meinung, dass es für die Ost-West-Verbindung keine andere Alternative gibt?"
+					"text": "Bisher fehlt im Südosten der Stadt eine leistungsfähige Verbindungsstraße zwischen der früheren West- und Osthälfte Berlins. Die Erreichbarkeit von Wirtschaftsstandorten in Neukölln und Kreuzberg sowie des Entwicklungsgebiets Mediaspree wird verbessert"
+				}],
+				"text": "Sind Sie der Meinung, dass es bessere Alternativen für die Ost-West Verbindung gibt?"
 			},
 			{
 				"number": 5,
@@ -246,19 +271,46 @@
 				"facts": [
 					{
 						"number": 1,
-						"text": "Gegner sagen, dass dieses Geld woanders dringender gebraucht würde, z. B. lebt in Berlin bereits jedes dritte Kind von Hartz IV. Im Bundesvergleich ist Berlin somit das Schlusslicht beim Rückgang der Kinderarmut."
-					}, {
-						"number": 2,
-						"text": ""
+						"references": [{
+							"number": 1,
+							"text": ""
+						}],
+						"text": "Der Bund trägt Kosten von ca. 420 Mio. Euro, welche von Berlin zweckgebunden nur für die Weiterführung der A100 verwendet werden können"
+					},
+					{
+						"number": 3,
+						"references": [{
+							"number": 1,
+							"text": ""
+						}],
+						"text": "Gegner der Weiterführung sind der Meinung, dass der Anteil von Berlin für andere Zwecke dringender benötigt wird, beispielsweise für die Bekämpfung der Kinderarmut. In Berlin lebt bereits jedes dritte Kind von Hartz IV"
 					}],
-				"text": "Halten Sie die nicht vom Bund zu tragendenden Kosten von 14,3 Mio EUR für gerechtfertigt?"
-			}, {
-				"number": 7,
-				"supports": "NO",
-				"facts": [{
-					"number": 1,
-					"text": "Es sind Mieter in 200 Wohnungen direkt betroffen, Pächter von 300 Kleingärten und knapp 300 Bäume"
-				}],
+				"text": "Halten Sie die Kosten, die das Land Berlin alleine zu tragen hat (14,3 Mio. EUR), für gerechtfertigt?"
+			},
+			{
+				"number": 6,
+				"supports": "YES",
+				"facts": [
+					{
+						"number": 1,
+						"references": [{
+							"number": 1,
+							"text": ""
+						}],
+						"text": "Es sind Mieter von 200 Wohnungen sowie Pächter von 300 Kleingärten direkt betroffen. Daneben müssen 300 Bäume gefällt werden"
+					},
+					{
+						"number": 2,
+						"references": [
+							{
+								"number": 1,
+								"text": "http://www.google.com/url?q=http%3A%2F%2Fwww.stadtentwicklung.berlin.de%2Fv…2Fde%2Fdiskussion.shtml&sa=D&sntz=1&usg=AFQjCNGPaspQp7frNJ3P9rrM_8Mxs1-2nw"
+							}, {
+								"number": 2,
+								"text": ""
+							}],
+						"text": "Die Nutzung der Kleingärten war von vorneherein befristet."
+					}],
 				"text": "Sind Sie der Meinung, dass die Häuser und Kleingärten der Weiterführung nicht zum Opfer fallen dürfen?"
 			}]
 	};

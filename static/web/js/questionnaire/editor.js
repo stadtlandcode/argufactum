@@ -154,15 +154,6 @@
 		$scope.saveError = function() {
 			$scope.loading = false;
 		};
-
-		$scope.exportJson = function() {
-			var text = angular.toJson($scope.model);
-			window.prompt("Copy to clipboard: Ctrl+C, Enter", text);
-		};
-		$scope.importJson = function() {
-			var json = window.prompt("JSON einfügen", '');
-			$scope.model = JSON.parse(json);
-		};
 	});
 
 	editorModule.controller('FactDialogCtrl', function($scope, dialog, fact, facts) {
