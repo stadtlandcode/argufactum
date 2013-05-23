@@ -1,13 +1,15 @@
-# AngularJS APP (static/)
-The AngularJS APP contains currently 3 prototypes: a questionnaire, comparison table and an argument collection tool
+# AngularJS APP
+Directory: static/
+The AngularJS APP contains currently 3 prototypes: a questionnaire, comparison table and an argument collection tool. It is currently deployed on http://argufactum.de
 
 License: MIT
 
 ## Getting started
 Just open the file static/index.html in your browser or execute the script static/scripts/web-server.js to start a node.js instance
 
-# JAVA-Webapp (de.ifcore.argue/)
-The Java-Webapp is a prototype for collecting arguments and facts for controversial discussed topics. It is currently deployed on http://argufactum.de/v1
+# JAVA-Webapp
+Directory: de.ifcore.argue/
+The Java-Webapp is an older prototype for collecting arguments and facts for controversial discussed topics. It is currently deployed on http://argufactum.de/v1
 
 License: MIT 
 
