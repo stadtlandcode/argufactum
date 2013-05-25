@@ -10,8 +10,11 @@
 				facts: [
 					{
 						number: 1,
-						references: [],
-						text: 'Die Eltern hätten nach Wegfall der Realschule RBS noch die Wahl zwischen 1 Realschule, 3 Gymnasien, 2 Gesamtschulen und 1 Werkrealschule in Grevenbroich'
+						references: [{
+							number: 1,
+							text: 'http://www.grevenbroich.de/C1257138004C5579/html/C67DA91A9EC50E49C1257184004D217B?openDocument'
+						}],
+						text: 'Die Eltern hätten nach Wegfall der Realschule RBS noch die Wahl zwischen 1 Realschule, 2 Gymnasien, 1 Gesamtschule und 2 Hauptschulen in Grevenbroich'
 					}, {
 						number: 2,
 						references: [{
@@ -25,22 +28,19 @@
 				number: 2,
 				text: 'Sind Sie der Meinung, dass die Eltern mit dem Wegfall der Realschule RBS eine zu kleine Wahlmöglichkeit zwischen der Nachmittagsbetreuung haben?',
 				supports: 'YES',
-				facts: [
-					{
-						number: 1,
-						references: [],
-						text: 'Nur die Realschule RBS sowie die zwei Gesamtschulen bieten eine Nachmittagsbetreuung an'
-					},
-					{
-						number: 2,
-						references: [],
-						text: 'Die Realschule RBS bietet eine wahlweise Nachmittagsbetreuung für alle Wochentage an'
-					},
-					{
-						number: 3,
-						references: [],
-						text: 'Bei beiden Gesamtschulen in RBS ist der Nachmittagsunterricht verpflichtend. Der Nachmittagsunterricht findet an beiden Gesamtschulen nur an 3 Wochentagen statt'
-					}]
+				facts: [{
+					number: 1,
+					references: [],
+					text: 'Nur die Realschule RBS sowie die zwei weitere Schulen bieten eine Nachmittagsbetreuung an'
+				}, {
+					number: 2,
+					references: [],
+					text: 'Die Realschule RBS bietet eine wahlweise Nachmittagsbetreuung für alle Wochentage an'
+				}, {
+					number: 3,
+					references: [],
+					text: 'Bei den zwei weiteren Schulen ist der Nachmittagsunterricht verpflichtend und findet nur an 3 Wochentagen statt'
+				}]
 			},
 			{
 				number: 3,
@@ -71,7 +71,7 @@
 				facts: [{
 					number: 1,
 					references: [],
-					text: 'Für den Erhalt der Realschule fallen Mehrkosten von 400.000 Euro verteilt über 5 Jahre an'
+					text: 'Für den Erhalt der Realschule fallen schätzungsweise Mehrkosten von 400.000 Euro verteilt über 5 Jahre an'
 				}, {
 					number: 2,
 					references: [],
