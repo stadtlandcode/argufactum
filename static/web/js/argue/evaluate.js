@@ -124,14 +124,9 @@
 			return weight.value / 10;
 		};
 		$scope.translateValuesForWeight = function(weight) {
-			var translateX = a.evaluate.getPlateIndexOfWeight(weight, $scope.weights) * 70;
-			if (weight.attachedTo === 'contra') {
-				translateX += 523;
-			} else {
-				translateX -= 50;
-			}
-			var translateY = (50 + (550 / (weight.value * 0.9)));
-			console.log(weight.value + ': ' + translateX + ', ' + translateY);
+			var translateXBase = (weight.attachedTo === 'contra') ? 282 : 50;
+			var translateX = translateXBase + (a.evaluate.getPlateIndexOfWeight(weight, $scope.weights) * 0);
+			var translateY = 91 + (14 * (4 - weight.value));
 			return translateX + ', ' + translateY;
 		};
 	});

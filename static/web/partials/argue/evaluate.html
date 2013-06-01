@@ -39,13 +39,15 @@
 				 	<rect x="49" y="165" width="25" height="42" />
 					
 					<g id="leftPlateWeights" class="weights">
-						<g data-ng-repeat="weight in weights | filter: {attachedTo: 'pro'}" class="weight weight-colored-{{weight.colorNumber}}" transform="scale({{scaleForWeight(weight)}}) translate({{translateValuesForWeight(weight)}})">
-							<circle cx="28.75" cy="39.5" r="15" />
-						 	<rect x="15" y="49.5" width="28" height="20" />
-							<circle class="cutout" cx="11.5" cy="54.25" r="7.75" />
-							<circle class="cutout" cx="46" cy="54.25" r="7.75" />
-						 	
-						 	<rect x="0" y="60" width="58" height="80" rx="4" ry="4" />
+						<g data-ng-repeat="weight in weights | filter: {attachedTo: 'pro'}" class="weight weight-colored-{{weight.colorNumber}}" transform="translate({{translateValuesForWeight(weight)}})">
+							<g transform="scale({{scaleForWeight(weight)}})">
+								<circle cx="28.75" cy="39.5" r="15" />
+							 	<rect x="15" y="49.5" width="28" height="20" />
+								<circle class="cutout" cx="11.5" cy="54.25" r="7.75" />
+								<circle class="cutout" cx="46" cy="54.25" r="7.75" />
+							 	
+							 	<rect x="0" y="60" width="58" height="80" rx="4" ry="4" />
+						 	</g>
 						</g>
 					</g>
 				</g>
@@ -57,13 +59,15 @@
 				 	<rect x="282" y="165" width="25" height="42" />
 		
 					<g id="rightPlateWeights" class="weights">
-						<g data-ng-repeat="weight in weights | filter: {attachedTo: 'contra'}" class="weight weight-colored-{{weight.colorNumber}}" transform="scale({{scaleForWeight(weight)}}) translate({{translateValuesForWeight(weight)}})">
-							<circle cx="28.75" cy="39.5" r="15" />
-						 	<rect x="15" y="49.5" width="28" height="20" />
-							<circle class="cutout" cx="11.5" cy="54.25" r="7.75" />
-							<circle class="cutout" cx="46" cy="54.25" r="7.75" />
-						 	
-						 	<rect x="0" y="60" width="58" height="80" rx="4" ry="4" />
+						<g data-ng-repeat="weight in weights | filter: {attachedTo: 'contra'}" class="weight weight-colored-{{weight.colorNumber}}" transform="translate({{translateValuesForWeight(weight)}})">
+							<g transform="scale({{scaleForWeight(weight)}})">
+								<circle cx="28.75" cy="39.5" r="15" />
+							 	<rect x="15" y="49.5" width="28" height="20" />
+								<circle class="cutout" cx="11.5" cy="54.25" r="7.75" />
+								<circle class="cutout" cx="46" cy="54.25" r="7.75" />
+							 	
+							 	<rect x="0" y="60" width="58" height="80" rx="4" ry="4" />
+							 </g>
 						</g>
 					</g>
 				</g>
