@@ -80,46 +80,51 @@
 			});
 			return colors[0];
 		},
-		findWeight: function(argumentNumber, weightValue, weights) {
+		findWeight: function(weights, id) {
 			return _.find(weights, function(weight) {
-				return weight.value == weightValue && weight.argument.number == argumentNumber;
+				return weight.id == id;
 			});
 		},
-		getWeightsForArgument: function(argument, weights) {
-			return _.filter(weights, function(weight) {
-				return weight.argument.number === argument.number;
-			});
-		},
-		getWeights: function(argumentList) {
+		getWeights: function() {
 			var weights = [];
-			_.each(argumentList, function(argument) {
-				for ( var size = 4; size <= 4; size++) {
+			var id = 1;
+			for ( var value = 1; value <= 4; value++) {
+				for ( var index = value; index <= 4; index++) {
 					weights.push({
-						'value': size,
-						'argument': argument,
+						'id': id++,
+						'index': index,
+						'value': value,
+						'argument': null,
 						'colorNumber': 0,
 						'attachedTo': null
 					});
 				}
-			});
+			}
 
 			return weights;
-		}
+		},
+		getPlateIndexOfWeight: function(weight, weights) {
+			var plateIndex = 0;
+			_.find(weights, function(weightToCount) {
+				if (weightToCount.attachedTo === weight.attachedTo) {
+					plateIndex++;
+				}
+				return weightToCount === weight;
+			});
+			return plateIndex;
+		},
 	};
 
 	evaluateModule.controller('EvaluateCtrl', function($scope) {
 		$scope.model = a.storage.getModel();
-		$scope.weights = a.evaluate.getWeights($scope.model.arguments);
+		$scope.weights = a.evaluate.getWeights();
 		$scope.scale = a.evaluate.calculateScale();
 
-		$scope.weightsForArgument = function(argument) {
-			return a.evaluate.getWeightsForArgument(argument, $scope.weights);
-		};
 		$scope.scaleForWeight = function(weight) {
 			return weight.value / 10;
 		};
 		$scope.translateValuesForWeight = function(weight) {
-			var translateX = weight.attachedToIndex * 70;
+			var translateX = a.evaluate.getPlateIndexOfWeight(weight, $scope.weights) * 70;
 			if (weight.attachedTo === 'contra') {
 				translateX += 523;
 			} else {

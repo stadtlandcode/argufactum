@@ -8,8 +8,7 @@
 			restrict: 'A',
 			link: function(scope, element, attrs) {
 				element.on('dragstart', function(event) {
-					event.originalEvent.dataTransfer.setData('weightValue', scope.weight.value);
-					event.originalEvent.dataTransfer.setData('argumentNumber', scope.argument.number);
+					event.originalEvent.dataTransfer.setData('weightId', scope.weight.id);
 				});
 			}
 		};
@@ -21,18 +20,10 @@
 			link: function(scope, element, attrs) {
 				element.on('drop', function(event) {
 					event.preventDefault();
-					var argumentNumber = event.originalEvent.dataTransfer.getData('argumentNumber');
-					var weightValue = event.originalEvent.dataTransfer.getData('weightValue');
-					var weight = a.evaluate.findWeight(argumentNumber, weightValue, scope.weights);
-
-					var argumentWeights = a.evaluate.getWeightsForArgument(weight.argument, scope.weights);
-					_.each(argumentWeights, function(argumentWeight) {
-						argumentWeight.attachedTo = null;
-						argumentWeight.attachedToIndex = 0;
-					});
+					var weightId = event.originalEvent.dataTransfer.getData('weightId');
+					var weight = a.evaluate.findWeight(scope.weights, weightId);
 
 					weight.attachedTo = element.data('plate');
-					weight.attachedToIndex = a.evaluate.getWeightCount(scope.weights)[element.data('plate')];
 					scope.scale = a.evaluate.calculateScale(scope.weights);
 					scope.$digest();
 				});
