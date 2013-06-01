@@ -10,14 +10,20 @@
 
 <div class="row-fluid">
 	<div class="span6">
+		<ul class="unstyled">
+			<li class="argument row-fluid" data-ng-repeat="argument in model.arguments | orderBy: 'number'">
+				<ng-include src="'partials/argue/argument.html'"></ng-include>
+			</li>
+		</ul>
+	</div>
+	<div class="span6">
 		<div class="scale">
 			<svg xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;" version="1.1" viewBox="0 0 357 325" preserveAspectRatio="xMinYMin meet">
-				
 				<g id="leftPlate" class="plate" transform="translate({{scale.leftPlate.translate.x}}, {{scale.leftPlate.translate.y}})">
+					<text x="40" y="108" class="pro-scale">Ja</text>
 					<rect x="0" y="148" width="124" height="6.062" />
 				 	<rect x="11" y="148" width="103" height="21" rx="4" ry="4" />
 				 	<rect x="49" y="165" width="25" height="42" />
-				 	<text x="52" y="165">Pro</text>
 					
 					<g id="leftPlateWeights" class="weights">
 						<g data-ng-repeat="weight in weights | filter: {attachedTo: 'pro'}" class="weight weight-colored-{{weight.colorNumber}}" transform="scale({{scaleForWeight(weight)}}) translate({{translateValuesForWeight(weight)}})">
@@ -32,10 +38,10 @@
 				</g>
 			
 				<g id="rightPlate" class="plate" transform="translate({{scale.rightPlate.translate.x}}, {{scale.rightPlate.translate.y}})">
+					<text x="255" y="108" class="contra-scale">Nein</text>
 					<rect x="233" y="148" width="124" height="6.062" />
 				 	<rect x="244" y="148" width="103" height="21" rx="4" ry="4" />
 				 	<rect x="282" y="165" width="25" height="42" />
-				 	<text x="276" y="165">Contra</text>
 		
 					<g id="rightPlateWeights" class="weights">
 						<g data-ng-repeat="weight in weights | filter: {attachedTo: 'contra'}" class="weight weight-colored-{{weight.colorNumber}}" transform="scale({{scaleForWeight(weight)}}) translate({{translateValuesForWeight(weight)}})">
@@ -65,12 +71,5 @@
 			 	<rect x="197" y="0" width="160" height="280" data-plate="contra" class="droparea" data-drop-weight />
 			</svg>
 		</div>
-	</div>
-	<div class="span6">
-		<ul class="unstyled">
-			<li class="argument row-fluid" data-ng-repeat="argument in model.arguments | orderBy: 'number'">
-				<ng-include src="'partials/argue/argument.html'"></ng-include>
-			</li>
-		</ul>
 	</div>
 </div>

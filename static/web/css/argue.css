@@ -67,6 +67,17 @@ text {
 	font-family: 'Helvetica-Bold';
 	font-size: 76px;
 }
+.pro-scale,
+.contra-scale {
+	font-size: 35px;
+	opacity: 0.1;
+}
+.pro-scale {
+	fill: green;
+}
+.contra-scale {
+	fill: red;
+}
 
 /* draggable weights */
 .weights {
@@ -78,9 +89,6 @@ text {
 	vertical-align: bottom;
 	margin-right: 3px;
 	cursor: move;
-}
-.plate text {
-	font-size: 12px;
 }
 .weight-value-1 {
 	width: 7px;

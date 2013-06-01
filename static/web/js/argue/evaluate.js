@@ -73,33 +73,6 @@
 			var factor = lowestValue / highestValue;
 			return Math.round(this.maxLeaning - (this.maxLeaning * factor)) * prefix;
 		},
-		redrawWeights: function() {
-			// attach weights
-			_.each(this.attachedWeights, function(weight) {
-				var clone = templateWeight.cloneNode(true);
-				var plate = plates[weight.argument.thesis];
-
-				// set argument number
-				// clone.getElementsByTagName('text')[0].firstChild.nodeValue =
-				// weight.argument.number;
-				clone.removeAttribute('style');
-				clone.setAttribute('id', 'weight' + weight.argument.number);
-				clone.setAttribute('class', 'weight weight-colored-' + weight.argument.colorNumber);
-
-				// set proportions
-				var scale = weight.value / 10;
-				var translateX = weightCount[weight.argument.thesis] * 40;
-				if (weight.argument.thesis === 'CONTRA') {
-					translateX += 233;
-				}
-				var translateY = (84.5 - (84.5 * scale)) * 1.667;
-
-				clone.setAttribute('transform', 'translate(' + translateX + ', ' + translateY + ') scale(' + scale + ')');
-
-				plate.appendChild(clone);
-				weightCount[weight.argument.thesis]++;
-			});
-		},
 		getNextFreeColorNumber: function() {
 			var colors = [1, 2, 3, 4, 5, 6, 7, 8];
 			_.each(this.attachedWeights, function(weight) {
