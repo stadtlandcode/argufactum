@@ -32,15 +32,15 @@
 			</div>
 		
 			<svg xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;" version="1.1" viewBox="0 0 357 325" preserveAspectRatio="xMinYMin meet">
-				<g id="leftPlate" class="plate" transform="translate({{scale.leftPlate.translate.x}}, {{scale.leftPlate.translate.y}})">
-					<text x="40" y="108" class="pro-scale">Ja</text>
+				<g id="leftPlate" class="plate" transform="translate({{scale.pro.translate}})">
+					<text x="40" y="93" class="pro-scale" style="opacity:{{scale.pro.labelOpacity}}">Ja</text>
 					<rect x="0" y="148" width="124" height="6.062" />
 				 	<rect x="11" y="148" width="103" height="21" rx="4" ry="4" />
 				 	<rect x="49" y="165" width="25" height="42" />
 					
 					<g id="leftPlateWeights" class="weights">
-						<g data-ng-repeat="weight in weights | filter: {attachedTo: 'pro'}" class="weight weight-colored-{{weight.colorNumber}}" transform="translate({{translateValuesForWeight(weight)}})">
-							<g transform="scale({{scaleForWeight(weight)}})">
+						<g data-ng-repeat="weight in scale.pro.weights" class="weight weight-colored-{{weight.weight.colorNumber}}" transform="translate({{weight.translate}})">
+							<g transform="scale({{weight.scale}})">
 								<circle cx="28.75" cy="39.5" r="15" />
 							 	<rect x="15" y="49.5" width="28" height="20" />
 								<circle class="cutout" cx="11.5" cy="54.25" r="7.75" />
@@ -52,15 +52,15 @@
 					</g>
 				</g>
 			
-				<g id="rightPlate" class="plate" transform="translate({{scale.rightPlate.translate.x}}, {{scale.rightPlate.translate.y}})">
-					<text x="255" y="108" class="contra-scale">Nein</text>
+				<g id="rightPlate" class="plate" transform="translate({{scale.contra.translate}})">
+					<text x="255" y="93" class="contra-scale" style="opacity:{{scale.contra.labelOpacity}}">Nein</text>
 					<rect x="233" y="148" width="124" height="6.062" />
 				 	<rect x="244" y="148" width="103" height="21" rx="4" ry="4" />
 				 	<rect x="282" y="165" width="25" height="42" />
 		
 					<g id="rightPlateWeights" class="weights">
-						<g data-ng-repeat="weight in weights | filter: {attachedTo: 'contra'}" class="weight weight-colored-{{weight.colorNumber}}" transform="translate({{translateValuesForWeight(weight)}})">
-							<g transform="scale({{scaleForWeight(weight)}})">
+						<g data-ng-repeat="weight in scale.contra.weights" class="weight weight-colored-{{weight.weight.colorNumber}}" transform="translate({{weight.translate}})">
+							<g transform="scale({{weight.scale}})">
 								<circle cx="28.75" cy="39.5" r="15" />
 							 	<rect x="15" y="49.5" width="28" height="20" />
 								<circle class="cutout" cx="11.5" cy="54.25" r="7.75" />

@@ -24,7 +24,7 @@
 					var weight = a.evaluate.findWeight(scope.weights, weightId);
 
 					weight.attachedTo = element.data('plate');
-					scope.scale = a.evaluate.calculateScale(scope.weights);
+					a.evaluate.updateScale(scope.weights);
 					scope.$digest();
 				});
 				element.on('dragover', function(event) {

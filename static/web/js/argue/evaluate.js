@@ -16,69 +16,96 @@
 
 	a.evaluate = {
 		maxLeaning: 32,
-		calculateScale: function(weights) {
-			var leaning = this.calculateLeaning(weights);
-			var scale = {
-				'leaning': leaning,
-				'leftPlate': {
-					'translate': this.translatePlate(leaning, 'left')
-				},
-				'rightPlate': {
-					'translate': this.translatePlate(leaning, 'right')
-				},
-				'weightCount': this.getWeightCount(weights)
-			};
-			return scale;
+		scale: {},
+		getScale: function(weights) {
+			_.each(['pro', 'contra'], _.bind(function(plate) {
+				this.scale[plate] = {
+					'totalWeight': 0,
+					'translate': '0,0',
+					'labelOpacity': 0.1,
+					'weights': []
+				};
+			}, this));
+
+			this.updateScale(weights);
+			return this.scale;
 		},
-		getWeightCount: function(weights) {
-			var count = {
-				'pro': 0,
-				'contra': 0
-			};
-			_.each(weights, function(weight) {
-				if (weight.attachedTo) {
-					count[weight.attachedTo]++;
-				}
-			});
-			return count;
+		updateScale: function(weights) {
+			this.updatePlateWeights(this.scale.pro, this.weightsOfPlate('pro', weights));
+			this.updatePlateWeights(this.scale.contra, this.weightsOfPlate('contra', weights));
+
+			this.updateLeaning(this.scale.pro.totalWeight, this.scale.contra.totalWeight);
+
+			this.updatePlateWeightsPosition(this.scale.pro.weights, 'pro');
+			this.updatePlateWeightsPosition(this.scale.contra.weights, 'contra');
+
+			var totalWeight = this.scale.pro.totalWeight + this.scale.contra.totalWeight;
+			this.updateLabelOpacity(this.scale.pro, totalWeight);
+			this.updateLabelOpacity(this.scale.contra, totalWeight);
+		},
+		updateLeaning: function(proTotalWeight, contraTotalWeight) {
+			this.scale.leaning = this.calculateLeaning(proTotalWeight, contraTotalWeight);
+			this.scale.pro.translate = this.translatePlate(this.scale.leaning, 'pro');
+			this.scale.contra.translate = this.translatePlate(this.scale.leaning, 'contra');
+		},
+		calculateLeaning: function(proTotalWeight, contraTotalWeight) {
+			if (proTotalWeight === 0 && contraTotalWeight === 0) {
+				return 0;
+			}
+
+			var prefix = proTotalWeight > contraTotalWeight ? -1 : 1;
+			var highestValue = Math.max(proTotalWeight, contraTotalWeight);
+			var lowestValue = Math.min(proTotalWeight, contraTotalWeight);
+			var factor = lowestValue / highestValue;
+			return Math.round(this.maxLeaning - (this.maxLeaning * factor)) * prefix;
 		},
 		translatePlate: function(leaning, side) {
 			var translate = {
 				x: Math.pow(leaning, 2) * 0.018,
 				y: leaning * 2
 			};
-			var flip = (side === 'left') ? 'y' : 'x';
+			var flip = (side === 'pro') ? 'y' : 'x';
 			translate[flip] = translate[flip] * -1;
-			return translate;
+			return translate.x + ', ' + translate.y;
 		},
-		calculateLeaning: function(weights) {
-			var totalWeight = {
-				'pro': 0,
-				'contra': 0
-			};
-
-			_.each(weights, function(weight) {
-				if (weight.attachedTo) {
-					totalWeight[weight.attachedTo] += weight.value;
-				}
-			});
-
-			if (totalWeight.pro === 0 && totalWeight.contra === 0) {
-				return 0;
-			}
-
-			var prefix = totalWeight.pro > totalWeight.contra ? -1 : 1;
-			var highestValue = Math.max(totalWeight.pro, totalWeight.contra);
-			var lowestValue = Math.min(totalWeight.pro, totalWeight.contra);
-			var factor = lowestValue / highestValue;
-			return Math.round(this.maxLeaning - (this.maxLeaning * factor)) * prefix;
+		updateLabelOpacity: function(plate, totalWeight) {
+			plate.labelOpacity = plate.totalWeight <= 0 ? 0.1 : Math.max(0.1, plate.totalWeight / totalWeight);
 		},
-		getNextFreeColorNumber: function() {
-			var colors = [1, 2, 3, 4, 5, 6, 7, 8];
-			_.each(this.attachedWeights, function(weight) {
-				a.array.remove(colors, weight.argument.colorNumber);
+		updatePlateWeights: function(plate, weightsOfPlate) {
+			plate.weights.length = 0;
+			_.each(weightsOfPlate, function(weight) {
+				plate.totalWeight += weight.value;
+				plate.weights.push({
+					'weight': weight
+				});
 			});
-			return colors[0];
+		},
+		updatePlateWeightsPosition: function(weights, side) {
+			var translateXBase = (side === 'contra') ? 233 : 0;
+			var plateWidth = 124;
+			var totalWidth = 0;
+			_.each(weights, _.bind(function(weight) {
+				totalWidth += this.widthOfWeight(weight.weight);
+			}, this));
+
+			var x = totalWidth == plateWidth ? 0 : (plateWidth - totalWidth) / 2;
+			_.each(weights, _.bind(function(weight) {
+				weight.scale = weight.weight.value / 10;
+
+				var translateY = 91 + (14 * (4 - weight.weight.value));
+				var translateX = translateXBase + x;
+				weight.translate = translateX + ',' + translateY;
+
+				x += this.widthOfWeight(weight.weight);
+			}, this));
+		},
+		widthOfWeight: function(weight) {
+			return (63 + (10 / weight.value)) * (weight.value / 10);
+		},
+		weightsOfPlate: function(plateName, weights) {
+			return _.filter(weights, function(weight) {
+				return weight.attachedTo === plateName;
+			});
 		},
 		findWeight: function(weights, id) {
 			return _.find(weights, function(weight) {
@@ -103,31 +130,20 @@
 
 			return weights;
 		},
-		getPlateIndexOfWeight: function(weight, weights) {
-			var plateIndex = 0;
-			_.find(weights, function(weightToCount) {
-				if (weightToCount.attachedTo === weight.attachedTo) {
-					plateIndex++;
+		getNextFreeColorNumber: function(weights) {
+			var colors = [1, 2, 3, 4, 5, 6, 7, 8];
+			_.each(weights, function(weight) {
+				if (weight.argument !== null) {
+					a.array.remove(colors, weight.argument.colorNumber);
 				}
-				return weightToCount === weight;
 			});
-			return plateIndex;
-		},
+			return colors[0];
+		}
 	};
 
 	evaluateModule.controller('EvaluateCtrl', function($scope) {
 		$scope.model = a.storage.getModel();
 		$scope.weights = a.evaluate.getWeights();
-		$scope.scale = a.evaluate.calculateScale();
-
-		$scope.scaleForWeight = function(weight) {
-			return weight.value / 10;
-		};
-		$scope.translateValuesForWeight = function(weight) {
-			var translateXBase = (weight.attachedTo === 'contra') ? 282 : 50;
-			var translateX = translateXBase + (a.evaluate.getPlateIndexOfWeight(weight, $scope.weights) * 0);
-			var translateY = 91 + (14 * (4 - weight.value));
-			return translateX + ', ' + translateY;
-		};
+		$scope.scale = a.evaluate.getScale($scope.weights);
 	});
 })(angular, argue, _);

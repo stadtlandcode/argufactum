@@ -24,7 +24,7 @@
 }
 .unplaced-weights .weight-attached-to-contra,
 .unplaced-weights .weight-attached-to-pro {
-	visibility: hidden;
+	opacity: 0.1;
 }
 .unplaced-weight {
 	font-size: 0px;
