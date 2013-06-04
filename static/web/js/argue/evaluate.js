@@ -1,6 +1,6 @@
 'use strict';
 
-(function(angular, a, _) {
+(function(angular, a, _, Modernizr) {
 	var evaluateModule = angular.module('evaluate', []);
 
 	a.storage = {
@@ -23,7 +23,7 @@
 				this.scale[plate] = {
 					'totalWeight': 0,
 					'translate': '0,0',
-					'animateMotion': '0,0',
+					'animateMotion': '0,0;0,0',
 					'labelOpacity': 0.1,
 					'weights': []
 				};
@@ -51,11 +51,10 @@
 			this.scale.leaning = this.calculateLeaning(proTotalWeight, contraTotalWeight);
 
 			_.each(this.plateIds, _.bind(function(plateId) {
-				if (a.browser.isSafari()) {
+				if (a.browser.isSafari() || !Modernizr.smil) {
 					this.scale[plateId].translate = this.translatePlate(this.scale.leaning, plateId);
-				} else {
-					this.scale[plateId].animateMotion = this.animatePlate(this.scale.previousLeaning, this.scale.leaning, plateId);
 				}
+				this.scale[plateId].animateMotion = this.animatePlate(this.scale.previousLeaning, this.scale.leaning, plateId);
 			}, this));
 		},
 		calculateLeaning: function(proTotalWeight, contraTotalWeight) {
@@ -80,7 +79,6 @@
 					animateMotion += this.translatePlate(leaning, side) + ';';
 				}
 			}
-			console.log(animateMotion.substring(0, animateMotion.length - 1));
 			return animateMotion.substring(0, animateMotion.length - 1);
 		},
 		translatePlate: function(leaning, side) {
@@ -171,4 +169,4 @@
 		$scope.weights = a.evaluate.getWeights();
 		$scope.scale = a.evaluate.getScale($scope.weights);
 	});
-})(angular, argue, _);
+})(angular, argue, _, Modernizr);

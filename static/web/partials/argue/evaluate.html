@@ -33,7 +33,7 @@
 		
 			<svg xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;" version="1.1" viewBox="0 0 357 325" preserveAspectRatio="xMinYMin meet">
 				<g id="leftPlate" class="plate" transform="translate({{scale.pro.translate}})">
-					<animateMotion class="scaleAnimation" dur="0.7s" begin="indefinite" values="{{scale.pro.animateMotion}}" />
+					<animateMotion class="scaleAnimation" dur="0.7s" begin="indefinite" values="{{scale.pro.animateMotion}}" fill="freeze" />
 					<text x="40" y="93" class="pro-scale" style="opacity:{{scale.pro.labelOpacity}}">Ja</text>
 					<rect x="0" y="148" width="124" height="6.062" />
 				 	<rect x="11" y="148" width="103" height="21" rx="4" ry="4" />
@@ -54,7 +54,7 @@
 				</g>
 			
 				<g id="rightPlate" class="plate" transform="translate({{scale.contra.translate}})">
-					<animateMotion class="scaleAnimation" dur="0.7s" begin="indefinite" values="{{scale.contra.animateMotion}}" />
+					<animateMotion class="scaleAnimation" dur="0.7s" begin="indefinite" values="{{scale.contra.animateMotion}}" fill="freeze" />
 					<text x="255" y="93" class="contra-scale" style="opacity:{{scale.contra.labelOpacity}}">Nein</text>
 					<rect x="233" y="148" width="124" height="6.062" />
 				 	<rect x="244" y="148" width="103" height="21" rx="4" ry="4" />
@@ -74,8 +74,8 @@
 					</g>
 				</g>
 
-			 	<rect x="0" y="0" width="160" height="280" data-plate="pro" class="droparea" data-drop-weight />
-			 	<rect x="197" y="0" width="160" height="280" data-plate="contra" class="droparea" data-drop-weight />
+			 	<rect x="1" y="1" width="160" height="277" data-plate="pro" class="droparea" data-ng-class="" data-drop-weight />
+			 	<rect x="196" y="1" width="160" height="277" data-plate="contra" class="droparea" data-drop-weight />
 			 	
 			 	<g id="base">
 				 	<rect x="168" y="210" width="23" height="74" />

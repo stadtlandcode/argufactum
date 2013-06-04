@@ -44,6 +44,11 @@ rect {
 .droparea {
 	fill: transparent !important;
 }
+.droparea-active {
+	stroke: #006dcc;
+	stroke-width: 1px;
+	stroke-dasharray: 5,5;
+}
 text {
 	fill: #FFF;
 	font-family: 'Helvetica-Bold';
