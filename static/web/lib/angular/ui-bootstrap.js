@@ -1145,6 +1145,7 @@ angular.module('ui.bootstrap.accordion', ['ui.bootstrap.collapse'])
 			accordionCtrl.addGroup(scope);
 
 			scope.isOpen = false;
+			scope.argument = scope.$parent.argument;
 
 			if (attrs.isOpen) {
 

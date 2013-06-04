@@ -1,7 +1,7 @@
 'use strict';
 
 (function(angular, a, _, Modernizr) {
-	var evaluateModule = angular.module('evaluate', ['ui.bootstrap', 'ui.bootstrap.tpls']);
+	var evaluateModule = angular.module('evaluate', ['ui.bootstrap.accordion', 'ui.bootstrap.collapse', 'template/accordion/accordion.html']);
 
 	a.storage = {
 		findArgument: function(number) {

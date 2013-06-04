@@ -29,8 +29,8 @@
 		    	<div class="well weight-argument">
 			    	<ol>
 			    		<li>
-			    			Wähle ein Gewicht:
-			    			<div class="unplaced-weights">
+			    			<p>Wähle ein Gewicht:</p>
+			    			<div class="selectable-weights">
 								<div data-ng-repeat="weight in weights" data-ng-click="assignWeight(weight, argument)" class="weight draggable-weight unplaced-weight weight-value-{{weight.value}} weight-colored-{{weight.colorNumber}} weight-attached-to-{{weight.attachedTo}}" draggable="true" data-drag-weight>
 									<svg xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;" version="1.1" viewBox="0 0 58 106" preserveAspectRatio="xMinYMin meet">
 										<circle cx="28.75" cy="15" r="15" />
@@ -41,13 +41,14 @@
 									 	<rect x="0" y="35.5" width="58" height="70" rx="4" ry="4" />
 									</svg>
 								</div>
-								
-								<button type="button" class="btn" data-ng-show="argument.weight" data-ng-click="unassignArgument(argument)">
-									<i class="icon-ban-circle"></i>
-									Keins
-								</button>
 							</div>
-							<br />
+							
+							<button type="button" class="btn btn-unassign-argument" data-ng-show="argument.weight" data-ng-click="unassignArgument(argument)">
+								<i class="icon-ban-circle"></i>
+								Keins
+							</button>
+							
+							<br /><br />
 			    		</li>
 			    		<li data-ng-show="argument.weight">
 			    			<p>Wähle eine Seite:</p>

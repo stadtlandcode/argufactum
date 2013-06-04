@@ -3,6 +3,48 @@
 .weight-argument select {
 	margin-bottom: 0;
 }
+.selectable-weights {
+	display: inline-block;
+}
+.btn-unassign-argument {
+	display: inline-block;
+	margin-bottom: 3px;
+}
+.argument-weight-container {
+	margin-right: 4px;
+	vertical-align: middle;
+}
+.argument-weight-container-1 {
+	font-size: 34px;
+	margin-right: 13px;
+}
+.argument-weight-container-2 {
+	font-size: 44px;
+	margin-right: 10px;
+}
+.argument-weight-container-3 {
+	font-size: 56px;
+	margin-right: 7px;
+}
+.argument-weight-value-1 {
+	width: 5px;
+	height: 9px;
+}
+.argument-weight-value-2 {
+	width: 11px;
+	height: 18px;
+}
+.argument-weight-value-3 {
+	width: 16px;
+	height: 27px;
+}
+.argument-weight-value-4 {
+	width: 21px;
+	height: 36px;
+}
+a.accordion-toggle {
+	padding-right: 24px;
+}
 
 /* scale */
 .scale {
@@ -13,7 +55,8 @@
 	max-height: 360px;
 	max-width: 400px;
 }
-.unplaced-weights {
+.unplaced-weights,
+.selectable-weights {
 	height: 49px;
 	font-size: 49px;
 	vertical-align: bottom;
