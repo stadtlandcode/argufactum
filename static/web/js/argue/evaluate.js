@@ -195,12 +195,20 @@
 			a.evaluate.assignWeight(weight, argument, $scope.weights);
 			$scope.updateScale();
 		};
+		$scope.unassignArgument = function(argument) {
+			a.evaluate.unassignWeight(argument.weight);
+			$scope.updateScale();
+		};
 		$scope.updateScale = function() {
 			a.evaluate.updateScale($scope.weights);
 
 			_.each(document.getElementsByClassName('scaleAnimation'), function(animationElement) {
 				animationElement.beginElement();
 			});
+		};
+
+		$scope.bindArgument = function(argument) {
+			console.log(argument);
 		};
 	});
 })(angular, argue, _, Modernizr);

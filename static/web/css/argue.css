@@ -53,7 +53,7 @@ text {
 }
 
 /* draggable weights */
-.weight {
+.draggable-weight {
 	cursor: move;
 }
 .weights {
