@@ -33,6 +33,7 @@
 			return this.scale;
 		},
 		updateScale: function(weights) {
+			this.scale.css = '';
 			this.updatePlateWeights(this.scale.pro, this.weightsOfPlate('pro', weights));
 			this.updatePlateWeights(this.scale.contra, this.weightsOfPlate('contra', weights));
 
@@ -193,7 +194,11 @@
 
 		$scope.assignWeight = function(weight, argument) {
 			a.evaluate.assignWeight(weight, argument, $scope.weights);
-			$scope.updateScale();
+			if (weight.attachedTo) {
+				$scope.updateScale();
+			} else {
+				$scope.scale.css = 'help-assign';
+			}
 		};
 		$scope.unassignArgument = function(argument) {
 			a.evaluate.unassignWeight(argument.weight);

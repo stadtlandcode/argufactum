@@ -13,16 +13,11 @@
 					if (scope.argument) {
 						a.evaluate.assignWeight(scope.weight, scope.argument, scope.weights);
 					}
-
-					_.each(document.getElementsByClassName('droparea'), function(dropArea) {
-						dropArea.setAttribute('class', 'droparea droparea-active');
-					});
+					document.getElementById('scale').setAttribute('class', 'scale help-assign help-drop');
 				});
 
 				element.on('dragend', function(event) {
-					_.each(document.getElementsByClassName('droparea'), function(dropArea) {
-						dropArea.setAttribute('class', 'droparea');
-					});
+					document.getElementById('scale').setAttribute('class', 'scale');
 				});
 			}
 		};

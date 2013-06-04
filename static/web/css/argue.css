@@ -40,7 +40,7 @@ rect {
 .droparea {
 	fill: transparent !important;
 }
-.droparea-active {
+.help-drop .droparea {
 	stroke: #006dcc;
 	stroke-width: 1px;
 	stroke-dasharray: 5,5;
@@ -50,6 +50,21 @@ text {
 	fill: #FFF;
 	font-family: 'Helvetica-Bold';
 	font-size: 76px;
+}
+.pro-scale,
+.contra-scale {
+	font-size: 35px;
+	opacity: 0;
+}
+.help-assign .pro-scale,
+.help-assign .contra-scale {
+	opacity: 0.3;
+}
+.pro-scale {
+	fill: green;
+}
+.contra-scale {
+	fill: red;
 }
 
 /* draggable weights */
