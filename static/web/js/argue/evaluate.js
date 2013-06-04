@@ -215,5 +215,8 @@
 		$scope.bindArgument = function(argument) {
 			console.log(argument);
 		};
+		$scope.unanimatedLeaning = function() {
+			return (a.browser.isSafari() || !Modernizr.smil) ? $scope.scale.leaning : 0;
+		};
 	});
 })(angular, argue, _, Modernizr);
