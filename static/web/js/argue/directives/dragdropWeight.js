@@ -9,6 +9,16 @@
 			link: function(scope, element, attrs) {
 				element.on('dragstart', function(event) {
 					event.originalEvent.dataTransfer.setData('weightId', scope.weight.id);
+
+					_.each(document.getElementsByClassName('droparea'), function(dropArea) {
+						dropArea.setAttribute('class', 'droparea droparea-active');
+					});
+				});
+
+				element.on('dragend', function(event) {
+					_.each(document.getElementsByClassName('droparea'), function(dropArea) {
+						dropArea.setAttribute('class', 'droparea');
+					});
 				});
 			}
 		};

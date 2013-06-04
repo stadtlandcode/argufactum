@@ -48,6 +48,7 @@ rect {
 	stroke: #006dcc;
 	stroke-width: 1px;
 	stroke-dasharray: 5,5;
+	pointer-events: all;
 }
 text {
 	fill: #FFF;
