@@ -42,8 +42,8 @@
 	width: 21px;
 	height: 36px;
 }
-a.accordion-toggle {
-	padding-right: 24px;
+.accordion-toggle {
+	padding-right: 24px !important;
 }
 
 /* scale */

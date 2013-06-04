@@ -171,6 +171,10 @@
 			var attachedTo;
 			var currentWeight = this.findWeightOfArgument(argument, weights);
 
+			if (weight.argument && weight.argument !== argument) {
+				this.unassignWeight(weight);
+			}
+
 			if (currentWeight) {
 				colorNumber = currentWeight.colorNumber;
 				attachedTo = currentWeight.attachedTo;
