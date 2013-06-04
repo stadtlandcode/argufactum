@@ -17,16 +17,19 @@
 	a.evaluate = {
 		maxLeaning: 32,
 		scale: {},
+		plateIds: ['pro', 'contra'],
 		getScale: function(weights) {
 			_.each(['pro', 'contra'], _.bind(function(plate) {
 				this.scale[plate] = {
 					'totalWeight': 0,
 					'translate': '0,0',
+					'animateMotion': '0,0',
 					'labelOpacity': 0.1,
 					'weights': []
 				};
 			}, this));
 
+			this.scale.leaning = 0;
 			this.updateScale(weights);
 			return this.scale;
 		},
@@ -44,9 +47,16 @@
 			this.updateLabelOpacity(this.scale.contra, totalWeight);
 		},
 		updateLeaning: function(proTotalWeight, contraTotalWeight) {
+			this.scale.previousLeaning = this.scale.leaning;
 			this.scale.leaning = this.calculateLeaning(proTotalWeight, contraTotalWeight);
-			this.scale.pro.translate = this.translatePlate(this.scale.leaning, 'pro');
-			this.scale.contra.translate = this.translatePlate(this.scale.leaning, 'contra');
+
+			_.each(this.plateIds, _.bind(function(plateId) {
+				if (a.browser.isSafari()) {
+					this.scale[plateId].translate = this.translatePlate(this.scale.leaning, plateId);
+				} else {
+					this.scale[plateId].animateMotion = this.animatePlate(this.scale.previousLeaning, this.scale.leaning, plateId);
+				}
+			}, this));
 		},
 		calculateLeaning: function(proTotalWeight, contraTotalWeight) {
 			if (proTotalWeight === 0 && contraTotalWeight === 0) {
@@ -59,6 +69,20 @@
 			var factor = lowestValue / highestValue;
 			return Math.round(this.maxLeaning - (this.maxLeaning * factor)) * prefix;
 		},
+		animatePlate: function(previousLeaning, currentLeaning, side) {
+			var animateMotion = '';
+			if (previousLeaning >= currentLeaning) {
+				for ( var leaning = previousLeaning; leaning >= currentLeaning; leaning--) {
+					animateMotion += this.translatePlate(leaning, side) + ';';
+				}
+			} else {
+				for ( var leaning = previousLeaning; leaning <= currentLeaning; leaning++) {
+					animateMotion += this.translatePlate(leaning, side) + ';';
+				}
+			}
+			console.log(animateMotion.substring(0, animateMotion.length - 1));
+			return animateMotion.substring(0, animateMotion.length - 1);
+		},
 		translatePlate: function(leaning, side) {
 			var translate = {
 				x: Math.pow(leaning, 2) * 0.018,
@@ -66,12 +90,13 @@
 			};
 			var flip = (side === 'pro') ? 'y' : 'x';
 			translate[flip] = translate[flip] * -1;
-			return translate.x + ', ' + translate.y;
+			return translate.x + ',' + translate.y;
 		},
 		updateLabelOpacity: function(plate, totalWeight) {
 			plate.labelOpacity = plate.totalWeight <= 0 ? 0.1 : Math.max(0.1, plate.totalWeight / totalWeight);
 		},
 		updatePlateWeights: function(plate, weightsOfPlate) {
+			plate.totalWeight = 0;
 			plate.weights.length = 0;
 			_.each(weightsOfPlate, function(weight) {
 				plate.totalWeight += weight.value;

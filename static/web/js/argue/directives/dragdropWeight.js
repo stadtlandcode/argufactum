@@ -1,6 +1,6 @@
 'use strict';
 
-(function(angular, a) {
+(function(angular, a, _) {
 	var evaluateModule = angular.module('evaluate');
 
 	evaluateModule.directive('dragWeight', function() {
@@ -26,11 +26,16 @@
 					weight.attachedTo = element.data('plate');
 					a.evaluate.updateScale(scope.weights);
 					scope.$digest();
+
+					_.each(document.getElementsByClassName('scaleAnimation'), function(animationElement) {
+						animationElement.beginElement();
+					});
 				});
+
 				element.on('dragover', function(event) {
 					event.preventDefault();
 				});
 			}
 		};
 	});
-})(angular, argue);
+})(angular, argue, _);
