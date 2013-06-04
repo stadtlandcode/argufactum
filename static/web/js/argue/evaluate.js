@@ -1,7 +1,7 @@
 'use strict';
 
 (function(angular, a, _, Modernizr) {
-	var evaluateModule = angular.module('evaluate', []);
+	var evaluateModule = angular.module('evaluate', ['ui.bootstrap', 'ui.bootstrap.tpls']);
 
 	a.storage = {
 		findArgument: function(number) {
@@ -24,7 +24,6 @@
 					'totalWeight': 0,
 					'translate': '0,0',
 					'animateMotion': '0,0;0,0',
-					'labelOpacity': 0.1,
 					'weights': []
 				};
 			}, this));
@@ -41,10 +40,6 @@
 
 			this.updatePlateWeightsPosition(this.scale.pro.weights, 'pro');
 			this.updatePlateWeightsPosition(this.scale.contra.weights, 'contra');
-
-			var totalWeight = this.scale.pro.totalWeight + this.scale.contra.totalWeight;
-			this.updateLabelOpacity(this.scale.pro, totalWeight);
-			this.updateLabelOpacity(this.scale.contra, totalWeight);
 		},
 		updateLeaning: function(proTotalWeight, contraTotalWeight) {
 			this.scale.previousLeaning = this.scale.leaning;
@@ -90,9 +85,6 @@
 			translate[flip] = translate[flip] * -1;
 			return translate.x + ',' + translate.y;
 		},
-		updateLabelOpacity: function(plate, totalWeight) {
-			plate.labelOpacity = plate.totalWeight <= 0 ? 0.1 : Math.max(0.1, plate.totalWeight / totalWeight);
-		},
 		updatePlateWeights: function(plate, weightsOfPlate) {
 			plate.totalWeight = 0;
 			plate.weights.length = 0;
@@ -115,7 +107,7 @@
 			_.each(weights, _.bind(function(weight) {
 				weight.scale = weight.weight.value / 10;
 
-				var translateY = 91 + (14 * (4 - weight.weight.value));
+				var translateY = 92 + (14 * (4 - weight.weight.value));
 				var translateX = translateXBase + x;
 				weight.translate = translateX + ',' + translateY;
 
@@ -153,14 +145,44 @@
 
 			return weights;
 		},
-		getNextFreeColorNumber: function(weights) {
+		getNextFreeColorNumber: function(objects) {
 			var colors = [1, 2, 3, 4, 5, 6, 7, 8];
-			_.each(weights, function(weight) {
-				if (weight.argument !== null) {
-					a.array.remove(colors, weight.argument.colorNumber);
+			_.each(objects, function(object) {
+				if (object.colorNumber) {
+					a.array.remove(colors, object.colorNumber);
 				}
 			});
 			return colors[0];
+		},
+		findWeightOfArgument: function(argument, weights) {
+			return _.find(weights, function(weight) {
+				return weight.argument && weight.argument.number == argument.number;
+			});
+		},
+		unassignWeight: function(weight) {
+			weight.argument.weight = null;
+			weight.argument = null;
+			weight.colorNumber = 0;
+			weight.attachedTo = null;
+		},
+		assignWeight: function(weight, argument, weights) {
+			var colorNumber;
+			var attachedTo;
+			var currentWeight = this.findWeightOfArgument(argument, weights);
+
+			if (currentWeight) {
+				colorNumber = currentWeight.colorNumber;
+				attachedTo = currentWeight.attachedTo;
+				this.unassignWeight(currentWeight);
+			} else {
+				colorNumber = a.evaluate.getNextFreeColorNumber(weights);
+				attachedTo = null;
+			}
+
+			weight.colorNumber = colorNumber;
+			weight.attachedTo = attachedTo;
+			weight.argument = argument;
+			weight.argument.weight = weight;
 		}
 	};
 
@@ -168,5 +190,17 @@
 		$scope.model = a.storage.getModel();
 		$scope.weights = a.evaluate.getWeights();
 		$scope.scale = a.evaluate.getScale($scope.weights);
+
+		$scope.assignWeight = function(weight, argument) {
+			a.evaluate.assignWeight(weight, argument, $scope.weights);
+			$scope.updateScale();
+		};
+		$scope.updateScale = function() {
+			a.evaluate.updateScale($scope.weights);
+
+			_.each(document.getElementsByClassName('scaleAnimation'), function(animationElement) {
+				animationElement.beginElement();
+			});
+		};
 	});
 })(angular, argue, _, Modernizr);

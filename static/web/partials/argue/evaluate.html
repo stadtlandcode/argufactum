@@ -10,11 +10,49 @@
 
 <div class="row-fluid">
 	<div class="span6">
-		<ul class="unstyled">
-			<li class="argument row-fluid" data-ng-repeat="argument in model.arguments | orderBy: 'number'">
-				<ng-include src="'partials/argue/argument.html'"></ng-include>
-			</li>
-		</ul>
+		<div data-accordion>
+		    <div data-accordion-group data-ng-repeat="argument in model.arguments | orderBy: 'number'" data-heading="{{argument.text}}" data-css="argument">
+		    	<div data-ng-show="argument.facts.length > 0">
+			    	<strong>Begründung:</strong>
+			    	<ol>
+			    		<li data-ng-repeat="fact in argument.facts | orderBy: 'number'">
+			    			{{fact.text}}
+			    			<a data-ng-repeat="reference in fact.references | orderBy: 'number'" href="{{reference.text}}" target="_blank" title="{{reference.text}}" data-ng-show="reference.text.length > 0">
+								[{{reference.number}}]
+							</a>
+			    		</li>
+			    	</ol>
+			    	<br />
+			    </div>
+		    	
+		    	<p><em>Gewichte dieses Argument:</em></p>
+		    	<div class="well weight-argument">
+			    	<ol>
+			    		<li>
+			    			Wähle ein Gewicht:
+			    			<div class="unplaced-weights">
+								<div data-ng-repeat="weight in weights" data-ng-click="assignWeight(weight, argument)" class="weight unplaced-weight weight-value-{{weight.value}} weight-colored-{{weight.colorNumber}} weight-attached-to-{{weight.attachedTo}}" draggable="true" data-drag-weight>
+									<svg xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;" version="1.1" viewBox="0 0 58 106" preserveAspectRatio="xMinYMin meet">
+										<circle cx="28.75" cy="15" r="15" />
+									 	<rect x="15" y="25" width="28" height="20" />
+										<circle class="cutout" cx="11.5" cy="29.75" r="7.75" />
+										<circle class="cutout" cx="46" cy="29.75" r="7.75" />
+									 	
+									 	<rect x="0" y="35.5" width="58" height="70" rx="4" ry="4" />
+									</svg>
+								</div>
+							</div>
+							<br />
+			    		</li>
+			    		<li data-ng-show="argument.weight">
+			    			<p>Wähle eine Seite<span class="hidden-phone"> oder zieh das Gewicht direkt auf die Waage</span></p>
+			    			<label class="radio"> <input type="radio" name="optionsRadios" value="pro" data-ng-click="updateScale()" data-ng-model="argument.weight.attachedTo"> Ja</label>
+							<label class="radio"> <input type="radio" name="optionsRadios" value="contra" data-ng-click="updateScale()" data-ng-model="argument.weight.attachedTo"> Nein</label>
+			    		</li>
+			    	</ol>
+		    	</div>
+		    </div>
+		</div>
 	</div>
 	<div class="span6">
 		<div class="scale">
@@ -32,9 +70,8 @@
 			</div>
 		
 			<svg xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;" version="1.1" viewBox="0 0 357 325" preserveAspectRatio="xMinYMin meet">
-				<g id="leftPlate" class="plate" transform="translate({{scale.pro.translate}})">
+				<g class="plate" transform="translate({{scale.pro.translate}})">
 					<animateMotion class="scaleAnimation" dur="0.7s" begin="indefinite" values="{{scale.pro.animateMotion}}" fill="freeze" />
-					<text x="40" y="93" class="pro-scale" style="opacity:{{scale.pro.labelOpacity}}">Ja</text>
 					<rect x="0" y="148" width="124" height="6.062" />
 				 	<rect x="11" y="148" width="103" height="21" rx="4" ry="4" />
 				 	<rect x="49" y="165" width="25" height="42" />
@@ -51,11 +88,12 @@
 						 	</g>
 						</g>
 					</g>
+					
+					<rect x="1" y="66" width="122" height="80" data-plate="pro" class="droparea" data-drop-weight />
 				</g>
 			
-				<g id="rightPlate" class="plate" transform="translate({{scale.contra.translate}})">
+				<g class="plate" transform="translate({{scale.contra.translate}})">
 					<animateMotion class="scaleAnimation" dur="0.7s" begin="indefinite" values="{{scale.contra.animateMotion}}" fill="freeze" />
-					<text x="255" y="93" class="contra-scale" style="opacity:{{scale.contra.labelOpacity}}">Nein</text>
 					<rect x="233" y="148" width="124" height="6.062" />
 				 	<rect x="244" y="148" width="103" height="21" rx="4" ry="4" />
 				 	<rect x="282" y="165" width="25" height="42" />
@@ -72,10 +110,9 @@
 							 </g>
 						</g>
 					</g>
-				</g>
 
-			 	<rect x="1" y="1" width="160" height="277" data-plate="pro" class="droparea" data-drop-weight />
-			 	<rect x="196" y="1" width="160" height="277" data-plate="contra" class="droparea" data-drop-weight />
+				 	<rect x="233" y="66" width="122" height="80" data-plate="contra" class="droparea" data-drop-weight />
+				</g>
 			 	
 			 	<g id="base">
 				 	<rect x="168" y="210" width="23" height="74" />

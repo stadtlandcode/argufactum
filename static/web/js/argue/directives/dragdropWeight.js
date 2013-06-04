@@ -10,6 +10,10 @@
 				element.on('dragstart', function(event) {
 					event.originalEvent.dataTransfer.setData('weightId', scope.weight.id);
 
+					if (scope.argument) {
+						a.evaluate.assignWeight(scope.weight, scope.argument, scope.weights);
+					}
+
 					_.each(document.getElementsByClassName('droparea'), function(dropArea) {
 						dropArea.setAttribute('class', 'droparea droparea-active');
 					});
@@ -32,14 +36,10 @@
 					event.preventDefault();
 					var weightId = event.originalEvent.dataTransfer.getData('weightId');
 					var weight = a.evaluate.findWeight(scope.weights, weightId);
-
 					weight.attachedTo = element.data('plate');
-					a.evaluate.updateScale(scope.weights);
-					scope.$digest();
 
-					_.each(document.getElementsByClassName('scaleAnimation'), function(animationElement) {
-						animationElement.beginElement();
-					});
+					scope.updateScale();
+					scope.$digest();
 				});
 
 				element.on('dragover', function(event) {

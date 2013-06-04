@@ -1,11 +1,7 @@
-.argument {
-	padding: .25em;
-}
-.argument-text {
-	padding-top: 8px;
-}
-.pro-contra-table th,.pro-contra-table td {
-	width: 50%;
+.weight-argument,
+.weight-argument ol,
+.weight-argument select {
+	margin-bottom: 0;
 }
 
 /* scale */
@@ -54,17 +50,6 @@ text {
 	fill: #FFF;
 	font-family: 'Helvetica-Bold';
 	font-size: 76px;
-}
-.pro-scale,
-.contra-scale {
-	font-size: 35px;
-	opacity: 0.1;
-}
-.pro-scale {
-	fill: green;
-}
-.contra-scale {
-	fill: red;
 }
 
 /* draggable weights */
