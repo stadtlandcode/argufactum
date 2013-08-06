@@ -142,20 +142,20 @@ text {
 }
 
 /* colored weights */
-.weight-colored-1 circle,
-.weight-colored-1 rect {
+.weight-colored-17 circle,
+.weight-colored-17 rect {
 	fill: #1abc9c;
 }
-.weight-colored-2 circle,
-.weight-colored-2 rect {
+.weight-colored-8 circle,
+.weight-colored-8 rect {
 	fill: #2ecc71;
 }
-.weight-colored-3 circle,
-.weight-colored-3 rect {
+.weight-colored-14 circle,
+.weight-colored-14 rect {
 	fill: #3498db;
 }
-.weight-colored-4 circle,
-.weight-colored-4 rect {
+.weight-colored-12 circle,
+.weight-colored-12 rect {
 	fill: #9b59b6;
 }
 .weight-colored-5 circle,
@@ -166,16 +166,16 @@ text {
 .weight-colored-11 rect {
 	fill: #16a085;
 }
-.weight-colored-12 circle,
-.weight-colored-12 rect {
+.weight-colored-4 circle,
+.weight-colored-4 rect {
 	fill: #27ae60;
 }
 .weight-colored-13 circle,
 .weight-colored-13 rect {
 	fill: #2980b9;
 }
-.weight-colored-14 circle,
-.weight-colored-14 rect {
+.weight-colored-3 circle,
+.weight-colored-3 rect {
 	fill: #8e44ad;
 }
 .weight-colored-10 circle,
@@ -186,12 +186,12 @@ text {
 .weight-colored-6 rect {
 	fill: #f1c40f;
 }
-.weight-colored-7 circle,
-.weight-colored-7 rect {
+.weight-colored-2 circle,
+.weight-colored-2 rect {
 	fill: #e67e22;
 }
-.weight-colored-8 circle,
-.weight-colored-8 rect {
+.weight-colored-7 circle,
+.weight-colored-7 rect {
 	fill: #e74c3c;
 }
 .weight-colored-9 circle,
@@ -206,8 +206,8 @@ text {
 .weight-colored-16 rect {
 	fill: #d35400;
 }
-.weight-colored-17 circle,
-.weight-colored-17 rect {
+.weight-colored-1 circle,
+.weight-colored-1 rect {
 	fill: #c0392b;
 }
 .weight-colored-18 circle,

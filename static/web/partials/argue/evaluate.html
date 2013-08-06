@@ -1,7 +1,7 @@
 <div class="alert alert-info">
 	<i class="icon-info-sign"></i>
 	Dies ist ein Prototyp einer interaktiven, visuellen Gewichtung von Argumenten. Die Gewichte der Argumente können per Drag &amp; Drop auf die Waage gezogen werden.<br />
-	Der Prototyp wird in den nächsten Tagen weiterentwickelt. Die nächsten Schritte sind, aus unterschiedlichen Gewichten je Argument wählen zu können, die auf der Waage platzierten Gewichte farblich identifizieren zu können und eigene Argumentlisten anlegen zu können. 
+	Der Prototyp wird in den nächsten Tagen weiterentwickelt. Die nächsten Schritte sind, die Identifikation von Argumenten / Gewichten weiter zu vereinfachen und eigene Argumentlisten anlegen zu können. 
 </div>
 
 <div class="page-header">
@@ -62,18 +62,20 @@
 	</div>
 	<div class="span6">
 		<div class="scale {{scale.css}}" id="scale">
-			<div class="unplaced-weights hidden-phone">
-				<div data-ng-repeat="weight in weights" class="weight unplaced-weight weight-value-{{weight.value}} weight-colored-{{weight.colorNumber}} weight-attached-to-{{weight.attachedTo}}" title="{{weight.argument.text}}">
-					<svg xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;" version="1.1" viewBox="0 0 58 106" preserveAspectRatio="xMinYMin meet">
-						<circle cx="28.75" cy="15" r="15" />
-					 	<rect x="15" y="25" width="28" height="20" />
-						<circle class="cutout" cx="11.5" cy="29.75" r="7.75" />
-						<circle class="cutout" cx="46" cy="29.75" r="7.75" />
-					 	
-					 	<rect x="0" y="35.5" width="58" height="70" rx="4" ry="4" />
-					</svg>
-				</div>
-			</div>
+			<p class="lead">
+				<strong class="text-success" data-ng-show="scale.winner.choice == 'positive'">
+					Du stimmst diesem Thema {{scale.winner.adjective}} zu
+				</strong>
+				<strong class="text-error" data-ng-show="scale.winner.choice == 'negative'">
+					Du lehnst dieses Thema {{scale.winner.adjective}} ab
+				</strong>
+				<strong class="muted" data-ng-show="scale.winner.choice == 'neutral'">
+					Du stehst diesem Thema neutral gegenüber
+				</strong>
+				<strong class="muted" data-ng-show="scale.winner.choice == 'draw'">
+					Du bist bei diesem Thema geteilter Meinung
+				</strong>
+			</p>
 		
 			<svg xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;" version="1.1" viewBox="0 0 357 325" preserveAspectRatio="xMinYMin meet">
 				<g class="plate" transform="translate({{scale.pro.translate}})">

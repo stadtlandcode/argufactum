@@ -29,6 +29,10 @@
 			}, this));
 
 			this.scale.leaning = 0;
+			this.scale.winner = {
+				choice: 'neutral',
+				adjective: ''
+			};
 			this.updateScale(weights);
 			return this.scale;
 		},
@@ -41,6 +45,29 @@
 
 			this.updatePlateWeightsPosition(this.scale.pro.weights, 'pro');
 			this.updatePlateWeightsPosition(this.scale.contra.weights, 'contra');
+
+			this.updateWinner(this.scale.leaning, this.scale.pro.totalWeight, this.scale.contra.totalWeight);
+		},
+		updateWinner: function(leaning, proTotalWeight, contraTotalWeight) {
+			var winnerChoice = proTotalWeight > contraTotalWeight ? 'positive' : 'negative';
+			var winnerAdjective = null;
+			if (proTotalWeight === contraTotalWeight) {
+				winnerChoice = proTotalWeight < 1 ? 'neutral' : 'draw';
+			} else {
+				var winnerPercent = Math.round(Math.abs(leaning) / this.maxLeaning * 100);
+				console.log(winnerPercent);
+				winnerAdjective = 'größtenteils';
+				if (winnerPercent > 80) {
+					winnerAdjective = 'absolut';
+				} else if (winnerPercent < 20) {
+					winnerAdjective = 'knapp';
+				}
+			}
+
+			this.scale.winner = {
+				choice: winnerChoice,
+				adjective: winnerAdjective
+			};
 		},
 		updateLeaning: function(proTotalWeight, contraTotalWeight) {
 			this.scale.previousLeaning = this.scale.leaning;
