@@ -6,7 +6,7 @@ var HostUtils = {};
 	};
 
 	HostUtils.v1Url = function(path) {
-		var host = isLive() ? 'argufactum.de/v1' : (window.location.host.replace('8083', '8080') + '/v1');
+		var host = isLive() ? 'api.argufactum.de' : (window.location.host.replace('8445', '8444'));
 		return 'http://' + host + path;
 	};
 	HostUtils.v2Url = function(path) {

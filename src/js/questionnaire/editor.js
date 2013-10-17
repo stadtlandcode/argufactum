@@ -96,9 +96,11 @@
 			}
 		},
 		save: function($http, model, successCallback, errorCallback) {
-			var jsonString = angular.toJson(model);
-			var postData = 'json=' + jsonString;
-			var jqXHR = $.post(HostUtils.v1Url('/storage'), postData);
+			var jqXHR = $.ajax(HostUtils.v1Url('/topic'), {
+				data: angular.toJson(model),
+				contentType: 'application/json',
+				type: 'POST'
+			});
 			jqXHR.done(function(data) {
 				successCallback(data);
 			});
@@ -143,12 +145,12 @@
 			$scope.loading = true;
 			q.editor.save($http, $scope.model, $scope.saveSuccess, $scope.saveError);
 		};
-		$scope.saveSuccess = function(id) {
+		$scope.saveSuccess = function(data) {
 			$scope.loading = false;
-			$scope.model.qId = id;
+			$scope.model.qId = data.id;
 			storage.saveModel($scope.model);
 
-			$location.path('/create/success/' + id);
+			$location.path('/create/success/' + data.id);
 			$scope.$apply();
 		};
 		$scope.saveError = function() {
