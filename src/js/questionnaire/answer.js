@@ -80,8 +80,8 @@
 			storage.saveModel(q.a100);
 			$location.path('/answer').replace();
 		} else {
-			$.get(HostUtils.v1Url('/storage/' + qId), function(data) {
-				var model = JSON.parse(data.jsonString);
+			$.getJSON(HostUtils.v1Url('/topic/' + qId), function(data) {
+				var model = data;
 				model.qId = qId;
 				storage.saveModel(model);
 				$location.path('/answer').replace();
