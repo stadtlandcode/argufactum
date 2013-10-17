@@ -1,7 +1,0 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" buffer="128kb"%>
-<ul>
-	<li>Neue Themen anlegen und darin Pro- und Contra Argumente, Fakten, Entkräftungen und Quellen festhalten</li>
-	<li>Gemeinsam mit anderen Benutzern alle Pro- und Contra Argumente zu einem Thema herausfinden</li>
-	<li>Öffentliche Themen kopieren und eigene Änderungen vornehmen</li>
-	<li>Themen, Argumente und Fakten bewerten</li>
-</ul>

@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<atmosphere-handlers>
-	<atmosphere-handler support-session="false" context-root="/comet" class-name="de.ifcore.argue.atmosphere.AtmosphereSubscriptionHandler" />
-</atmosphere-handlers>

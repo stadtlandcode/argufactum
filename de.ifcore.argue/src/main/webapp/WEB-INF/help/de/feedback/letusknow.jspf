@@ -1,8 +1,0 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" buffer="128kb"%>
-<p>Bitte teilen Sie uns mit ...</p> 
-<ul>
-	<li>Finden Sie Argufactum hilfreich?</li>
-	<li>Was gefällt Ihnen an Argufactum besonders gut?</li>
-	<li>Was könnten wir noch verbessern?</li>
-	<li>Hat etwas nicht funktioniert?</li>
-</ul>
