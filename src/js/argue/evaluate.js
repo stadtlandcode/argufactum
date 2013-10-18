@@ -1,18 +1,7 @@
 'use strict';
 
 (function(angular, a, _, Modernizr) {
-	var evaluateModule = angular.module('evaluate', ['ui.bootstrap.accordion', 'ui.bootstrap.collapse', 'template/accordion/accordion.html']);
-
-	a.storage = {
-		findArgument: function(number) {
-			return _.find(a.model.arguments, function(argument) {
-				return argument.number == number;
-			});
-		},
-		getModel: function() {
-			return a.model;
-		}
-	};
+	var evaluateModule = angular.module('evaluate', ['storage', 'ui.bootstrap.accordion', 'ui.bootstrap.collapse', 'template/accordion/accordion.html']);
 
 	a.evaluate = {
 		maxLeaning: 32,
@@ -218,8 +207,8 @@
 		}
 	};
 
-	evaluateModule.controller('EvaluateCtrl', function($scope) {
-		$scope.model = a.storage.getModel();
+	evaluateModule.controller('EvaluateCtrl', function($scope, storage) {
+		$scope.model = storage.getModel();
 		$scope.weights = a.evaluate.getWeights();
 		$scope.scale = a.evaluate.getScale($scope.weights);
 

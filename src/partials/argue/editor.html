@@ -1,0 +1,68 @@
+<div class="page-header">
+	<h2>Argumentensammlung erstellen</h2>
+</div>
+
+<div class="row">
+	<div class="span7">
+		<form class="form-horizontal" id="editor">
+			<p>
+				<input type="text" tabindex="1" name="title" class="input-xxlarge" placeholder="Thema" data-ng-model="model.title" data-popover="Wähle ein Thema, dem man zustimmen oder widersprechen kann (z.B. 'Stuttgart 21', 'Erhalt der Grundschule')" data-popover-trigger="focus" autofocus="autofocus">
+			</p>
+			
+			<br />
+			<p><strong>Argument {{argument.number}}</strong></p>	
+			
+			<div class="well">		
+			<p>
+				<label>Argument</label>
+				<input type="text" tabindex="2" id="argumentInput" name="argument" class="input-xxlarge" data-ng-model="argument.text" required="required" maxlength="255" />
+			</p>
+			
+			<p>
+				Zusatzinformationen
+			</p>
+			<ol class="facts-editor">
+				<li data-ng-repeat="fact in argument.facts | orderBy: 'number'" class="editable-fact">
+					{{fact.text}}
+					<a data-ng-repeat="reference in fact.references | orderBy: 'number'" href="{{reference.text}}" target="_blank" title="{{reference.text}}" data-ng-show="reference.text.length > 0">
+						[{{reference.number}}]
+					</a>
+					<i class="icon-pencil clickable" data-ng-click="editFact(fact, argument)"></i>
+					<i class="icon-remove clickable" data-ng-click="removeFact(fact, argument)"></i>
+				</li>
+			</ol>
+			
+			<button type="button" class="btn" data-ng-click="addFact(argument)">
+				<i class="icon-plus"></i> Information hinzufügen
+			</button>
+			</div>
+
+			<p>
+				<button type="submit" class="btn btn-info" data-ng-click="addQuestion()">
+					<i class="icon-arrow-right icon-white"></i>
+					Nächstes Argument hinzufügen
+				</button>
+			</p>
+			
+			<div class="form-actions">
+				<button type="button" class="btn btn-primary" data-ng-click="save()">
+					<i class="icon-check icon-white"></i>
+					Fertigstellen
+				</button>
+				<i class="icon-ajax-loader" data-ng-show="loading"></i>
+			</div>
+		</form>
+	</div>
+	<div class="span5">
+		<strong>Alle Argumente:</strong><br />
+		<br />
+		<ol class="argument-list">
+			<li data-ng-repeat="argument in model.arguments | orderBy: 'number'">
+				<span data-ng-class="getCssClassForQuestion(argument)">{{argument.text}}</span>
+				(<span class="muted" data-ng-pluralize data-count="argument.facts.length" data-when="{1: '1 Fakt', other: '{} Fakten'}"></span>)
+				<i class="icon-pencil clickable" data-ng-click="editQuestion(argument)"></i>
+				<i class="icon-remove clickable" data-ng-click="removeQuestion(argument)"></i>
+			</li>
+		</ol>
+	</div>
+</div>

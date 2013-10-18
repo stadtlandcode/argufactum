@@ -1,7 +1,7 @@
 <div class="alert alert-info">
 	<i class="icon-info-sign"></i>
 	Dies ist ein Prototyp einer interaktiven, visuellen Gewichtung von Argumenten. Die Gewichte der Argumente können per Drag &amp; Drop auf die Waage gezogen werden.<br />
-	Der Prototyp wird in den nächsten Tagen weiterentwickelt. Die nächsten Schritte sind, die Identifikation von Argumenten / Gewichten weiter zu vereinfachen und eigene Argumentlisten anlegen zu können. 
+	Der Prototyp wird aktiv weiterentwickelt. Als nächster Schritt wird die Identifikation von Argumenten / Gewichten weiter vereinfacht. 
 </div>
 
 <div class="page-header">
@@ -25,7 +25,7 @@
 			    	<br />
 			    </div>
 		    	
-		    	<p><em>Gewichte dieses Argument:</em></p>
+		    	<p><em>Verwende &amp; Gewichte dieses Argument:</em></p>
 		    	<div class="well weight-argument">
 			    	<ol>
 			    		<li>
@@ -52,8 +52,8 @@
 			    		</li>
 			    		<li data-ng-show="argument.weight">
 			    			<p>Wähle eine Seite:</p>
-			    			<label class="radio"> <input type="radio" name="optionsRadios" value="pro" data-ng-click="updateScale()" data-ng-model="argument.weight.attachedTo"> Ja</label>
-							<label class="radio"> <input type="radio" name="optionsRadios" value="contra" data-ng-click="updateScale()" data-ng-model="argument.weight.attachedTo"> Nein</label>
+			    			<label class="radio"> <input type="radio" name="optionsRadios" value="pro" data-ng-click="updateScale()" data-ng-model="argument.weight.attachedTo"> Ja (linke Seite)</label>
+							<label class="radio"> <input type="radio" name="optionsRadios" value="contra" data-ng-click="updateScale()" data-ng-model="argument.weight.attachedTo"> Nein (rechte Seite)</label>
 			    		</li>
 			    	</ol>
 		    	</div>
@@ -140,3 +140,10 @@
 		</div>
 	</div>
 </div>
+
+<p><br /></p>
+<p>
+	<a href="#/create" class="btn btn-primary">
+		<i class="icon-chevron-right icon-white"></i> Eigene Argumentensammlung erstellen!
+	</a>
+</p>
